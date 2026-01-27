@@ -1,0 +1,8 @@
+{
+  "name": "Copy of Elite Academy Middle East",
+  "description": "A premium educational platform offering high-quality courses tailored for students and professionals in Egypt and the Gulf countries, featuring AI-powered learning assistance.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

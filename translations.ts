@@ -1,0 +1,247 @@
+
+export const translations = {
+  en: {
+    nav: {
+      programs: "Strategic Programs",
+      curriculum: "Our Curriculum",
+      enterprise: "For Enterprise",
+      apply: "Apply for Admission",
+      advisor: "Elite AI Advisor"
+    },
+    hero: {
+      badge: "Q3 Admissions Now Open",
+      title_part1: "Shape the",
+      title_part2: "Economic Future",
+      title_part3: "of MENA",
+      desc: "Elite Academy provides world-class executive education tailored for the high-growth markets of Egypt, Saudi Arabia, and the UAE.",
+      cta_primary: "View Curriculum",
+      cta_secondary: "Enterprise Solutions",
+      partners: "Trusted by Global Entities",
+      begin: "Begin Admission"
+    },
+    advantage: {
+      badge: "The Elite Advantage",
+      title1: "Global Expertise,",
+      title2: "Regional Precision.",
+      desc: "We bridge the gap between academic theory and the practical realities of doing business in Egypt and the GCC. Our graduates don't just learn; they lead.",
+      item1_title: "Market Specificity",
+      item1_desc: "Case studies focused on MENA mega-projects like NEOM and New Cairo.",
+      item2_title: "Bilingual Mastery",
+      item2_desc: "Curriculum available in both Arabic and Professional English.",
+      item3_title: "Global Accreditation",
+      item3_desc: "Certifications recognized by leading MENA regulatory bodies.",
+      promo_rate: "Promotion Rate within 1 Year",
+      alumni: "Alumni Network"
+    },
+    analytics: {
+      title: "Market Insights & Growth Metrics",
+      subtitle: "Data-driven results from our regional alumni network.",
+      stat1_val: "98%",
+      stat1_label: "Promotion Rate",
+      stat2_val: "15k+",
+      stat2_label: "Alumni Network",
+      stat3_val: "40+",
+      stat3_label: "Hiring Partners",
+      stat4_val: "24/7",
+      stat4_label: "Expert Support",
+      chart_label: "Regional Skill Demand Index",
+      trend_label: "Market Trend",
+      trend_val: "+24% Regional Increase",
+      download: "Download Report",
+      skill1: "AI & Data Science",
+      skill2: "Digital Finance",
+      skill3: "Smart Construction",
+      skill4: "ESG Leadership"
+    },
+    enterprise: {
+      badge: "Corporate Governance",
+      title: "Transform Your Entire Workforce",
+      desc: "Elite Academy Enterprise offers bespoke training solutions for government entities and multi-national corporations operating in the Arab world.",
+      lms: "Enterprise LMS",
+      insights: "Team Insights",
+      skills: "Verified Skills"
+    },
+    apply_section: {
+      title: "Your Future Starts Today.",
+      desc: "Take the first step towards joining the next generation of MENA leaders. Professional counseling is available for serious candidates.",
+      cta_primary: "Begin Application",
+      cta_secondary: "Request Prospectus"
+    },
+    courses: {
+      badge: "Mastery Portfolio",
+      title: "Curated Programs for Strategic Growth",
+      fee: "Tuition Fee",
+      enroll: "Enroll Now",
+      searchPlaceholder: "Search by course title...",
+      instructorPlaceholder: "Select Instructor",
+      levelPlaceholder: "Select Level",
+      allInstructors: "All Instructors",
+      allLevels: "All Levels",
+      enrollSuccess: "Thank you for your interest! Enrollment for '{title}' has been successfully initiated.",
+      details: "Course Details",
+      prerequisites: "Prerequisites",
+      share: "Share this course",
+      progress: "Learning Progress",
+      enrolled: "Enrolled",
+      modules: "Curriculum Modules",
+      markComplete: "Mark as Complete",
+      completed: "Completed",
+      view_progress: "View Progress",
+      continue: "Continue Learning"
+    },
+    instructors: {
+      badge: "Academic Board",
+      title: "Visionary Leaders & Industry Pioneers",
+      desc: "Our faculty consists of doctorate-level academics and former C-suite executives who actively shape the regional economy.",
+      view_profile: "View Board Profile",
+      qualifications: "Core Credentials",
+      watch_bio: "Watch Video Biography",
+      specialization: "Specialization"
+    },
+    form: {
+      title: "Application Form",
+      desc: "Join the next generation of regional leaders. Please fill in the details below.",
+      name: "Full Name",
+      name_placeholder: "Enter your name",
+      email: "Email Address",
+      phone: "Phone Number",
+      country: "Country of Residence",
+      submit: "Submit Application",
+      submitting: "Submitting...",
+      success_title: "Application Received!",
+      success_desc: "One of our academic advisors will contact you within 24 business hours.",
+      egypt: "Egypt",
+      saudi: "Saudi Arabia",
+      uae: "United Arab Emirates",
+      kuwait: "Kuwait",
+      qatar: "Qatar"
+    },
+    levels: {
+      Beginner: "Beginner",
+      Intermediate: "Intermediate",
+      Advanced: "Advanced"
+    }
+  },
+  ar: {
+    nav: {
+      programs: "البرامج الاستراتيجية",
+      curriculum: "منهجنا التعليمي",
+      enterprise: "للمؤسسات",
+      apply: "طلب التحاق",
+      advisor: "مستشار النخبة الذكي"
+    },
+    hero: {
+      badge: "باب القبول للربع الثالث مفتوح الآن",
+      title_part1: "اصنع",
+      title_part2: "المستقبل الاقتصادي",
+      title_part3: "للمنطقة",
+      desc: "توفر أكاديمية النخبة تعليماً تنفيذياً عالمي المستوى مصمماً خصيصاً للأسواق عالية النمو في مصر والمملكة العربية السعودية والإمارات العربية المتحدة.",
+      cta_primary: "عرض المناهج",
+      cta_secondary: "حلول الشركات",
+      partners: "موثوق من قبل كيانات عالمية",
+      begin: "ابدأ التقديم"
+    },
+    advantage: {
+      badge: "ميزة النخبة",
+      title1: "خبرة عالمية،",
+      title2: "دقة إقليمية.",
+      desc: "نحن نسد الفجوة بين النظرية الأكاديمية والواقع العملي لممارسة الأعمال في مصر ودول مجلس التعاون الخليجي. خريجونا لا يتعلمون فقط؛ بل يقودون.",
+      item1_title: "خصوصية السوق",
+      item1_desc: "دراسات حالة تركز على المشاريع الكبرى في المنطقة مثل نيوم والعاصمة الإدارية الجديدة.",
+      item2_title: "إتقان اللغتين",
+      item2_desc: "المنهج متاح باللغتين العربية والإنجليزية المهنية.",
+      item3_title: "اعتماد عالمي",
+      item3_desc: "شهادات معترف بها من قبل الهيئات التنظيمية الرائدة في المنطقة.",
+      promo_rate: "معدل الترقية خلال عام واحد",
+      alumni: "شبكة الخريجين"
+    },
+    analytics: {
+      title: "رؤى السوق ومقاييس النمو",
+      subtitle: "نتائج قائمة على البيانات من شبكة خريجينا الإقليمية.",
+      stat1_val: "98%",
+      stat1_label: "معدل الترقية",
+      stat2_val: "15k+",
+      stat2_label: "شبكة الخريجين",
+      stat3_val: "40+",
+      stat3_label: "شركاء التوظيف",
+      stat4_val: "24/7",
+      stat4_label: "دعم الخبراء",
+      chart_label: "مؤشر الطلب على المهارات الإقليمية",
+      trend_label: "اتجاه السوق",
+      trend_val: "+24% زيادة إقليمية",
+      download: "تحميل التقرير",
+      skill1: "الذكاء الاصطناعي وعلوم البيانات",
+      skill2: "التمويل الرقمي",
+      skill3: "البناء الذكي",
+      skill4: "قيادة الاستدامة (ESG)"
+    },
+    enterprise: {
+      badge: "حوكمة الشركات",
+      title: "حول قوة العمل لديك بالكامل",
+      desc: "تقدم أكاديمية النخبة للمؤسسات حلول تدريب مخصصة للجهات الحكومية والشركات متعددة الجنسيات العاملة في العالم العربي.",
+      lms: "نظام إدارة التعلم للمؤسسات",
+      insights: "رؤى الفريق",
+      skills: "مهارات موثقة"
+    },
+    apply_section: {
+      title: "مستقبلك يبدأ اليوم.",
+      desc: "اتخذ الخطوة الأولى نحو الانضمام إلى الجيل القادم من قادة المنطقة. الاستشارات المهنية متاحة للمرشحين الجادين.",
+      cta_primary: "ابدأ طلب الالتحاق",
+      cta_secondary: "طلب النشرة التعريفية"
+    },
+    courses: {
+      badge: "محفظة الإتقان",
+      title: "برامج مختارة للنمو الاستراتيجي",
+      fee: "الرسوم الدراسية",
+      enroll: "سجل الآن",
+      searchPlaceholder: "ابحث عن عنوان الدورة...",
+      instructorPlaceholder: "اختر المحاضر",
+      levelPlaceholder: "اختر المستوى",
+      allInstructors: "كل المحاضرين",
+      allLevels: "كل المستويات",
+      enrollSuccess: "شكراً لاهتمامك! تم بدء عملية التسجيل في دورة '{title}' بنجاح.",
+      details: "تفاصيل الدورة",
+      prerequisites: "المتطلبات المسبقة",
+      share: "شارك هذه الدورة",
+      progress: "تقدم التعلم",
+      enrolled: "مسجل",
+      modules: "وحدات المنهج",
+      markComplete: "تحديد كمكتمل",
+      completed: "مكتمل",
+      view_progress: "عرض التقدم",
+      continue: "متابعة التعلم"
+    },
+    instructors: {
+      badge: "المجلس الأكاديمي",
+      title: "قادة ملهمون ورواد في مجالاتهم",
+      desc: "تتكون هيئة التدريس لدينا من أكاديميين بمستوى الدكتوراه وتنفيذيين سابقين يساهمون بفعالية في تشكيل الاقتصاد الإقليمي.",
+      view_profile: "عرض السيرة الذاتية",
+      qualifications: "المؤهلات الأساسية",
+      watch_bio: "مشاهدة السيرة الذاتية المرئية",
+      specialization: "التخصص"
+    },
+    form: {
+      title: "طلب الالتحاق",
+      desc: "انضم إلى الجيل القادم من قادة المنطقة. يرجى ملء البيانات التالية.",
+      name: "الاسم الكامل",
+      name_placeholder: "أدخل اسمك هنا",
+      email: "البريد الإلكتروني",
+      phone: "رقم الهاتف",
+      country: "بلد الإقامة",
+      submit: "إرسال الطلب",
+      submitting: "جاري الإرسال...",
+      success_title: "تم استلام طلبك!",
+      success_desc: "سيتصل بك أحد مستشارينا الأكاديميين خلال 24 ساعة عمل.",
+      egypt: "مصر",
+      saudi: "المملكة العربية السعودية",
+      uae: "الإمارات العربية المتحدة",
+      kuwait: "الكويت",
+      qatar: "قطر"
+    },
+    levels: {
+      Beginner: "مبتدئ",
+      Intermediate: "متوسط",
+      Advanced: "متقدم"
+    }
+  }
+};

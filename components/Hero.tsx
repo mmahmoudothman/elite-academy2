@@ -1,0 +1,110 @@
+
+import React from 'react';
+import { useLanguage } from './LanguageContext';
+import { PARTNERS } from '../constants';
+
+interface HeroProps {
+  onApplyClick: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
+  const { t, language } = useLanguage();
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 80;
+      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <div className="relative pt-32 lg:pt-48 pb-20 overflow-hidden">
+      <div className="hero-shape hidden lg:block"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-10 text-center lg:text-left rtl:lg:text-right">
+            <div className="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 px-4 py-2 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></span>
+              <span className="text-teal-700 font-bold text-xs uppercase tracking-widest">{t.hero.badge}</span>
+            </div>
+            
+            <h1 className="text-6xl lg:text-8xl font-black font-heading leading-tight text-slate-900">
+              {t.hero.title_part1} <br />
+              <span className="text-teal-600">{t.hero.title_part2}</span> <br />
+              {t.hero.title_part3}
+            </h1>
+            
+            <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-xl">
+              {t.hero.desc}
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 justify-center lg:justify-start">
+              <button 
+                onClick={onApplyClick}
+                className="w-full sm:w-auto px-10 py-5 btn-action rounded-2xl font-black text-lg active:scale-95"
+              >
+                {t.hero.begin}
+              </button>
+              <button 
+                onClick={() => scrollToSection('courses')}
+                className="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 border-2 border-slate-200 rounded-2xl font-black hover:border-teal-600 hover:text-teal-600 transition-all text-lg active:scale-95"
+              >
+                {t.hero.cta_primary}
+              </button>
+            </div>
+          </div>
+
+          <div className="relative hidden lg:block">
+            <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl rotate-2">
+              <img 
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071" 
+                alt="Executive Learning" 
+                className="w-full h-[600px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+            </div>
+            {/* Decorative Elements */}
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-orange-500 rounded-3xl -z-10 rotate-12"></div>
+            <div className="absolute -top-10 -right-10 w-64 h-64 border-[20px] border-teal-500/10 rounded-full -z-10"></div>
+          </div>
+        </div>
+
+        <div className="pt-32">
+          <div className="flex flex-col items-center">
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-12">{t.hero.partners}</p>
+            <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+              {PARTNERS.map((partner) => (
+                <div key={partner.name} className="h-10 flex items-center justify-center">
+                   <img 
+                    src={partner.logo} 
+                    alt={partner.name} 
+                    className="max-h-full w-auto object-contain brightness-0"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        const span = document.createElement('span');
+                        span.className = "text-sm font-black text-slate-900 uppercase tracking-widest bg-slate-100 px-4 py-2 rounded-lg";
+                        span.innerText = partner.name;
+                        parent.appendChild(span);
+                      }
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;

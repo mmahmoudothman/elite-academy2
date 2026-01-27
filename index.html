@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITE ACADEMY | Innovative Executive Learning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:wght@600;700;800&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-primary: #0d9488;
+            --brand-secondary: #f97316;
+            --brand-navy: #0f172a;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            background-color: #ffffff;
+        }
+        [dir="rtl"] {
+            font-family: 'Cairo', sans-serif;
+        }
+        .font-heading {
+            font-family: 'Bricolage Grotesque', 'Cairo', sans-serif;
+            letter-spacing: -0.03em;
+        }
+        .glass-light {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .innovative-gradient {
+            background: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+        }
+        .text-innovative {
+            color: var(--brand-primary);
+        }
+        .bg-innovative {
+            background-color: var(--brand-primary);
+        }
+        .btn-action {
+            background-color: var(--brand-secondary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-action:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.4);
+        }
+        .card-innovative {
+            background: white;
+            border: 1px solid #f1f5f9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-innovative:hover {
+            border-color: #0d9488;
+            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.08);
+            transform: translateY(-5px);
+        }
+        .hero-shape {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: #f8fafc;
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: -1;
+        }
+        [dir="rtl"] .hero-shape {
+            left: 0;
+            right: auto;
+            clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 0% 100%);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+  }
+}
+</script>
+</head>
+<body class="selection:bg-teal-500 selection:text-white">
+    <div id="root"></div>
+</body>
+</html>
