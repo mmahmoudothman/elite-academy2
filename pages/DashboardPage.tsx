@@ -314,6 +314,15 @@ const AuthenticatedDashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }
     setInstructorModalOpen(false);
   };
 
+  // Visibility toggles
+  const handleToggleCourseVisibility = (course: Course) => {
+    updateCourse(course.id, { visible: course.visible === false ? true : false });
+  };
+
+  const handleToggleInstructorVisibility = (instructor: Instructor) => {
+    updateInstructor(instructor.id, { visible: instructor.visible === false ? true : false });
+  };
+
   // Delete confirm
   const handleConfirmDelete = () => {
     if (deleteTarget) {
@@ -363,17 +372,17 @@ const AuthenticatedDashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }
         {!loading && activeTab === 'overview' && (
           <div className="space-y-8">
             <StatsOverview stats={stats} />
-            <CoursesTable courses={courses} onAdd={handleAddCourse} onEdit={handleEditCourse} onDelete={handleDeleteCourse} />
-            <InstructorsTable instructors={instructors} onAdd={handleAddInstructor} onEdit={handleEditInstructor} onDelete={handleDeleteInstructor} />
+            <CoursesTable courses={courses} onAdd={handleAddCourse} onEdit={handleEditCourse} onDelete={handleDeleteCourse} onToggleVisibility={handleToggleCourseVisibility} />
+            <InstructorsTable instructors={instructors} onAdd={handleAddInstructor} onEdit={handleEditInstructor} onDelete={handleDeleteInstructor} onToggleVisibility={handleToggleInstructorVisibility} />
           </div>
         )}
 
         {!loading && activeTab === 'courses' && (
-          <CoursesTable courses={courses} onAdd={handleAddCourse} onEdit={handleEditCourse} onDelete={handleDeleteCourse} />
+          <CoursesTable courses={courses} onAdd={handleAddCourse} onEdit={handleEditCourse} onDelete={handleDeleteCourse} onToggleVisibility={handleToggleCourseVisibility} />
         )}
 
         {!loading && activeTab === 'instructors' && (
-          <InstructorsTable instructors={instructors} onAdd={handleAddInstructor} onEdit={handleEditInstructor} onDelete={handleDeleteInstructor} />
+          <InstructorsTable instructors={instructors} onAdd={handleAddInstructor} onEdit={handleEditInstructor} onDelete={handleDeleteInstructor} onToggleVisibility={handleToggleInstructorVisibility} />
         )}
       </div>
 

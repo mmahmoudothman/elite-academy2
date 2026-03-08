@@ -19,6 +19,7 @@ export interface Course {
   description?: string;
   prerequisites?: string[];
   modules?: CourseModule[];
+  visible?: boolean;
 }
 
 export interface Instructor {
@@ -31,6 +32,7 @@ export interface Instructor {
   image: string;
   specialization: string;
   videoUrl?: string;
+  visible?: boolean;
 }
 
 export interface Testimonial {

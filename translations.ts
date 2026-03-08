@@ -199,7 +199,19 @@ export const translations = {
       crop_confirm: "Crop & Upload",
       image_invalid_type: "Please select an image file (JPG, PNG, etc.)",
       image_too_large: "Image must be under 10MB",
-      image_upload_failed: "Upload failed. Please try again."
+      image_upload_failed: "Upload failed. Please try again.",
+      col_visibility: "Visibility",
+      visible: "Visible",
+      hidden: "Hidden",
+      toggle_visibility: "Toggle Visibility"
+    },
+    profile_modal: {
+      title: "Board Profile",
+      experience: "Experience",
+      specialization: "Specialization",
+      qualifications: "Core Credentials",
+      bio: "Biography",
+      close: "Close"
     }
   },
   ar: {
@@ -401,7 +413,19 @@ export const translations = {
       crop_confirm: "قص ورفع",
       image_invalid_type: "يرجى اختيار ملف صورة (JPG, PNG, إلخ)",
       image_too_large: "يجب أن يكون حجم الصورة أقل من 10 ميجابايت",
-      image_upload_failed: "فشل الرفع. يرجى المحاولة مرة أخرى."
+      image_upload_failed: "فشل الرفع. يرجى المحاولة مرة أخرى.",
+      col_visibility: "الظهور",
+      visible: "ظاهر",
+      hidden: "مخفي",
+      toggle_visibility: "تبديل الظهور"
+    },
+    profile_modal: {
+      title: "الملف الأكاديمي",
+      experience: "الخبرة",
+      specialization: "التخصص",
+      qualifications: "المؤهلات الأساسية",
+      bio: "السيرة الذاتية",
+      close: "إغلاق"
     }
   }
 };

@@ -118,7 +118,13 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
             </div>
           </div>
 
-          <div className="lg:hidden flex items-center gap-4">
+          <div className="lg:hidden flex items-center gap-3">
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+              className="text-xs font-black text-slate-400 hover:text-teal-600 transition-colors px-2 py-1"
+            >
+              {language === 'en' ? 'AR' : 'EN'}
+            </button>
             <button onClick={() => setIsOpen(!isOpen)} className="text-slate-900 p-2">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />

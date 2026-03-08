@@ -17,37 +17,37 @@ const MarketAnalytics: React.FC = () => {
   };
 
   return (
-    <section className="py-32 bg-slate-50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+    <section className="py-16 sm:py-24 lg:py-32 bg-slate-50 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-5">
-            <h2 className="text-sm font-black text-indigo-600 uppercase tracking-[0.3em] mb-4">{t.analytics.stat4_label}</h2>
-            <h3 className="text-4xl lg:text-5xl font-black font-heading leading-tight text-slate-900 mb-6">
+            <h2 className="text-xs sm:text-sm font-black text-indigo-600 uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-3 sm:mb-4">{t.analytics.stat4_label}</h2>
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black font-heading leading-tight text-slate-900 mb-4 sm:mb-6">
               {t.analytics.title}
             </h3>
-            <p className="text-lg text-slate-600 font-medium mb-10">
+            <p className="text-base sm:text-lg text-slate-600 font-medium mb-8 sm:mb-10">
               {t.analytics.subtitle}
             </p>
-            
-            <div className="grid grid-cols-2 gap-8">
+
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
               {[
                 { val: t.analytics.stat1_val, label: t.analytics.stat1_label },
                 { val: t.analytics.stat2_val, label: t.analytics.stat2_label },
                 { val: t.analytics.stat3_val, label: t.analytics.stat3_label },
                 { val: t.analytics.stat4_val, label: t.analytics.stat4_label }
               ].map((stat, i) => (
-                <div key={i} className="border-l-4 border-indigo-600 pl-6 rtl:border-l-0 rtl:border-r-4 rtl:pr-6">
-                  <div className="text-4xl font-black text-slate-900 mb-1">{stat.val}</div>
-                  <div className="text-xs font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
+                <div key={i} className="border-l-4 border-indigo-600 pl-4 sm:pl-6 rtl:border-l-0 rtl:border-r-4 rtl:pr-4 sm:rtl:pr-6">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-1">{stat.val}</div>
+                  <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="lg:col-span-7">
-            <div className="bg-white p-10 rounded-[2.5rem] shadow-2xl border border-slate-100">
-              <div className="flex justify-between items-center mb-10">
-                <h4 className="font-black text-slate-900">{t.analytics.chart_label}</h4>
+            <div className="bg-white p-5 sm:p-7 lg:p-10 rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] shadow-2xl border border-slate-100">
+              <div className="flex justify-between items-center mb-6 sm:mb-8 lg:mb-10">
+                <h4 className="font-black text-slate-900 text-sm sm:text-base">{t.analytics.chart_label}</h4>
                 <div className="flex gap-2">
                   <span className="w-3 h-3 rounded-full bg-indigo-100"></span>
                   <span className="w-3 h-3 rounded-full bg-indigo-200"></span>
