@@ -3,22 +3,25 @@ import React, { useState, useMemo } from 'react';
 import { COURSES, CATEGORIES } from '../constants';
 import { Course } from '../types';
 import { useLanguage } from './LanguageContext';
+import MediaDisplay from './MediaDisplay';
 
 interface CourseListProps {
+  courses?: Course[];
   onEnroll?: () => void;
 }
 
-const CourseList: React.FC<CourseListProps> = ({ onEnroll }) => {
+const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll }) => {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const courseData = courses ?? COURSES;
 
   const filteredCourses = useMemo(() => {
-    return COURSES.filter(course => {
+    return courseData.filter(course => {
       const matchesCategory = activeCategory === 'All' || course.category === activeCategory;
       return matchesCategory;
     });
-  }, [activeCategory]);
+  }, [activeCategory, courseData]);
 
   const handleEnrollClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -58,10 +61,12 @@ const CourseList: React.FC<CourseListProps> = ({ onEnroll }) => {
                 className="group card-innovative rounded-[2rem] overflow-hidden flex flex-col cursor-pointer"
               >
                 <div className="h-56 overflow-hidden relative">
-                  <img 
-                    src={course.image} 
-                    alt={course.title} 
+                  <MediaDisplay
+                    src={course.image}
+                    alt={course.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    fallbackIcon="image"
+                    showPlayOverlay={false}
                   />
                   <div className="absolute top-4 left-4">
                     <span className="bg-white/90 backdrop-blur-sm text-teal-600 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-lg shadow-sm">

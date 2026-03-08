@@ -46,3 +46,10 @@ export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
 }
+
+export interface DashboardStats {
+  totalCourses: number;
+  totalInstructors: number;
+  totalEnrollments: number;
+  totalRevenue: number;
+}

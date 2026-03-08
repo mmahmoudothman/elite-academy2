@@ -2,10 +2,16 @@
 import React, { useState } from 'react';
 import { useLanguage } from './LanguageContext';
 import { INSTRUCTORS } from '../constants';
+import MediaDisplay from './MediaDisplay';
 
-const Instructors: React.FC = () => {
+interface InstructorsProps {
+  instructors?: typeof INSTRUCTORS;
+}
+
+const Instructors: React.FC<InstructorsProps> = ({ instructors }) => {
   const { language, t } = useLanguage();
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const instructorData = instructors ?? INSTRUCTORS;
 
   const closeVideo = () => setActiveVideo(null);
 
@@ -27,21 +33,25 @@ const Instructors: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {INSTRUCTORS.map((instructor) => (
+          {instructorData.map((instructor) => (
             <div key={instructor.id} className="group flex flex-col h-full bg-slate-50 rounded-[2.5rem] overflow-hidden border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-100 hover:bg-white">
               <div className="relative h-96 overflow-hidden cursor-pointer" onClick={() => instructor.videoUrl && setActiveVideo(instructor.videoUrl)}>
-                <img 
-                  src={instructor.image} 
-                  alt={instructor.name} 
+                <MediaDisplay
+                  src={instructor.image}
+                  alt={instructor.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fallbackIcon="user"
+                  showPlayOverlay={false}
                 />
-                <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500">
+                {instructor.videoUrl && (
+                  <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500">
                       <svg className="w-8 h-8 text-indigo-600 ml-1 rtl:mr-1 rtl:ml-0" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
-                   </div>
-                </div>
+                    </div>
+                  </div>
+                )}
                 <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-2 block">Specialization</span>
                   <p className="text-white font-bold text-lg">{instructor.specialization}</p>
@@ -117,11 +127,11 @@ const Instructors: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <video 
-              autoPlay 
-              controls 
-              className="w-full h-full object-contain"
+            <MediaDisplay
               src={activeVideo}
+              alt="Instructor video"
+              className="w-full h-full object-contain"
+              thumbnail={false}
             />
           </div>
           <div className="absolute inset-0 -z-10" onClick={closeVideo}></div>

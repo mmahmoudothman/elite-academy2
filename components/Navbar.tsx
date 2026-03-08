@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 
 interface NavbarProps {
-  onApplyClick: () => void;
+  onApplyClick?: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
@@ -11,11 +11,15 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { language, setLanguage, t } = useLanguage();
+  const location = useLocation();
+  const isLanding = location.pathname === '/';
 
   useEffect(() => {
+    if (!isLanding) return;
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      
+
       const sections = ['home', 'insights', 'instructors', 'courses', 'enterprise'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -25,13 +29,13 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
         }
         return false;
       });
-      
+
       if (current) setActiveSection(current);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isLanding]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -55,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 glass-light shadow-sm' : 'py-6 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-teal-100">
               <span className="text-white font-bold text-xl font-heading">E</span>
             </div>
@@ -67,46 +71,50 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
                 {language === 'ar' ? 'التعلم المبتكر' : 'Innovative Learning'}
               </span>
             </div>
-          </div>
-          
+          </Link>
+
           <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse">
-            <div className="flex items-center space-x-10 rtl:space-x-reverse">
-              <a 
-                href="#courses" 
-                onClick={(e) => handleNavClick(e, 'courses')}
-                className={`font-bold text-sm transition-colors ${activeSection === 'courses' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
-              >
-                {t.nav.programs}
-              </a>
-              <a 
-                href="#insights" 
-                onClick={(e) => handleNavClick(e, 'insights')}
-                className={`font-bold text-sm transition-colors ${activeSection === 'insights' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
-              >
-                {t.nav.curriculum}
-              </a>
-              <a 
-                href="#enterprise" 
-                onClick={(e) => handleNavClick(e, 'enterprise')}
-                className={`font-bold text-sm transition-colors ${activeSection === 'enterprise' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
-              >
-                {t.nav.enterprise}
-              </a>
-            </div>
-            
+            {isLanding && (
+              <div className="flex items-center space-x-10 rtl:space-x-reverse">
+                <a
+                  href="#courses"
+                  onClick={(e) => handleNavClick(e, 'courses')}
+                  className={`font-bold text-sm transition-colors ${activeSection === 'courses' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
+                >
+                  {t.nav.programs}
+                </a>
+                <a
+                  href="#insights"
+                  onClick={(e) => handleNavClick(e, 'insights')}
+                  className={`font-bold text-sm transition-colors ${activeSection === 'insights' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
+                >
+                  {t.nav.curriculum}
+                </a>
+                <a
+                  href="#enterprise"
+                  onClick={(e) => handleNavClick(e, 'enterprise')}
+                  className={`font-bold text-sm transition-colors ${activeSection === 'enterprise' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
+                >
+                  {t.nav.enterprise}
+                </a>
+              </div>
+            )}
+
             <div className="flex items-center gap-6">
-              <button 
+              <button
                 onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
                 className="text-xs font-black text-slate-400 hover:text-teal-600 transition-colors"
               >
                 {language === 'en' ? 'AR' : 'EN'}
               </button>
-              <button 
-                onClick={onApplyClick}
-                className="bg-teal-600 text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-teal-700 transition-all shadow-xl shadow-teal-100 active:scale-95"
-              >
-                {t.nav.apply}
-              </button>
+              {onApplyClick && (
+                <button
+                  onClick={onApplyClick}
+                  className="bg-teal-600 text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-teal-700 transition-all shadow-xl shadow-teal-100 active:scale-95"
+                >
+                  {t.nav.apply}
+                </button>
+              )}
             </div>
           </div>
 
@@ -123,18 +131,24 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
       {isOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl p-6 border-t border-slate-100 animate-in fade-in slide-in-from-top-2">
           <div className="flex flex-col space-y-4">
-            <a href="#courses" onClick={(e) => handleNavClick(e, 'courses')} className="text-slate-900 font-bold text-lg">{t.nav.programs}</a>
-            <a href="#insights" onClick={(e) => handleNavClick(e, 'insights')} className="text-slate-900 font-bold text-lg">{t.nav.curriculum}</a>
-            <a href="#enterprise" onClick={(e) => handleNavClick(e, 'enterprise')} className="text-slate-900 font-bold text-lg">{t.nav.enterprise}</a>
-            <button 
-              onClick={() => {
-                setIsOpen(false);
-                onApplyClick();
-              }} 
-              className="bg-teal-600 text-white w-full py-4 rounded-xl font-bold"
-            >
-              {t.nav.apply}
-            </button>
+            {isLanding && (
+              <>
+                <a href="#courses" onClick={(e) => handleNavClick(e, 'courses')} className="text-slate-900 font-bold text-lg">{t.nav.programs}</a>
+                <a href="#insights" onClick={(e) => handleNavClick(e, 'insights')} className="text-slate-900 font-bold text-lg">{t.nav.curriculum}</a>
+                <a href="#enterprise" onClick={(e) => handleNavClick(e, 'enterprise')} className="text-slate-900 font-bold text-lg">{t.nav.enterprise}</a>
+              </>
+            )}
+            {onApplyClick && (
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  onApplyClick();
+                }}
+                className="bg-teal-600 text-white w-full py-4 rounded-xl font-bold"
+              >
+                {t.nav.apply}
+              </button>
+            )}
           </div>
         </div>
       )}

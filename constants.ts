@@ -41,6 +41,16 @@ export const INSTRUCTORS: Instructor[] = [
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070',
     specialization: 'Artificial Intelligence',
     videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4'
+  },
+  {
+    id: 'inst4',
+    name: 'Abdalla Yasin',
+    role: 'Data Analytics Instructor',
+    experience: '10+ Years Data Analytics & BI',
+    qualifications: ['Ph.D. Candidate in Computer Science (Fayoum University)', 'M.Sc. in Data Science', 'Power BI Instructor for DEBI & DEPI national programs'],
+    bio: 'Abdalla Yasin is a seasoned freelance Data Analyst with over 10 years of experience delivering actionable insights to 70+ international clients. He serves as an Assistant Lecturer at Nahda University and is a prominent Power BI Instructor for national programs including the Digital Egypt Builders Initiative (DEBI) and the Digital Egypt Pioneers Initiative (DEPI). His expertise spans business intelligence, KPI dashboard development, data visualization, and machine learning.',
+    image: '/images/abdalla-yasin.jpg',
+    specialization: 'Data Analytics & Business Intelligence'
   }
 ];
 
