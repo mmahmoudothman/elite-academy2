@@ -47,7 +47,7 @@ const InstructorFormModal: React.FC<InstructorFormModalProps> = ({ isOpen, instr
 
   return (
     <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
-      <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 my-8" onClick={(e) => e.stopPropagation()}>
+      <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl p-5 sm:p-8 my-8" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"

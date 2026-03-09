@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
+import { useAuth } from '../contexts/AuthContext';
+import { useSiteConfig } from '../hooks/useSiteConfig';
 
 interface NavbarProps {
   onApplyClick?: () => void;
@@ -11,15 +13,15 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { language, setLanguage, t } = useLanguage();
+  const { isAuthenticated, user, userRole, logout } = useAuth();
+  const { config } = useSiteConfig();
   const location = useLocation();
   const isLanding = location.pathname === '/';
 
   useEffect(() => {
     if (!isLanding) return;
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
       const sections = ['home', 'insights', 'instructors', 'courses', 'enterprise'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -29,10 +31,8 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
         }
         return false;
       });
-
       if (current) setActiveSection(current);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isLanding]);
@@ -46,14 +46,12 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
     }
   };
+
+  const navLinkClass = (section: string) =>
+    `font-bold text-sm transition-colors ${activeSection === section ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`;
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 glass-light shadow-sm' : 'py-6 bg-transparent'}`}>
@@ -68,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
                 {language === 'ar' ? 'أكاديمية النخبة' : 'ELITE ACADEMY'}
               </span>
               <span className="text-[9px] font-bold text-teal-600 tracking-[0.2em] uppercase">
-                {language === 'ar' ? 'التعلم المبتكر' : 'Innovative Learning'}
+                {language === 'ar' ? (config.companyTagline?.ar || 'التعلم المبتكر') : (config.companyTagline?.en || 'Innovative Learning')}
               </span>
             </div>
           </Link>
@@ -76,53 +74,58 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
           <div className="hidden lg:flex items-center space-x-10 rtl:space-x-reverse">
             {isLanding && (
               <div className="flex items-center space-x-10 rtl:space-x-reverse">
-                <a
-                  href="#courses"
-                  onClick={(e) => handleNavClick(e, 'courses')}
-                  className={`font-bold text-sm transition-colors ${activeSection === 'courses' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
-                >
-                  {t.nav.programs}
-                </a>
-                <a
-                  href="#insights"
-                  onClick={(e) => handleNavClick(e, 'insights')}
-                  className={`font-bold text-sm transition-colors ${activeSection === 'insights' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
-                >
-                  {t.nav.curriculum}
-                </a>
-                <a
-                  href="#enterprise"
-                  onClick={(e) => handleNavClick(e, 'enterprise')}
-                  className={`font-bold text-sm transition-colors ${activeSection === 'enterprise' ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`}
-                >
-                  {t.nav.enterprise}
-                </a>
+                <a href="#courses" onClick={(e) => handleNavClick(e, 'courses')} className={navLinkClass('courses')}>{t.nav.programs}</a>
+                <a href="#insights" onClick={(e) => handleNavClick(e, 'insights')} className={navLinkClass('insights')}>{t.nav.curriculum}</a>
+                <a href="#enterprise" onClick={(e) => handleNavClick(e, 'enterprise')} className={navLinkClass('enterprise')}>{t.nav.enterprise}</a>
               </div>
             )}
 
-            <div className="flex items-center gap-6">
-              <button
-                onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-                className="text-xs font-black text-slate-400 hover:text-teal-600 transition-colors"
-              >
+            <div className="flex items-center gap-4">
+              <Link to="/contact" className="font-bold text-sm text-slate-600 hover:text-teal-600 transition-colors">
+                {t.contact?.nav_link || 'Contact'}
+              </Link>
+
+              <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="text-xs font-black text-slate-400 hover:text-teal-600 transition-colors">
                 {language === 'en' ? 'AR' : 'EN'}
               </button>
-              {onApplyClick && (
-                <button
-                  onClick={onApplyClick}
-                  className="bg-teal-600 text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-teal-700 transition-all shadow-xl shadow-teal-100 active:scale-95"
-                >
-                  {t.nav.apply}
-                </button>
+
+              {isAuthenticated ? (
+                <div className="flex items-center gap-3">
+                  {(userRole === 'super_admin' || userRole === 'admin') && (
+                    <Link to="/dashboard" className="text-sm font-bold text-teal-600 hover:text-teal-700 transition-colors">
+                      {t.dashboard?.nav_link || 'Dashboard'}
+                    </Link>
+                  )}
+                  <Link to="/profile" className="text-sm font-bold text-slate-600 hover:text-teal-600 transition-colors">
+                    {t.profile_modal?.title || 'Profile'}
+                  </Link>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-teal-50 rounded-full flex items-center justify-center text-teal-600 font-bold text-xs">
+                      {user?.displayName?.charAt(0)?.toUpperCase() || 'U'}
+                    </div>
+                    <button onClick={logout} className="text-xs font-bold text-slate-400 hover:text-red-500 transition-colors">
+                      {t.dashboard?.logout || 'Logout'}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center gap-3">
+                  <Link to="/login" className="text-sm font-bold text-slate-600 hover:text-teal-600 transition-colors">
+                    {t.auth?.login_button || 'Sign In'}
+                  </Link>
+                  {onApplyClick && (
+                    <button onClick={onApplyClick} className="bg-teal-600 text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-teal-700 transition-all shadow-xl shadow-teal-100 active:scale-95">
+                      {t.nav.apply}
+                    </button>
+                  )}
+                </div>
               )}
             </div>
           </div>
 
+          {/* Mobile */}
           <div className="lg:hidden flex items-center gap-3">
-            <button
-              onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-              className="text-xs font-black text-slate-400 hover:text-teal-600 transition-colors px-2 py-1"
-            >
+            <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="text-xs font-black text-slate-400 hover:text-teal-600 transition-colors px-2 py-1">
               {language === 'en' ? 'AR' : 'EN'}
             </button>
             <button onClick={() => setIsOpen(!isOpen)} className="text-slate-900 p-2">
@@ -135,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
       </div>
 
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl p-6 border-t border-slate-100 animate-in fade-in slide-in-from-top-2">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl p-6 border-t border-slate-100 animate-in fade-in slide-in-from-top-2 max-h-[calc(100vh-80px)] overflow-y-auto">
           <div className="flex flex-col space-y-4">
             {isLanding && (
               <>
@@ -144,16 +147,25 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
                 <a href="#enterprise" onClick={(e) => handleNavClick(e, 'enterprise')} className="text-slate-900 font-bold text-lg">{t.nav.enterprise}</a>
               </>
             )}
+            <Link to="/contact" onClick={() => setIsOpen(false)} className="text-slate-900 font-bold text-lg">{t.contact?.nav_link || 'Contact Us'}</Link>
+
+            {isAuthenticated ? (
+              <>
+                {(userRole === 'super_admin' || userRole === 'admin') && (
+                  <Link to="/dashboard" onClick={() => setIsOpen(false)} className="text-teal-600 font-bold text-lg">{t.dashboard?.nav_link || 'Dashboard'}</Link>
+                )}
+                <Link to="/profile" onClick={() => setIsOpen(false)} className="text-teal-600 font-bold text-lg">{t.profile_modal?.title || 'Profile'}</Link>
+                <button onClick={() => { setIsOpen(false); logout(); }} className="text-red-500 font-bold text-lg text-left">{t.dashboard?.logout || 'Logout'}</button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" onClick={() => setIsOpen(false)} className="text-teal-600 font-bold text-lg">{t.auth?.login_button || 'Sign In'}</Link>
+                <Link to="/register" onClick={() => setIsOpen(false)} className="text-teal-600 font-bold text-lg">{t.auth?.register_button || 'Register'}</Link>
+              </>
+            )}
+
             {onApplyClick && (
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  onApplyClick();
-                }}
-                className="bg-teal-600 text-white w-full py-4 rounded-xl font-bold"
-              >
-                {t.nav.apply}
-              </button>
+              <button onClick={() => { setIsOpen(false); onApplyClick(); }} className="bg-teal-600 text-white w-full py-4 rounded-xl font-bold">{t.nav.apply}</button>
             )}
           </div>
         </div>

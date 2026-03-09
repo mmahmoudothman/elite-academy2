@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLanguage } from './LanguageContext';
-import { PARTNERS } from '../constants';
+import { useSiteConfig } from '../hooks/useSiteConfig';
 
 interface HeroProps {
   onApplyClick: () => void;
@@ -9,6 +9,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
   const { t, language } = useLanguage();
+  const { config } = useSiteConfig();
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -27,7 +28,7 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
       <div className="hero-shape hidden lg:block"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16 items-center">
           <div className="space-y-6 sm:space-y-10 text-center lg:text-left rtl:lg:text-right">
             <div className="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
               <span className="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></span>
@@ -35,13 +36,15 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black font-heading leading-tight text-slate-900">
-              {t.hero.title_part1} <br />
-              <span className="text-teal-600">{t.hero.title_part2}</span> <br />
-              {t.hero.title_part3}
+              {language === 'ar' && config.heroTitle?.ar ? config.heroTitle.ar : (
+                <>{t.hero.title_part1} <br />
+                <span className="text-teal-600">{t.hero.title_part2}</span> <br />
+                {t.hero.title_part3}</>
+              )}
             </h1>
 
             <p className="text-base sm:text-lg lg:text-xl text-slate-500 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-              {t.hero.desc}
+              {language === 'ar' && config.heroSubtitle?.ar ? config.heroSubtitle.ar : (config.heroSubtitle?.en || t.hero.desc)}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 pt-2 sm:pt-4 justify-center lg:justify-start">
@@ -79,7 +82,7 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
           <div className="flex flex-col items-center">
             <p className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 sm:mb-12">{t.hero.partners}</p>
             <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-12 lg:gap-24 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-              {PARTNERS.map((partner) => (
+              {(config.partners || []).map((partner) => (
                 <div key={partner.name} className="h-10 flex items-center justify-center">
                    <img 
                     src={partner.logo} 

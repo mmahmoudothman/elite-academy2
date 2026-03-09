@@ -72,7 +72,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 
               <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                 <div className="space-y-1 text-left rtl:text-right">
-                  <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                  <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ms-1">
                     {t.form.name}
                   </label>
                   <input
@@ -85,7 +85,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-left rtl:text-right">
                   <div className="space-y-1">
-                    <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                    <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ms-1">
                       {t.form.email}
                     </label>
                     <input
@@ -96,7 +96,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                    <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ms-1">
                       {t.form.phone}
                     </label>
                     <input
@@ -109,7 +109,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
                 </div>
 
                 <div className="space-y-1 text-left rtl:text-right">
-                  <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                  <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ms-1">
                     {t.form.country}
                   </label>
                   <select className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold appearance-none text-sm sm:text-base">

@@ -15,12 +15,12 @@ export const isFirebaseConfigured = Boolean(
   firebaseConfig.apiKey && firebaseConfig.storageBucket && firebaseConfig.projectId
 );
 
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
-export const db = getFirestore(app);
+const app = isFirebaseConfigured ? initializeApp(firebaseConfig) : null;
+const storage = app ? getStorage(app) : null;
+export const db = app ? getFirestore(app) : (null as any);
 
 export async function uploadImage(file: File, path: string): Promise<string> {
-  if (!isFirebaseConfigured) {
+  if (!isFirebaseConfigured || !storage) {
     throw new Error('Firebase not configured');
   }
   const storageRef = ref(storage, path);

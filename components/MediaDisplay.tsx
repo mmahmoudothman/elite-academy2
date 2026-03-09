@@ -136,6 +136,7 @@ const MediaDisplay: React.FC<MediaDisplayProps> = ({
       src={src}
       alt={alt}
       className={className}
+      loading="lazy"
       onError={() => setImgError(true)}
     />
   );

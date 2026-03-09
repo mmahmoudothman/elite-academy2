@@ -1,31 +1,49 @@
 
 import React, { useState, useMemo } from 'react';
-import { COURSES, CATEGORIES } from '../constants';
+import { COURSES } from '../constants';
 import { Course } from '../types';
 import { useLanguage } from './LanguageContext';
 import MediaDisplay from './MediaDisplay';
+import { useAnalyticsTracker } from '../hooks/useAnalyticsTracker';
+import { CourseCardSkeleton } from './ui/Skeleton';
 
 interface CourseListProps {
   courses?: Course[];
-  onEnroll?: () => void;
+  onEnroll?: (course: Course) => void;
+  loading?: boolean;
 }
 
-const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll }) => {
+const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) => {
   const { t, language } = useLanguage();
+  const { track } = useAnalyticsTracker();
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const courseData = courses ?? COURSES;
 
+  const dynamicCategories = useMemo(() => {
+    const cats = new Set(courseData.map(c => c.category));
+    return ['All', ...Array.from(cats).sort()];
+  }, [courseData]);
+
   const filteredCourses = useMemo(() => {
+    const q = searchQuery.toLowerCase();
     return courseData.filter(course => {
       const matchesCategory = activeCategory === 'All' || course.category === activeCategory;
-      return matchesCategory;
+      const matchesSearch = !q || course.title.toLowerCase().includes(q) || (course.description || '').toLowerCase().includes(q) || course.instructor.toLowerCase().includes(q);
+      return matchesCategory && matchesSearch;
     });
-  }, [activeCategory, courseData]);
+  }, [activeCategory, courseData, searchQuery]);
 
-  const handleEnrollClick = (e: React.MouseEvent) => {
+  const handleEnrollClick = (e: React.MouseEvent, course: Course) => {
     e.stopPropagation();
-    if (onEnroll) onEnroll();
+    track('cta_click', { entityType: 'course', entityId: course.id, metadata: { action: 'enroll', courseTitle: course.title } });
+    if (onEnroll) onEnroll(course);
+  };
+
+  const handleCourseView = (course: Course) => {
+    track('course_view', { entityType: 'course', entityId: course.id, metadata: { courseTitle: course.title } });
+    setSelectedCourse(course);
   };
 
   return (
@@ -36,8 +54,21 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll }) => {
           <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black font-heading text-slate-900">{t.courses.title}</h3>
         </div>
 
+        <div className="flex justify-center mb-6 px-4">
+          <div className="relative w-full max-w-md">
+            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={t.courses?.search_programs || (language === 'ar' ? 'ابحث عن البرامج...' : 'Search programs...')}
+              className="w-full pl-11 rtl:pl-4 rtl:pr-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all"
+            />
+          </div>
+        </div>
+
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-2">
-          {CATEGORIES.map(category => (
+          {dynamicCategories.map(category => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
@@ -47,17 +78,19 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll }) => {
                   : 'bg-white border-slate-200 text-slate-500 hover:border-teal-600'
               }`}
             >
-              {category === 'All' ? (language === 'ar' ? 'الكل' : 'All') : category}
+              {category === 'All' ? (t.courses?.all_category || (language === 'ar' ? 'الكل' : 'All')) : category}
             </button>
           ))}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-          {filteredCourses.map(course => {
+          {loading ? (
+            Array.from({ length: 6 }).map((_, i) => <CourseCardSkeleton key={i} />)
+          ) : filteredCourses.map(course => {
             return (
               <div
                 key={course.id}
-                onClick={() => setSelectedCourse(course)}
+                onClick={() => handleCourseView(course)}
                 className="group card-innovative rounded-xl sm:rounded-2xl lg:rounded-[2rem] overflow-hidden flex flex-col cursor-pointer"
               >
                 <div className="aspect-[16/9] overflow-hidden relative">
@@ -94,10 +127,11 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll }) => {
                       <span className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 truncate">{course.price} <span className="text-[10px] sm:text-xs text-teal-600 font-bold">{course.currency}</span></span>
                     </div>
                     <button
-                      onClick={handleEnrollClick}
-                      className="bg-slate-900 text-white px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-3.5 rounded-lg sm:rounded-xl font-black text-[10px] sm:text-xs hover:bg-teal-600 transition-all active:scale-95 shadow-lg shadow-slate-100 flex-shrink-0"
+                      onClick={(e) => handleEnrollClick(e, course)}
+                      disabled={course.capacity > 0 && course.enrolled >= course.capacity}
+                      className={`px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-3.5 rounded-lg sm:rounded-xl font-black text-[10px] sm:text-xs transition-all shadow-lg shadow-slate-100 flex-shrink-0 ${course.capacity > 0 && course.enrolled >= course.capacity ? 'bg-slate-400 text-white cursor-not-allowed' : 'bg-slate-900 text-white hover:bg-teal-600 active:scale-95'}`}
                     >
-                      {t.courses.enroll}
+                      {course.capacity > 0 && course.enrolled >= course.capacity ? (t.enrollment?.full_short || 'Full') : t.courses.enroll}
                     </button>
                   </div>
                 </div>
@@ -173,8 +207,9 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll }) => {
 
                 <button
                   onClick={(e) => {
+                    const c = selectedCourse;
                     setSelectedCourse(null);
-                    handleEnrollClick(e);
+                    if (c) handleEnrollClick(e, c);
                   }}
                   className="w-full btn-action py-3.5 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl font-black text-sm sm:text-base lg:text-xl active:scale-95 shadow-2xl"
                 >
