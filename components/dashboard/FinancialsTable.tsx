@@ -132,7 +132,7 @@ const FinancialsTable: React.FC<FinancialsTableProps> = ({ courses, enrollments,
 
   const profitColor = (val: number) => (val >= 0 ? 'text-green-600' : 'text-red-600');
 
-  const inputClass = 'w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 font-bold focus:border-teal-500 focus:bg-white outline-none transition-all';
+  const inputClass = 'w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-900 font-bold focus:border-[#0da993] focus:bg-white outline-none transition-all';
   const labelClass = 'text-[10px] font-black uppercase tracking-widest text-slate-400';
 
   return (
@@ -162,7 +162,7 @@ const FinancialsTable: React.FC<FinancialsTableProps> = ({ courses, enrollments,
               <React.Fragment key={row.courseId}>
                 <tr
                   onClick={() => handleRowClick(row.courseId)}
-                  className={`border-t border-slate-50 ${onSaveFinancial ? 'cursor-pointer hover:bg-slate-50' : ''} ${editingCourseId === row.courseId ? 'bg-teal-50' : ''}`}
+                  className={`border-t border-slate-50 ${onSaveFinancial ? 'cursor-pointer hover:bg-slate-50' : ''} ${editingCourseId === row.courseId ? 'bg-[#0da993]/10' : ''}`}
                 >
                   <td className="px-4 py-3 font-bold text-slate-900">{row.title}</td>
                   <td className="px-4 py-3 text-end font-bold text-slate-700">{formatCurrency(row.revenue)}</td>
@@ -179,7 +179,7 @@ const FinancialsTable: React.FC<FinancialsTableProps> = ({ courses, enrollments,
                 {/* Inline edit form */}
                 {editingCourseId === row.courseId && onSaveFinancial && (
                   <tr>
-                    <td colSpan={10} className="px-4 py-4 bg-teal-50/50 border-t border-teal-100">
+                    <td colSpan={10} className="px-4 py-4 bg-[#0da993]/5 border-t border-[#0da993]/15">
                       <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                         <div className="space-y-1">
                           <label className={labelClass}>{t.dashboard?.instructor_payout || 'Instructor Payout'}</label>
@@ -240,7 +240,7 @@ const FinancialsTable: React.FC<FinancialsTableProps> = ({ courses, enrollments,
                       <div className="flex gap-2 mt-3">
                         <button
                           onClick={(e) => { e.stopPropagation(); handleSave(row.courseId); }}
-                          className="bg-teal-600 text-white px-4 py-2 rounded-lg font-black text-xs hover:bg-teal-700 transition-all"
+                          className="bg-[#0da993] text-white px-4 py-2 rounded-lg font-black text-xs hover:bg-[#0da993]/90 transition-all"
                         >
                           {t.dashboard?.save || 'Save'}
                         </button>

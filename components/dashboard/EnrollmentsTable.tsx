@@ -108,7 +108,7 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
         </div>
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
           <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.this_month_stat || 'This Month'}</p>
-          <p className="text-2xl font-black text-teal-600 mt-1">{stats.monthRevenue.toLocaleString()}</p>
+          <p className="text-2xl font-black text-[#0da993] mt-1">{stats.monthRevenue.toLocaleString()}</p>
         </div>
       </div>
 
@@ -117,28 +117,28 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
         <div className="p-4 sm:p-6 border-b border-slate-100 space-y-3">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <h3 className="text-lg font-black text-slate-900">{t.dashboard?.enrollments_tab || 'Enrollments'} ({filtered.length})</h3>
-            <input type="text" value={search} onChange={e => { setSearch(e.target.value); setPage(0); }} placeholder={t.dashboard?.search_enrollments || 'Search by name, email, invoice...'} className="w-full sm:w-56 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all" />
+            <input type="text" value={search} onChange={e => { setSearch(e.target.value); setPage(0); }} placeholder={t.dashboard?.search_enrollments || 'Search by name, email, invoice...'} className="w-full sm:w-56 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:bg-white transition-all" />
           </div>
           <div className="flex flex-wrap gap-2">
-            <select value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none">
+            <select value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] appearance-none">
               <option value="all">{t.dashboard?.all_statuses || 'All Statuses'}</option>
               <option value="pending">{t.dashboard?.filter_pending || 'Pending'}</option>
               <option value="confirmed">{t.dashboard?.filter_confirmed || 'Confirmed'}</option>
               <option value="completed">{t.dashboard?.filter_completed || 'Completed'}</option>
               <option value="cancelled">{t.dashboard?.filter_cancelled || 'Cancelled'}</option>
             </select>
-            <select value={paymentFilter} onChange={e => { setPaymentFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none">
+            <select value={paymentFilter} onChange={e => { setPaymentFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] appearance-none">
               <option value="all">{t.dashboard?.filter_all_payments || 'All Payments'}</option>
               <option value="pending">{t.dashboard?.filter_payment_pending || 'Payment Pending'}</option>
               <option value="paid">{t.dashboard?.filter_paid || 'Paid'}</option>
               <option value="refunded">{t.dashboard?.filter_refunded || 'Refunded'}</option>
             </select>
-            <select value={courseFilter} onChange={e => { setCourseFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none max-w-[180px]">
+            <select value={courseFilter} onChange={e => { setCourseFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] appearance-none max-w-[180px]">
               <option value="all">{t.dashboard?.filter_all_courses || 'All Courses'}</option>
               {courseOptions.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
-            <input type="date" value={dateFrom} onChange={e => { setDateFrom(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="From" />
-            <input type="date" value={dateTo} onChange={e => { setDateTo(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="To" />
+            <input type="date" value={dateFrom} onChange={e => { setDateFrom(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" placeholder="From" />
+            <input type="date" value={dateTo} onChange={e => { setDateTo(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" placeholder="To" />
             {(statusFilter !== 'all' || paymentFilter !== 'all' || courseFilter !== 'all' || dateFrom || dateTo) && (
               <button onClick={() => { setStatusFilter('all'); setPaymentFilter('all'); setCourseFilter('all'); setDateFrom(''); setDateTo(''); setPage(0); }} className="text-xs font-bold text-red-500 hover:text-red-700 px-3 py-2">
                 {t.dashboard?.clear_filters || 'Clear Filters'}
@@ -228,7 +228,7 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
                         )}
                         {/* Payment status */}
                         {onUpdatePayment && enrollment.paymentStatus === 'pending' && enrollment.status !== 'cancelled' && (
-                          <button onClick={() => onUpdatePayment(enrollment.id, 'paid')} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-teal-50 text-teal-600 hover:bg-teal-100 transition-colors" title={t.dashboard?.mark_paid || "Mark Paid"}>
+                          <button onClick={() => onUpdatePayment(enrollment.id, 'paid')} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-[#0da993]/10 text-[#0da993] hover:bg-[#0da993]/15 transition-colors" title={t.dashboard?.mark_paid || "Mark Paid"}>
                             {t.dashboard?.paid_action || 'Paid'}
                           </button>
                         )}
@@ -238,7 +238,7 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
                         </button>
                         {/* Invoice */}
                         {onViewInvoice && enrollment.invoiceNumber && (
-                          <button onClick={() => onViewInvoice(enrollment)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-colors" title={t.dashboard?.col_invoice || "Invoice"}>
+                          <button onClick={() => onViewInvoice(enrollment)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-[#3d66f1]/10 text-[#3d66f1] hover:bg-[#3d66f1]/15 transition-colors" title={t.dashboard?.col_invoice || "Invoice"}>
                             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                           </button>
                         )}
@@ -259,9 +259,9 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
                           <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-2 flex-shrink-0">{t.dashboard?.admin_notes_label || 'Admin Notes:'}</span>
                           {editingNotes === enrollment.id ? (
                             <div className="flex-1 flex gap-2">
-                              <textarea value={notesValue} onChange={e => setNotesValue(e.target.value)} className="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" rows={2} placeholder={t.dashboard?.add_admin_notes || "Add admin notes..."} />
+                              <textarea value={notesValue} onChange={e => setNotesValue(e.target.value)} className="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] resize-none" rows={2} placeholder={t.dashboard?.add_admin_notes || "Add admin notes..."} />
                               <div className="flex flex-col gap-1">
-                                <button onClick={() => handleSaveNotes(enrollment.id)} className="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-teal-600 text-white hover:bg-teal-700">{t.dashboard?.save_notes || 'Save'}</button>
+                                <button onClick={() => handleSaveNotes(enrollment.id)} className="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-[#0da993] text-white hover:bg-[#0da993]/90">{t.dashboard?.save_notes || 'Save'}</button>
                                 <button onClick={() => setEditingNotes(null)} className="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-slate-200 text-slate-600 hover:bg-slate-300">{t.dashboard?.cancel_notes || 'Cancel'}</button>
                               </div>
                             </div>

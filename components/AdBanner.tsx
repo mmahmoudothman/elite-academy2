@@ -47,7 +47,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ page = 'home' }) => {
   const content = language === 'ar' ? ad.content.ar : ad.content.en;
 
   return (
-    <div className="bg-gradient-to-r from-teal-600 to-emerald-600 text-white relative">
+    <div className="bg-gradient-to-r from-[#3d66f1] to-[#0da993] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between gap-4">
         <div className="flex-1 min-w-0 flex items-center gap-3">
           <span className="hidden sm:inline-flex items-center justify-center w-8 h-8 bg-white/20 rounded-full flex-shrink-0">
@@ -66,7 +66,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ page = 'home' }) => {
               href={ad.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-1.5 bg-white text-teal-700 rounded-full text-xs font-black hover:bg-teal-50 transition-all"
+              className="px-4 py-1.5 bg-white text-[#0da993] rounded-full text-xs font-black hover:bg-[#0da993]/10 transition-all"
             >
               {t.common?.learn_more || 'Learn More'}
             </a>

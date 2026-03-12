@@ -20,7 +20,7 @@ const statusColors: Record<AdStatus, string> = {
 const placementColors: Record<AdPlacement, string> = {
   banner: 'bg-blue-50 text-blue-600',
   popup: 'bg-purple-50 text-purple-600',
-  sidebar: 'bg-teal-50 text-teal-600',
+  sidebar: 'bg-[#0da993]/10 text-[#0da993]',
   inline: 'bg-amber-50 text-amber-600',
 };
 
@@ -48,7 +48,7 @@ const AdsTable: React.FC<AdsTableProps> = ({ ads, onAdd, onEdit, onDelete, onTog
     return ((clicks / impressions) * 100).toFixed(2) + '%';
   };
 
-  const selectClass = 'px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:border-teal-500 outline-none transition-all';
+  const selectClass = 'px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:border-[#0da993] outline-none transition-all';
 
   return (
     <div>
@@ -80,7 +80,7 @@ const AdsTable: React.FC<AdsTableProps> = ({ ads, onAdd, onEdit, onDelete, onTog
           {onAdd && (
             <button
               onClick={onAdd}
-              className="bg-teal-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-teal-700 transition-all flex items-center gap-2"
+              className="bg-[#0da993] text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-[#0da993]/90 transition-all flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -144,7 +144,7 @@ const AdsTable: React.FC<AdsTableProps> = ({ ads, onAdd, onEdit, onDelete, onTog
                         {onEdit && (
                           <button
                             onClick={() => onEdit(ad)}
-                            className="p-2 text-slate-400 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all"
+                            className="p-2 text-slate-400 hover:text-[#0da993] hover:bg-[#0da993]/10 rounded-lg transition-all"
                             title={t.dashboard?.edit || 'Edit'}
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

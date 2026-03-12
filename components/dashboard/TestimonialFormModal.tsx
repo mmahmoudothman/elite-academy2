@@ -77,7 +77,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
               type="text"
               value={form.studentName}
               onChange={(e) => { setForm({ ...form, studentName: e.target.value }); setErrors(prev => ({ ...prev, studentName: '' })); }}
-              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.studentName ? 'border-red-400' : 'border-slate-100'}`}
+              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.studentName ? 'border-red-400' : 'border-slate-100'}`}
             />
             {errors.studentName && <p className="text-red-500 text-xs mt-1">{errors.studentName}</p>}
           </div>
@@ -89,7 +89,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
               value={form.studentRole}
               onChange={(e) => setForm({ ...form, studentRole: e.target.value })}
               placeholder="e.g. Software Engineer"
-              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
             />
           </div>
 
@@ -99,7 +99,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
               value={form.content}
               onChange={(e) => { setForm({ ...form, content: e.target.value }); setErrors(prev => ({ ...prev, content: '' })); }}
               rows={4}
-              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none ${errors.content ? 'border-red-400' : 'border-slate-100'}`}
+              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none ${errors.content ? 'border-red-400' : 'border-slate-100'}`}
             />
             {errors.content && <p className="text-red-500 text-xs mt-1">{errors.content}</p>}
           </div>
@@ -110,7 +110,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
               <select
                 value={form.rating}
                 onChange={(e) => setForm({ ...form, rating: Number(e.target.value) })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               >
                 {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n} {n > 1 ? (t.dashboard?.stars || 'Stars') : (t.dashboard?.star || 'Star')}</option>)}
               </select>
@@ -120,7 +120,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
               <select
                 value={form.courseId}
                 onChange={(e) => setForm({ ...form, courseId: e.target.value })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               >
                 <option value="">{t.dashboard?.none_option || 'None'}</option>
                 {courses.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}
@@ -135,7 +135,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
               value={form.image || ''}
               onChange={(e) => setForm({ ...form, image: e.target.value })}
               placeholder="https://..."
-              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
             />
           </div>
 
@@ -147,7 +147,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
                 min="0"
                 value={form.order}
                 onChange={(e) => setForm({ ...form, order: Number(e.target.value) })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
             <div className="space-y-1 flex items-end pb-1">
@@ -156,7 +156,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
                   type="checkbox"
                   checked={form.visible !== false}
                   onChange={(e) => setForm({ ...form, visible: e.target.checked })}
-                  className="w-5 h-5 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
+                  className="w-5 h-5 rounded border-slate-300 text-[#0da993] focus:ring-[#0da993]"
                 />
                 <span className="text-sm font-bold text-slate-700">{t.dashboard?.label_visible || 'Visible'}</span>
               </label>
@@ -165,7 +165,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
 
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all mt-2"
+            className="w-full bg-[#0da993] text-white py-3 rounded-xl font-black text-sm hover:bg-[#0da993]/90 transition-all mt-2"
           >
             {t.dashboard?.save || 'Save'}
           </button>

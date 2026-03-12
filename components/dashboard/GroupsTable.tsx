@@ -54,9 +54,9 @@ const GroupsTable: React.FC<GroupsTableProps> = ({ groups, instructors, courses,
         <h3 className="text-lg font-black text-slate-900">{d.groups_tab}</h3>
         <div className="flex items-center gap-2 w-full sm:w-auto">
           <input type="text" value={search} onChange={e => setSearch(e.target.value)}
-            placeholder={d.search_groups} className="w-full sm:w-56 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all" />
+            placeholder={d.search_groups} className="w-full sm:w-56 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:bg-white transition-all" />
           {onAdd && (
-            <button onClick={onAdd} className="flex-shrink-0 bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1.5">
+            <button onClick={onAdd} className="flex-shrink-0 bg-[#0da993] hover:bg-[#0da993]/90 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1.5">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
               <span className="hidden sm:inline">{d.add_group}</span>
             </button>
@@ -67,18 +67,18 @@ const GroupsTable: React.FC<GroupsTableProps> = ({ groups, instructors, courses,
       {/* Filters */}
       <div className="px-4 sm:px-6 py-3 border-b border-slate-100 bg-slate-50/50 flex flex-wrap items-center gap-3">
         <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_status}</option>
           <option value="active">{d.active}</option>
           <option value="inactive">{d.inactive}</option>
         </select>
         <select value={courseFilter} onChange={e => setCourseFilter(e.target.value)}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_courses}</option>
           {courses.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}
         </select>
         <select value={instructorFilter} onChange={e => setInstructorFilter(e.target.value)}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_instructors}</option>
           {instructors.map(i => <option key={i.id} value={i.id}>{i.name}</option>)}
         </select>
@@ -107,7 +107,7 @@ const GroupsTable: React.FC<GroupsTableProps> = ({ groups, instructors, courses,
                 <tr key={group.id} className="hover:bg-slate-50/50 transition-colors">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: group.color || '#0d9488' }}>
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: group.color || '#0da993' }}>
                         {name.charAt(0).toUpperCase()}
                       </div>
                       <div>
@@ -121,7 +121,7 @@ const GroupsTable: React.FC<GroupsTableProps> = ({ groups, instructors, courses,
                   <td className="px-4 py-3 text-sm text-slate-600 truncate max-w-[150px] hidden sm:table-cell">{getCourseName(group.courseId)}</td>
                   <td className="px-4 py-3 text-sm text-slate-600 truncate max-w-[150px] hidden md:table-cell">{getInstructorName(group.instructorId)}</td>
                   <td className="px-4 py-3">
-                    <span className="bg-teal-50 text-teal-600 text-xs font-bold px-2 py-1 rounded-lg">
+                    <span className="bg-[#0da993]/10 text-[#0da993] text-xs font-bold px-2 py-1 rounded-lg">
                       {group.studentCount}{group.capacity ? `/${group.capacity}` : ''}
                     </span>
                   </td>
@@ -134,7 +134,7 @@ const GroupsTable: React.FC<GroupsTableProps> = ({ groups, instructors, courses,
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
                       {onEdit && (
-                        <button onClick={() => onEdit(group)} className="text-teal-600 hover:text-teal-700 transition-colors">
+                        <button onClick={() => onEdit(group)} className="text-[#0da993] hover:text-[#0da993] transition-colors">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                         </button>
                       )}
@@ -167,7 +167,7 @@ const GroupsTable: React.FC<GroupsTableProps> = ({ groups, instructors, courses,
       {filtered.length === 0 && (
         <div className="p-8 text-center">
           <p className="text-sm text-slate-400">{d.no_match}</p>
-          {onAdd && <button onClick={onAdd} className="mt-3 text-sm font-bold text-teal-600 hover:text-teal-700">{d.create_first_group}</button>}
+          {onAdd && <button onClick={onAdd} className="mt-3 text-sm font-bold text-[#0da993] hover:text-[#0da993]">{d.create_first_group}</button>}
         </div>
       )}
     </div>

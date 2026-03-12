@@ -85,7 +85,7 @@ const AdFormModal: React.FC<AdFormModalProps> = ({ isOpen, ad, onClose, onSave }
   };
 
   const inputClass = (field?: string) =>
-    `w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${field && errors[field] ? 'border-red-400' : 'border-slate-100'}`;
+    `w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${field && errors[field] ? 'border-red-400' : 'border-slate-100'}`;
 
   const labelClass = 'text-[10px] font-black uppercase tracking-widest text-slate-400';
 
@@ -258,7 +258,7 @@ const AdFormModal: React.FC<AdFormModalProps> = ({ isOpen, ad, onClose, onSave }
 
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all mt-2"
+            className="w-full bg-[#0da993] text-white py-3 rounded-xl font-black text-sm hover:bg-[#0da993]/90 transition-all mt-2"
           >
             {t.dashboard?.save || 'Save'}
           </button>

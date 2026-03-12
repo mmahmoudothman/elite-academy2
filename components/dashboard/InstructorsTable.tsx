@@ -21,7 +21,7 @@ const InstructorsTable: React.FC<InstructorsTableProps> = ({ instructors, onAdd,
         {onAdd && (
           <button
             onClick={onAdd}
-            className="bg-teal-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-teal-700 transition-all flex items-center gap-2"
+            className="bg-[#0da993] text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-[#0da993]/90 transition-all flex items-center gap-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -66,7 +66,7 @@ const InstructorsTable: React.FC<InstructorsTableProps> = ({ instructors, onAdd,
                     <td className="px-6 py-4 font-bold text-slate-900">{instructor.name}</td>
                     <td className="px-6 py-4 text-slate-600 font-medium">{instructor.role}</td>
                     <td className="px-6 py-4 hidden sm:table-cell">
-                      <span className="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-lg text-xs font-bold">{instructor.specialization}</span>
+                      <span className="px-3 py-1 bg-[#3d66f1]/10 text-[#3d66f1] rounded-lg text-xs font-bold">{instructor.specialization}</span>
                     </td>
                     <td className="px-6 py-4 text-slate-600 font-medium text-xs hidden md:table-cell">{instructor.experience}</td>
                     <td className="px-6 py-4 hidden lg:table-cell">
@@ -111,7 +111,7 @@ const InstructorsTable: React.FC<InstructorsTableProps> = ({ instructors, onAdd,
                         {onEdit && (
                         <button
                           onClick={() => onEdit(instructor)}
-                          className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all"
+                          className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-[#0da993] hover:bg-[#0da993]/10 rounded-lg transition-all"
                           title={t.dashboard?.edit || "Edit"}
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

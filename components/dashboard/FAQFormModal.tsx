@@ -76,7 +76,7 @@ const FAQFormModal: React.FC<FAQFormModalProps> = ({ isOpen, faq, onClose, onSav
               type="text"
               value={form.question.en}
               onChange={(e) => { setForm({ ...form, question: { ...form.question, en: e.target.value } }); setErrors(prev => ({ ...prev, questionEn: '' })); }}
-              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.questionEn ? 'border-red-400' : 'border-slate-100'}`}
+              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.questionEn ? 'border-red-400' : 'border-slate-100'}`}
             />
             {errors.questionEn && <p className="text-red-500 text-xs mt-1">{errors.questionEn}</p>}
           </div>
@@ -88,7 +88,7 @@ const FAQFormModal: React.FC<FAQFormModalProps> = ({ isOpen, faq, onClose, onSav
               dir="rtl"
               value={form.question.ar}
               onChange={(e) => { setForm({ ...form, question: { ...form.question, ar: e.target.value } }); setErrors(prev => ({ ...prev, questionAr: '' })); }}
-              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.questionAr ? 'border-red-400' : 'border-slate-100'}`}
+              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.questionAr ? 'border-red-400' : 'border-slate-100'}`}
             />
             {errors.questionAr && <p className="text-red-500 text-xs mt-1">{errors.questionAr}</p>}
           </div>
@@ -99,7 +99,7 @@ const FAQFormModal: React.FC<FAQFormModalProps> = ({ isOpen, faq, onClose, onSav
               value={form.answer.en}
               onChange={(e) => { setForm({ ...form, answer: { ...form.answer, en: e.target.value } }); setErrors(prev => ({ ...prev, answerEn: '' })); }}
               rows={3}
-              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none ${errors.answerEn ? 'border-red-400' : 'border-slate-100'}`}
+              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none ${errors.answerEn ? 'border-red-400' : 'border-slate-100'}`}
             />
             {errors.answerEn && <p className="text-red-500 text-xs mt-1">{errors.answerEn}</p>}
           </div>
@@ -111,7 +111,7 @@ const FAQFormModal: React.FC<FAQFormModalProps> = ({ isOpen, faq, onClose, onSav
               value={form.answer.ar}
               onChange={(e) => { setForm({ ...form, answer: { ...form.answer, ar: e.target.value } }); setErrors(prev => ({ ...prev, answerAr: '' })); }}
               rows={3}
-              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none ${errors.answerAr ? 'border-red-400' : 'border-slate-100'}`}
+              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none ${errors.answerAr ? 'border-red-400' : 'border-slate-100'}`}
             />
             {errors.answerAr && <p className="text-red-500 text-xs mt-1">{errors.answerAr}</p>}
           </div>
@@ -124,7 +124,7 @@ const FAQFormModal: React.FC<FAQFormModalProps> = ({ isOpen, faq, onClose, onSav
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
                 placeholder="e.g. General, Billing"
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
             <div className="space-y-1">
@@ -134,7 +134,7 @@ const FAQFormModal: React.FC<FAQFormModalProps> = ({ isOpen, faq, onClose, onSav
                 min="0"
                 value={form.order}
                 onChange={(e) => setForm({ ...form, order: Number(e.target.value) })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
           </div>
@@ -145,7 +145,7 @@ const FAQFormModal: React.FC<FAQFormModalProps> = ({ isOpen, faq, onClose, onSav
                 type="checkbox"
                 checked={form.visible !== false}
                 onChange={(e) => setForm({ ...form, visible: e.target.checked })}
-                className="w-5 h-5 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
+                className="w-5 h-5 rounded border-slate-300 text-[#0da993] focus:ring-[#0da993]"
               />
               <span className="text-sm font-bold text-slate-700">{t.dashboard?.label_visible || 'Visible'}</span>
             </label>
@@ -153,7 +153,7 @@ const FAQFormModal: React.FC<FAQFormModalProps> = ({ isOpen, faq, onClose, onSav
 
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all mt-2"
+            className="w-full bg-[#0da993] text-white py-3 rounded-xl font-black text-sm hover:bg-[#0da993]/90 transition-all mt-2"
           >
             {t.dashboard?.save || 'Save'}
           </button>

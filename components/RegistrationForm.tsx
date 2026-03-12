@@ -47,7 +47,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
 
           {isSuccess ? (
             <div className="text-center py-8 sm:py-12 space-y-4 sm:space-y-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-teal-50 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#0da993]/10 text-[#0da993] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
@@ -78,7 +78,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
                   <input
                     required
                     type="text"
-                    className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm sm:text-base"
+                    className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm sm:text-base"
                     placeholder={t.form.name_placeholder}
                   />
                 </div>
@@ -91,7 +91,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
                     <input
                       required
                       type="email"
-                      className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm sm:text-base"
+                      className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm sm:text-base"
                       placeholder="example@mail.com"
                     />
                   </div>
@@ -102,7 +102,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
                     <input
                       required
                       type="tel"
-                      className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm sm:text-base"
+                      className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm sm:text-base"
                       placeholder="+1 234..."
                     />
                   </div>
@@ -112,7 +112,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
                   <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ms-1">
                     {t.form.country}
                   </label>
-                  <select className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold appearance-none text-sm sm:text-base">
+                  <select className="w-full bg-slate-50 border border-slate-100 rounded-lg sm:rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold appearance-none text-sm sm:text-base">
                     <option value="EG">{t.form.egypt}</option>
                     <option value="SA">{t.form.saudi}</option>
                     <option value="AE">{t.form.uae}</option>

@@ -65,7 +65,7 @@ const ProfilePage: React.FC = () => {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-teal-600 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-[#0da993] border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -97,7 +97,7 @@ const ProfilePage: React.FC = () => {
       super_admin: 'bg-red-100 text-red-700',
       admin: 'bg-purple-100 text-purple-700',
       instructor: 'bg-blue-100 text-blue-700',
-      student: 'bg-teal-100 text-teal-700',
+      student: 'bg-[#0da993]/15 text-[#0da993]',
     };
     const labels: Record<string, string> = {
       super_admin: t.dashboard?.role_super_admin || 'Super Admin',
@@ -115,7 +115,7 @@ const ProfilePage: React.FC = () => {
   const getStatusBadge = (status: string) => {
     const styles: Record<string, string> = {
       pending: 'bg-yellow-100 text-yellow-700',
-      confirmed: 'bg-teal-100 text-teal-700',
+      confirmed: 'bg-[#0da993]/15 text-[#0da993]',
       completed: 'bg-green-100 text-green-700',
       cancelled: 'bg-red-100 text-red-700',
     };
@@ -152,13 +152,13 @@ const ProfilePage: React.FC = () => {
         <div className="max-w-5xl mx-auto space-y-8">
           {/* Profile Header Card */}
           <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
-            <div className="h-32 sm:h-40 bg-gradient-to-r from-teal-600 to-teal-500 relative">
+            <div className="h-32 sm:h-40 bg-gradient-to-r from-[#3d66f1] to-[#0da993] relative">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
             </div>
             <div className="px-6 sm:px-8 pb-6 sm:pb-8 -mt-16 relative">
               <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 sm:gap-6">
                 {/* Avatar */}
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-xl bg-white border-4 border-white shadow-lg flex items-center justify-center text-4xl sm:text-5xl font-black font-heading text-teal-600 bg-teal-50 flex-shrink-0">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-xl bg-white border-4 border-white shadow-lg flex items-center justify-center text-4xl sm:text-5xl font-black font-heading text-[#0da993] bg-[#0da993]/10 flex-shrink-0">
                   {user.displayName?.charAt(0)?.toUpperCase() || 'U'}
                 </div>
 
@@ -189,8 +189,8 @@ const ProfilePage: React.FC = () => {
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-5 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center flex-shrink-0">
-                <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-xl bg-[#0da993]/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-6 h-6 text-[#0da993]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
@@ -241,7 +241,7 @@ const ProfilePage: React.FC = () => {
                         type="text"
                         value={formData.displayName}
                         onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm font-medium text-slate-900"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent text-sm font-medium text-slate-900"
                       />
                     </div>
                     <div>
@@ -252,7 +252,7 @@ const ProfilePage: React.FC = () => {
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm font-medium text-slate-900"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent text-sm font-medium text-slate-900"
                       />
                     </div>
                     <div>
@@ -262,7 +262,7 @@ const ProfilePage: React.FC = () => {
                       <select
                         value={formData.country}
                         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm font-medium text-slate-900 bg-white"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent text-sm font-medium text-slate-900 bg-white"
                       >
                         <option value="">{t?.profile_page?.select_country || 'Select country'}</option>
                         {Object.entries(COUNTRIES).map(([code, label]) => (
@@ -273,7 +273,7 @@ const ProfilePage: React.FC = () => {
                     <button
                       onClick={handleSave}
                       disabled={saving}
-                      className="w-full bg-teal-600 text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-[#0da993] text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-[#0da993]/90 transition-all shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {saving
                         ? (t?.profile_page?.saving || 'Saving...')
@@ -362,7 +362,7 @@ const ProfilePage: React.FC = () => {
                         onClick={() => setLanguage('en')}
                         className={`flex-1 px-4 py-2.5 rounded-xl text-sm font-black transition-all ${
                           language === 'en'
-                            ? 'bg-teal-600 text-white shadow-lg shadow-teal-600/20'
+                            ? 'bg-[#0da993] text-white shadow-lg shadow-[#0da993]/20'
                             : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                         }`}
                       >
@@ -372,7 +372,7 @@ const ProfilePage: React.FC = () => {
                         onClick={() => setLanguage('ar')}
                         className={`flex-1 px-4 py-2.5 rounded-xl text-sm font-black transition-all ${
                           language === 'ar'
-                            ? 'bg-teal-600 text-white shadow-lg shadow-teal-600/20'
+                            ? 'bg-[#0da993] text-white shadow-lg shadow-[#0da993]/20'
                             : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                         }`}
                       >
@@ -443,7 +443,7 @@ const ProfilePage: React.FC = () => {
                             <div className="flex-1 p-4 sm:p-5">
                               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                 <div className="space-y-1.5">
-                                  <h3 className="font-black text-slate-900 text-sm sm:text-base group-hover:text-teal-600 transition-colors">
+                                  <h3 className="font-black text-slate-900 text-sm sm:text-base group-hover:text-[#0da993] transition-colors">
                                     {enrollment.courseTitle}
                                   </h3>
                                   <div className="flex flex-wrap items-center gap-2">

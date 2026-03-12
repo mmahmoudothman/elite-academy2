@@ -19,9 +19,9 @@ const statusColors: Record<string, string> = {
 
 const inquiryTypeColors: Record<string, string> = {
   general: 'bg-slate-100 text-slate-600',
-  course_info: 'bg-indigo-50 text-indigo-600',
+  course_info: 'bg-[#3d66f1]/10 text-[#3d66f1]',
   corporate: 'bg-purple-50 text-purple-600',
-  partnership: 'bg-teal-50 text-teal-600',
+  partnership: 'bg-[#0da993]/10 text-[#0da993]',
   technical: 'bg-orange-50 text-orange-600',
   billing: 'bg-rose-50 text-rose-600',
   feedback: 'bg-cyan-50 text-cyan-600',
@@ -121,9 +121,9 @@ const ContactsTable: React.FC<ContactsTableProps> = ({ contacts, onMarkRead, onM
           <p className="text-[10px] font-black uppercase tracking-widest text-blue-500 mb-1">{t.dashboard?.new_unread || 'New (Unread)'}</p>
           <p className="text-2xl font-black text-blue-600">{stats.newUnread}</p>
         </div>
-        <div className="bg-white rounded-2xl border border-teal-100 p-4 shadow-sm">
-          <p className="text-[10px] font-black uppercase tracking-widest text-teal-500 mb-1">{t.dashboard?.avg_response_time || 'Avg Response Time'}</p>
-          <p className="text-lg font-black text-teal-600">{stats.respondedCount > 0 ? formatResponseTime(stats.avgResponseMs) : (t.dashboard?.no_response_data || 'N/A')}</p>
+        <div className="bg-white rounded-2xl border border-[#0da993]/20 p-4 shadow-sm">
+          <p className="text-[10px] font-black uppercase tracking-widest text-[#0da993] mb-1">{t.dashboard?.avg_response_time || 'Avg Response Time'}</p>
+          <p className="text-lg font-black text-[#0da993]">{stats.respondedCount > 0 ? formatResponseTime(stats.avgResponseMs) : (t.dashboard?.no_response_data || 'N/A')}</p>
         </div>
         <div className="bg-white rounded-2xl border border-purple-100 p-4 shadow-sm">
           <p className="text-[10px] font-black uppercase tracking-widest text-purple-500 mb-1">{t.dashboard?.this_week_messages || 'This Week'}</p>
@@ -141,15 +141,15 @@ const ContactsTable: React.FC<ContactsTableProps> = ({ contacts, onMarkRead, onM
                 <span className="ms-2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{stats.newUnread} {t.dashboard?.new_label || 'new'}</span>
               )}
             </h3>
-            <input type="text" value={search} onChange={e => { setSearch(e.target.value); setPage(0); }} placeholder={t.dashboard?.search_contacts || 'Search messages...'} className="w-full sm:w-64 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all" />
+            <input type="text" value={search} onChange={e => { setSearch(e.target.value); setPage(0); }} placeholder={t.dashboard?.search_contacts || 'Search messages...'} className="w-full sm:w-64 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:bg-white transition-all" />
           </div>
 
           {/* Date Range Filter */}
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.filter_by_date || 'Filter by Date'}:</span>
-            <input type="date" value={dateFrom} onChange={e => { setDateFrom(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all" />
+            <input type="date" value={dateFrom} onChange={e => { setDateFrom(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] transition-all" />
             <span className="text-xs text-slate-400 font-bold">-</span>
-            <input type="date" value={dateTo} onChange={e => { setDateTo(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all" />
+            <input type="date" value={dateTo} onChange={e => { setDateTo(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] transition-all" />
             {(dateFrom || dateTo) && (
               <button onClick={() => { setDateFrom(''); setDateTo(''); setPage(0); }} className="text-xs font-bold text-red-500 hover:text-red-600 transition-colors px-2 py-1">
                 {t.dashboard?.clear_date_filter || 'Clear'}
@@ -212,12 +212,12 @@ const ContactsTable: React.FC<ContactsTableProps> = ({ contacts, onMarkRead, onM
                   )}
 
                   <div className="flex gap-2 flex-wrap">
-                    <a href={`mailto:${contact.email}?subject=Re: ${contact.subject}`} className="text-xs font-bold text-teal-600 hover:text-teal-700 flex items-center gap-1">
+                    <a href={`mailto:${contact.email}?subject=Re: ${contact.subject}`} className="text-xs font-bold text-[#0da993] hover:text-[#0da993] flex items-center gap-1">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                       {t.dashboard?.reply || 'Reply via Email'}
                     </a>
                     {onReply && (
-                      <button onClick={() => { setReplyingTo(replyingTo === contact.id ? null : contact.id); setReplyText(contact.adminReply || ''); }} className="text-xs font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1">
+                      <button onClick={() => { setReplyingTo(replyingTo === contact.id ? null : contact.id); setReplyText(contact.adminReply || ''); }} className="text-xs font-bold text-[#3d66f1] hover:text-[#3d66f1] flex items-center gap-1">
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
                         {t.dashboard?.admin_reply || 'Admin Reply'}
                       </button>
@@ -231,14 +231,14 @@ const ContactsTable: React.FC<ContactsTableProps> = ({ contacts, onMarkRead, onM
                         value={replyText}
                         onChange={e => setReplyText(e.target.value)}
                         rows={3}
-                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all resize-none"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] transition-all resize-none"
                         placeholder={t.dashboard?.admin_reply_placeholder || 'Type your reply here...'}
                       />
                       <div className="flex gap-2">
                         <button
                           onClick={() => handleSendReply(contact.id)}
                           disabled={!replyText.trim()}
-                          className="px-4 py-2 bg-teal-600 text-white text-xs font-bold rounded-lg hover:bg-teal-700 transition-all disabled:opacity-40"
+                          className="px-4 py-2 bg-[#0da993] text-white text-xs font-bold rounded-lg hover:bg-[#0da993]/90 transition-all disabled:opacity-40"
                         >
                           {t.dashboard?.send_reply || 'Send Reply'}
                         </button>

@@ -140,29 +140,29 @@ const StudentFormModal: React.FC<StudentFormModalProps> = ({ isOpen, student, gr
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.full_name} *</label>
               <input type="text" value={name} onChange={e => setName(e.target.value)} required
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.email} *</label>
               <input type="email" value={email} onChange={e => setEmail(e.target.value)} required placeholder="email@example.com"
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.phone}</label>
               <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+20..."
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.country}</label>
               <select value={country} onChange={e => setCountry(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]">
                 {countryOptions.map(c => <option key={c.code} value={c.code}>{c.label}</option>)}
               </select>
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.gender}</label>
               <select value={gender} onChange={e => setGender(e.target.value as StudentGender)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]">
                 <option value="">{d.not_specified}</option>
                 <option value="male">{d.male}</option>
                 <option value="female">{d.female}</option>
@@ -171,17 +171,17 @@ const StudentFormModal: React.FC<StudentFormModalProps> = ({ isOpen, student, gr
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.date_of_birth}</label>
               <input type="date" value={dateOfBirth} onChange={e => setDateOfBirth(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.national_id}</label>
               <input type="text" value={nationalId} onChange={e => setNationalId(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.source}</label>
               <select value={source} onChange={e => setSource(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]">
                 <option value="">{d.select_source}</option>
                 {SOURCES.map(s => <option key={s} value={s}>{sourceLabels[s]}</option>)}
               </select>
@@ -194,12 +194,12 @@ const StudentFormModal: React.FC<StudentFormModalProps> = ({ isOpen, student, gr
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.parent_name}</label>
               <input type="text" value={parentName} onChange={e => setParentName(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.parent_phone}</label>
               <input type="tel" value={parentPhone} onChange={e => setParentPhone(e.target.value)} placeholder="+20..."
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
           </div>
 
@@ -209,21 +209,21 @@ const StudentFormModal: React.FC<StudentFormModalProps> = ({ isOpen, student, gr
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.level}</label>
               <select value={level} onChange={e => setLevel(e.target.value as StudentLevel)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]">
                 {LEVELS.map(l => <option key={l} value={l}>{levelLabels[l]}</option>)}
               </select>
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.stage}</label>
               <select value={lifecycleStage} onChange={e => setLifecycleStage(e.target.value as LifecycleStage)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]">
                 {STAGES.map(s => <option key={s} value={s}>{stageLabels[s]}</option>)}
               </select>
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.instructor}</label>
               <select value={assignedInstructorId} onChange={e => setAssignedInstructorId(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]">
                 <option value="">{d.no_instructor}</option>
                 {instructors.map(i => <option key={i.id} value={i.id}>{i.name}</option>)}
               </select>
@@ -262,7 +262,7 @@ const StudentFormModal: React.FC<StudentFormModalProps> = ({ isOpen, student, gr
                   return (
                     <button key={c.id} type="button" onClick={() => toggleCourse(c.id)}
                       className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition-all ${
-                        selected ? 'bg-teal-600 text-white border-teal-600' : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300'
+                        selected ? 'bg-[#0da993] text-white border-[#0da993]' : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300'
                       }`}>
                       {c.title}
                     </button>
@@ -277,19 +277,19 @@ const StudentFormModal: React.FC<StudentFormModalProps> = ({ isOpen, student, gr
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.address}</label>
               <input type="text" value={address} onChange={e => setAddress(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.tags_comma}</label>
               <input type="text" value={tags} onChange={e => setTags(e.target.value)} placeholder="tag1, tag2"
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
           </div>
 
           <div>
             <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.notes}</label>
             <textarea value={notes} onChange={e => setNotes(e.target.value)} rows={2}
-              className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" />
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] resize-none" />
           </div>
 
           <div className="flex items-center gap-3">
@@ -305,7 +305,7 @@ const StudentFormModal: React.FC<StudentFormModalProps> = ({ isOpen, student, gr
           <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
             <button type="button" onClick={onClose} className="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors">{d.cancel}</button>
             <button type="submit" disabled={!name.trim() || !email.trim()}
-              className="px-5 py-2.5 text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition-colors disabled:opacity-40">
+              className="px-5 py-2.5 text-sm font-bold text-white bg-[#0da993] hover:bg-[#0da993]/90 rounded-xl transition-colors disabled:opacity-40">
               {student ? d.save_changes : d.add_student}
             </button>
           </div>

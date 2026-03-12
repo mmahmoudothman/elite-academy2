@@ -12,7 +12,7 @@ interface GroupFormModalProps {
 }
 
 const GROUP_COLORS = [
-  '#0d9488', '#2563eb', '#7c3aed', '#db2777', '#ea580c',
+  '#0da993', '#2563eb', '#7c3aed', '#db2777', '#ea580c',
   '#16a34a', '#0891b2', '#4f46e5', '#c026d3', '#dc2626',
 ];
 
@@ -23,7 +23,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
   const [nameAr, setNameAr] = useState('');
   const [descEn, setDescEn] = useState('');
   const [descAr, setDescAr] = useState('');
-  const [color, setColor] = useState('#0d9488');
+  const [color, setColor] = useState('#0da993');
   const [instructorId, setInstructorId] = useState('');
   const [courseId, setCourseId] = useState('');
   const [capacity, setCapacity] = useState('');
@@ -48,7 +48,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
       setIsActive(group.isActive);
     } else {
       setNameEn(''); setNameAr(''); setDescEn(''); setDescAr('');
-      setColor('#0d9488'); setInstructorId(''); setCourseId('');
+      setColor('#0da993'); setInstructorId(''); setCourseId('');
       setCapacity(''); setSchedule(''); setStartDate(''); setEndDate('');
       setIsActive(true);
     }
@@ -93,12 +93,12 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.name_en}</label>
               <input type="text" value={nameEn} onChange={e => setNameEn(e.target.value)} placeholder={t.dashboard?.group_name_placeholder || "Group name"}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.name_ar}</label>
               <input type="text" value={nameAr} onChange={e => setNameAr(e.target.value)} placeholder="اسم المجموعة" dir="rtl"
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
           </div>
 
@@ -106,12 +106,12 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.desc_en}</label>
               <textarea value={descEn} onChange={e => setDescEn(e.target.value)} rows={2}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] resize-none" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.desc_ar}</label>
               <textarea value={descAr} onChange={e => setDescAr(e.target.value)} rows={2} dir="rtl"
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] resize-none" />
             </div>
           </div>
 
@@ -120,7 +120,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             <div className="flex items-center gap-2 flex-wrap">
               {GROUP_COLORS.map(c => (
                 <button key={c} type="button" onClick={() => setColor(c)}
-                  className={`w-7 h-7 rounded-full transition-all ${color === c ? 'ring-2 ring-offset-2 ring-teal-500 scale-110' : 'hover:scale-105'}`}
+                  className={`w-7 h-7 rounded-full transition-all ${color === c ? 'ring-2 ring-offset-2 ring-[#0da993] scale-110' : 'hover:scale-105'}`}
                   style={{ backgroundColor: c }} />
               ))}
             </div>
@@ -130,7 +130,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.course}</label>
               <select value={courseId} onChange={e => setCourseId(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]">
                 <option value="">{d.no_course}</option>
                 {courses.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}
               </select>
@@ -138,7 +138,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.instructor}</label>
               <select value={instructorId} onChange={e => setInstructorId(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500">
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]">
                 <option value="">{d.no_instructor}</option>
                 {instructors.map(i => <option key={i.id} value={i.id}>{i.name}</option>)}
               </select>
@@ -149,24 +149,24 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.capacity}</label>
               <input type="number" value={capacity} onChange={e => setCapacity(e.target.value)} min={0} placeholder="0"
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.start_date}</label>
               <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.end_date}</label>
               <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
             </div>
           </div>
 
           <div>
             <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.schedule}</label>
             <input type="text" value={schedule} onChange={e => setSchedule(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]" />
           </div>
 
           <div className="flex items-center gap-3">
@@ -182,7 +182,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
           <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
             <button type="button" onClick={onClose} className="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors">{d.cancel}</button>
             <button type="submit" disabled={!nameEn.trim() && !nameAr.trim()}
-              className="px-5 py-2.5 text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition-colors disabled:opacity-40">
+              className="px-5 py-2.5 text-sm font-bold text-white bg-[#0da993] hover:bg-[#0da993]/90 rounded-xl transition-colors disabled:opacity-40">
               {group ? d.save_changes : d.create_group}
             </button>
           </div>

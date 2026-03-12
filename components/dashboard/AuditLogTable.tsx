@@ -54,7 +54,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
           <select
             value={actionFilter}
             onChange={(e) => setActionFilter(e.target.value)}
-            className="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-900 focus:border-teal-500 outline-none transition-all"
+            className="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-900 focus:border-[#0da993] outline-none transition-all"
           >
             <option value="">{d?.all_actions || 'All Actions'}</option>
             {actions.map(a => <option key={a} value={a}>{a}</option>)}
@@ -62,7 +62,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
           <select
             value={entityFilter}
             onChange={(e) => setEntityFilter(e.target.value)}
-            className="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-900 focus:border-teal-500 outline-none transition-all"
+            className="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-900 focus:border-[#0da993] outline-none transition-all"
           >
             <option value="">{d?.all_entities || 'All Entities'}</option>
             {entityTypes.map(e => <option key={e} value={e}>{e}</option>)}
@@ -73,7 +73,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
               type="date"
               value={dateFrom}
               onChange={(e) => setDateFrom(e.target.value)}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-900 focus:border-teal-500 outline-none transition-all"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-900 focus:border-[#0da993] outline-none transition-all"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -82,7 +82,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
               type="date"
               value={dateTo}
               onChange={(e) => setDateTo(e.target.value)}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-900 focus:border-teal-500 outline-none transition-all"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-900 focus:border-[#0da993] outline-none transition-all"
             />
           </div>
           {(actionFilter || entityFilter || dateFrom || dateTo) && (

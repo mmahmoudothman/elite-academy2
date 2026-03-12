@@ -15,7 +15,7 @@ interface AnalyticsOverviewProps {
   loading?: boolean;
 }
 
-const COLORS = ['#0d9488', '#6366f1', '#f59e0b', '#ef4444', '#10b981', '#8b5cf6'];
+const COLORS = ['#0da993', '#3d66f1', '#f59e0b', '#ef4444', '#10b981', '#8b5cf6'];
 
 type DateRange = '7d' | '30d' | '90d' | 'all';
 
@@ -97,8 +97,8 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
   // Conversion funnel data
   const funnelData = useMemo(() => {
     const steps = [
-      { name: 'Page Views', value: eventCounts.page_view, fill: '#0d9488' },
-      { name: 'Course Views', value: eventCounts.course_view, fill: '#6366f1' },
+      { name: 'Page Views', value: eventCounts.page_view, fill: '#0da993' },
+      { name: 'Course Views', value: eventCounts.course_view, fill: '#3d66f1' },
       { name: 'Enrollment Starts', value: eventCounts.enrollment_start, fill: '#f59e0b' },
       { name: 'Enrollments Completed', value: eventCounts.enrollment_complete, fill: '#10b981' },
     ];
@@ -147,7 +147,7 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
   const summaryCards = [
     { label: t.dashboard?.total_revenue || 'Total Revenue', value: `$${(filteredTotalRevenue / 1000).toFixed(1)}k`, color: 'bg-emerald-50 text-emerald-600', icon: '$' },
     { label: t.dashboard?.total_enrollments || 'Enrollments', value: filteredEnrollments.length, color: 'bg-amber-50 text-amber-600', icon: '#' },
-    { label: t.dashboard?.total_students || 'Students', value: stats.totalStudents, color: 'bg-indigo-50 text-indigo-600', icon: 'U' },
+    { label: t.dashboard?.total_students || 'Students', value: stats.totalStudents, color: 'bg-[#3d66f1]/10 text-[#3d66f1]', icon: 'U' },
     { label: t.dashboard?.new_contacts || 'New Messages', value: stats.totalContacts, color: 'bg-blue-50 text-blue-600', icon: 'M' },
   ];
 
@@ -170,8 +170,8 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
             onClick={() => setDateRange(opt.key)}
             className={`px-4 py-2 rounded-xl text-xs font-black transition-all ${
               dateRange === opt.key
-                ? 'bg-teal-600 text-white shadow-lg'
-                : 'bg-white border border-slate-200 text-slate-500 hover:border-teal-500'
+                ? 'bg-[#0da993] text-white shadow-lg'
+                : 'bg-white border border-slate-200 text-slate-500 hover:border-[#0da993]'
             }`}
           >
             {opt.label}
@@ -194,12 +194,12 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-100 shadow-sm">
           <p className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Conversion Rate</p>
-          <p className="text-xl sm:text-2xl font-black text-teal-600">{kpis.conversionRate.toFixed(1)}%</p>
+          <p className="text-xl sm:text-2xl font-black text-[#0da993]">{kpis.conversionRate.toFixed(1)}%</p>
           <p className="text-[10px] text-slate-400 font-bold mt-1">Enrollments / Course Views</p>
         </div>
         <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-100 shadow-sm">
           <p className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Avg Revenue / Student</p>
-          <p className="text-xl sm:text-2xl font-black text-indigo-600">${kpis.avgRevenuePerStudent.toFixed(0)}</p>
+          <p className="text-xl sm:text-2xl font-black text-[#3d66f1]">${kpis.avgRevenuePerStudent.toFixed(0)}</p>
           <p className="text-[10px] text-slate-400 font-bold mt-1">Paid Revenue / Students</p>
         </div>
         <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-100 shadow-sm">
@@ -257,15 +257,15 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
             <AreaChart data={monthlyData}>
               <defs>
                 <linearGradient id="enrollGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#0d9488" stopOpacity={0.15} />
-                  <stop offset="95%" stopColor="#0d9488" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#0da993" stopOpacity={0.15} />
+                  <stop offset="95%" stopColor="#0da993" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0', fontWeight: 700, fontSize: 13 }} />
-              <Area type="monotone" dataKey="enrollments" stroke="#0d9488" strokeWidth={2} fill="url(#enrollGrad)" />
+              <Area type="monotone" dataKey="enrollments" stroke="#0da993" strokeWidth={2} fill="url(#enrollGrad)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -279,7 +279,7 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
               <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0', fontWeight: 700, fontSize: 13 }} />
-              <Line type="monotone" dataKey="revenue" stroke="#6366f1" strokeWidth={2} dot={{ r: 4, fill: '#6366f1' }} />
+              <Line type="monotone" dataKey="revenue" stroke="#3d66f1" strokeWidth={2} dot={{ r: 4, fill: '#3d66f1' }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -306,7 +306,7 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
                     <td className="py-3 px-2 font-bold text-slate-900 max-w-[200px] truncate">{c.title}</td>
                     <td className="py-3 px-2 text-center font-bold text-slate-600">{c.views}</td>
                     <td className="py-3 px-2 text-center font-bold text-slate-600">{c.enrollments}</td>
-                    <td className="py-3 px-2 text-center font-bold text-teal-600">${c.revenue.toLocaleString()}</td>
+                    <td className="py-3 px-2 text-center font-bold text-[#0da993]">${c.revenue.toLocaleString()}</td>
                     <td className="py-3 px-2 text-center">
                       <div className="flex items-center justify-center gap-2">
                         <div className="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
@@ -343,7 +343,7 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
                 <XAxis type="number" tick={{ fontSize: 11, fill: '#94a3b8' }} />
                 <YAxis type="category" dataKey="courseTitle" width={120} tick={{ fontSize: 11, fill: '#94a3b8' }} />
                 <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0', fontWeight: 700, fontSize: 13 }} />
-                <Bar dataKey="enrollments" fill="#0d9488" radius={[0, 6, 6, 0]} />
+                <Bar dataKey="enrollments" fill="#0da993" radius={[0, 6, 6, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (
@@ -390,7 +390,7 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
               <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0', fontWeight: 700, fontSize: 13 }} />
-              <Bar dataKey="value" fill="#6366f1" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="value" fill="#3d66f1" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

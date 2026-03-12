@@ -87,12 +87,12 @@ const RegisterPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50/30 flex items-center justify-center p-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#0d1b2a] via-[#1a2744] to-[#0d1b2a] flex items-center justify-center p-4 py-8">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8">
           <div className="flex flex-col items-center mb-6">
             <Link to="/" className="mb-4">
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors ${success ? 'bg-emerald-500' : 'bg-teal-600'}`}>
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors ${success ? 'bg-emerald-500' : 'bg-[#0da993]'}`}>
                 {success ? (
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -121,7 +121,7 @@ const RegisterPage: React.FC = () => {
               <input
                 required type="text" value={form.name} onChange={e => update('name', e.target.value)}
                 placeholder={t.form?.name_placeholder || 'Enter your name'}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
 
@@ -130,7 +130,7 @@ const RegisterPage: React.FC = () => {
               <input
                 required type="email" value={form.email} onChange={e => update('email', e.target.value)}
                 placeholder="example@mail.com"
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
 
@@ -140,14 +140,14 @@ const RegisterPage: React.FC = () => {
                 <input
                   type="tel" value={form.phone} onChange={e => update('phone', e.target.value)}
                   placeholder="+20..."
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
                 />
               </div>
               <div>
                 <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ms-1">{t.form?.country || 'Country'}</label>
                 <select
                   value={form.country} onChange={e => update('country', e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm appearance-none"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm appearance-none"
                 >
                   {countries.map(c => <option key={c.code} value={c.code}>{c.label}</option>)}
                 </select>
@@ -159,7 +159,7 @@ const RegisterPage: React.FC = () => {
               <input
                 required type="password" value={form.password} onChange={e => update('password', e.target.value)}
                 placeholder={t.auth?.password_placeholder || 'Min 8 characters'}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
               {/* Password strength indicator */}
               {form.password.length > 0 && (
@@ -199,13 +199,13 @@ const RegisterPage: React.FC = () => {
               <input
                 required type="password" value={form.confirmPassword} onChange={e => update('confirmPassword', e.target.value)}
                 placeholder={t.auth?.confirm_placeholder || 'Re-enter password'}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
 
             <button
               type="submit" disabled={loading}
-              className="w-full py-3 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-all flex items-center justify-center gap-2 disabled:opacity-60 mt-2"
+              className="w-full py-3 bg-[#0da993] text-white font-bold rounded-xl hover:bg-[#0da993]/90 transition-all flex items-center justify-center gap-2 disabled:opacity-60 mt-2"
             >
               {loading && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
               {loading ? (t.auth?.creating || 'Creating account...') : (t.auth?.register_button || 'Create Account')}
@@ -213,11 +213,11 @@ const RegisterPage: React.FC = () => {
           </form>
 
           <div className="mt-6 text-center space-y-3">
-            <Link to="/login" className="text-sm font-bold text-teal-600 hover:text-teal-700 transition-colors">
+            <Link to="/login" className="text-sm font-bold text-[#0da993] hover:text-[#0da993] transition-colors">
               {t.auth?.has_account || 'Already have an account? Sign in'}
             </Link>
             <div>
-              <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="text-sm font-bold text-slate-400 hover:text-teal-600 transition-colors">
+              <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="text-sm font-bold text-slate-400 hover:text-[#0da993] transition-colors">
                 {language === 'en' ? 'العربية' : 'English'}
               </button>
             </div>

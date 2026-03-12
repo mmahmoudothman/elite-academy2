@@ -77,7 +77,7 @@ const NotAuthorized: React.FC = () => (
       </p>
       <a
         href="/"
-        className="inline-block px-6 py-3 bg-teal-600 text-white rounded-xl font-semibold hover:bg-teal-700 transition-colors"
+        className="inline-block px-6 py-3 bg-[#0da993] text-white rounded-xl font-semibold hover:bg-[#0da993]/90 transition-colors"
       >
         Go to Home
       </a>

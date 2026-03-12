@@ -15,7 +15,7 @@ const ToastProvider: React.FC = () => (
         padding: '12px 16px',
       },
       success: {
-        iconTheme: { primary: '#0d9488', secondary: '#fff' },
+        iconTheme: { primary: '#0da993', secondary: '#fff' },
       },
       error: {
         iconTheme: { primary: '#ef4444', secondary: '#fff' },

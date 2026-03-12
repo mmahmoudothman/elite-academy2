@@ -267,11 +267,11 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
           type="button"
           disabled={uploading}
           onClick={() => fileInputRef.current?.click()}
-          className="flex-1 bg-slate-50 border border-slate-200 border-dashed rounded-xl px-4 py-3 text-sm font-bold text-slate-500 hover:border-teal-500 hover:text-teal-600 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+          className="flex-1 bg-slate-50 border border-slate-200 border-dashed rounded-xl px-4 py-3 text-sm font-bold text-slate-500 hover:border-[#0da993] hover:text-[#0da993] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
         >
           {uploading ? (
             <>
-              <div className="w-4 h-4 border-2 border-teal-300 border-t-teal-600 rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-[#0da993]/30 border-t-[#0da993] rounded-full animate-spin" />
               {t.dashboard.uploading}
             </>
           ) : (
@@ -291,7 +291,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="https://..."
-        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
       />
 
       {/* Error */}
@@ -368,7 +368,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                 </div>
                 {/* Resize handle */}
                 <div
-                  className="absolute -bottom-2 -right-2 w-5 h-5 bg-white border-2 border-teal-500 rounded-full cursor-se-resize shadow-md"
+                  className="absolute -bottom-2 -right-2 w-5 h-5 bg-white border-2 border-[#0da993] rounded-full cursor-se-resize shadow-md"
                   onMouseDown={(e) => handleCropMouseDown(e, 'resize')}
                   onTouchStart={(e) => handleCropMouseDown(e, 'resize')}
                 />
@@ -396,7 +396,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
               <button
                 type="button"
                 onClick={handleCropConfirm}
-                className="flex-1 px-4 py-3 rounded-xl bg-teal-600 text-white font-bold text-sm hover:bg-teal-700 transition-all flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-3 rounded-xl bg-[#0da993] text-white font-bold text-sm hover:bg-[#0da993]/90 transition-all flex items-center justify-center gap-2"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

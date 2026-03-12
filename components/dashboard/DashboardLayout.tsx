@@ -131,21 +131,21 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ activeTab, onTabChang
         <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setSidebarOpen(false)} />
       )}
 
-      <aside className={`fixed lg:static inset-y-0 left-0 rtl:left-auto rtl:right-0 z-50 w-64 max-w-[80vw] bg-slate-900 text-white flex flex-col transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full rtl:translate-x-full lg:translate-x-0 lg:rtl:translate-x-0'}`}>
-        <div className="p-6 border-b border-slate-800">
+      <aside className={`fixed lg:static inset-y-0 left-0 rtl:left-auto rtl:right-0 z-50 w-64 max-w-[80vw] bg-[#0d1b2a] text-white flex flex-col transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full rtl:translate-x-full lg:translate-x-0 lg:rtl:translate-x-0'}`}>
+        <div className="p-6 border-b border-[#1a2744]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#0da993] rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-xl font-heading">E</span>
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-black font-heading tracking-tight leading-none">
                 {language === 'ar' ? 'أكاديمية النخبة' : 'ELITE ACADEMY'}
               </span>
-              <span className="text-[9px] font-bold text-teal-400 tracking-[0.2em] uppercase">
+              <span className="text-[9px] font-bold text-[#0da993] tracking-[0.2em] uppercase">
                 {d.title}
               </span>
               {userRole && (
-                <span className="text-[8px] font-bold text-teal-300 bg-teal-900/50 px-2 py-0.5 rounded-full mt-0.5">
+                <span className="text-[8px] font-bold text-[#0da993]/70 bg-[#0da993]/20 px-2 py-0.5 rounded-full mt-0.5">
                   {userRole.replace('_', ' ').toUpperCase()}
                 </span>
               )}
@@ -168,7 +168,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ activeTab, onTabChang
                     key={tab.key}
                     onClick={() => { onTabChange(tab.key); setSidebarOpen(false); }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all relative ${
-                      activeTab === tab.key ? 'bg-teal-600 text-white' : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                      activeTab === tab.key ? 'bg-[#0da993] text-white' : 'text-slate-400 hover:text-white hover:bg-[#1a2744]'
                     }`}
                   >
                     {tab.icon}
@@ -184,17 +184,17 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ activeTab, onTabChang
           })}
         </nav>
 
-        <div className="p-4 border-t border-slate-800 space-y-2">
-          <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-400 hover:text-white hover:bg-slate-800 transition-all">
+        <div className="p-4 border-t border-[#1a2744] space-y-2">
+          <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-400 hover:text-white hover:bg-[#1a2744] transition-all">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
             {language === 'en' ? 'العربية' : 'English'}
           </button>
-          <Link to="/" className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-400 hover:text-white hover:bg-slate-800 transition-all">
+          <Link to="/" className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-400 hover:text-white hover:bg-[#1a2744] transition-all">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
             {d.back_to_site}
           </Link>
           {onLogout && (
-            <button onClick={onLogout} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-red-400 hover:text-red-300 hover:bg-slate-800 transition-all">
+            <button onClick={onLogout} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-red-400 hover:text-red-300 hover:bg-[#1a2744] transition-all">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
               {d.logout}
             </button>

@@ -6,10 +6,10 @@ const MarketAnalytics: React.FC = () => {
   const { t } = useLanguage();
 
   const skills = [
-    { name: t.analytics.skill1, value: 92, color: 'bg-indigo-600' },
-    { name: t.analytics.skill2, value: 88, color: 'bg-teal-500' },
-    { name: t.analytics.skill3, value: 75, color: 'bg-blue-500' },
-    { name: t.analytics.skill4, value: 82, color: 'bg-indigo-400' },
+    { name: t.analytics.skill1, value: 92, color: 'bg-[#3d66f1]' },
+    { name: t.analytics.skill2, value: 88, color: 'bg-[#0da993]' },
+    { name: t.analytics.skill3, value: 75, color: 'bg-[#4167e0]' },
+    { name: t.analytics.skill4, value: 82, color: 'bg-[#3d66f1]/70' },
   ];
 
   const handleDownload = () => {
@@ -21,7 +21,7 @@ const MarketAnalytics: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-5">
-            <h2 className="text-xs sm:text-sm font-black text-indigo-600 uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-3 sm:mb-4">{t.analytics.stat4_label}</h2>
+            <h2 className="text-xs sm:text-sm font-black text-[#3d66f1] uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-3 sm:mb-4">{t.analytics.stat4_label}</h2>
             <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black font-heading leading-tight text-slate-900 mb-4 sm:mb-6">
               {t.analytics.title}
             </h3>
@@ -36,7 +36,7 @@ const MarketAnalytics: React.FC = () => {
                 { val: t.analytics.stat3_val, label: t.analytics.stat3_label },
                 { val: t.analytics.stat4_val, label: t.analytics.stat4_label }
               ].map((stat, i) => (
-                <div key={i} className="border-s-4 border-indigo-600 ps-4 sm:ps-6">
+                <div key={i} className="border-s-4 border-[#3d66f1] ps-4 sm:ps-6">
                   <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-1">{stat.val}</div>
                   <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
                 </div>
@@ -49,9 +49,9 @@ const MarketAnalytics: React.FC = () => {
               <div className="flex justify-between items-center mb-6 sm:mb-8 lg:mb-10">
                 <h4 className="font-black text-slate-900 text-sm sm:text-base">{t.analytics.chart_label}</h4>
                 <div className="flex gap-2">
-                  <span className="w-3 h-3 rounded-full bg-indigo-100"></span>
-                  <span className="w-3 h-3 rounded-full bg-indigo-200"></span>
-                  <span className="w-3 h-3 rounded-full bg-indigo-600"></span>
+                  <span className="w-3 h-3 rounded-full bg-[#3d66f1]/15"></span>
+                  <span className="w-3 h-3 rounded-full bg-[#3d66f1]/25"></span>
+                  <span className="w-3 h-3 rounded-full bg-[#3d66f1]"></span>
                 </div>
               </div>
 
@@ -74,7 +74,7 @@ const MarketAnalytics: React.FC = () => {
               
               <div className="mt-12 pt-8 border-t border-slate-50 flex justify-between items-center">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">
+                  <div className="w-12 h-12 bg-[#3d66f1]/10 rounded-2xl flex items-center justify-center text-[#3d66f1]">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                   </div>
                   <div>
@@ -84,7 +84,7 @@ const MarketAnalytics: React.FC = () => {
                 </div>
                 <button 
                   onClick={handleDownload}
-                  className="text-indigo-600 font-bold text-sm hover:underline"
+                  className="text-[#3d66f1] font-bold text-sm hover:underline"
                 >
                   {t.analytics.download}
                 </button>

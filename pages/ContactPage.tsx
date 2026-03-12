@@ -145,7 +145,7 @@ const ContactPage: React.FC = () => {
   const whatsappUrl = whatsappNumber ? `https://wa.me/${whatsappNumber}?text=${whatsappPrefill}` : config.socialLinks?.whatsapp || '#';
 
   const inputClass = (field: string) =>
-    `w-full bg-slate-50 border ${errors[field] && touched[field] ? 'border-red-300 bg-red-50/30' : 'border-slate-200'} rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm sm:text-base`;
+    `w-full bg-slate-50 border ${errors[field] && touched[field] ? 'border-red-300 bg-red-50/30' : 'border-slate-200'} rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm sm:text-base`;
 
   const socialLinksData = [
     { href: config.socialLinks?.instagram, label: 'Instagram', color: 'hover:text-pink-500', icon: <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /> },
@@ -160,7 +160,7 @@ const ContactPage: React.FC = () => {
       <main className="pt-24 sm:pt-32 pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-16 max-w-2xl mx-auto">
-            <span className="text-xs font-black text-teal-600 uppercase tracking-[0.3em]">{t.contact?.badge || 'Get in Touch'}</span>
+            <span className="text-xs font-black text-[#0da993] uppercase tracking-[0.3em]">{t.contact?.badge || 'Get in Touch'}</span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-slate-900 mt-4">{t.contact?.title || 'Contact Us'}</h1>
             <p className="text-base sm:text-lg text-slate-500 font-medium mt-4">{t.contact?.subtitle || 'We\'d love to hear from you. Reach out through any channel below.'}</p>
           </div>
@@ -195,7 +195,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <h3 className="text-xl font-black text-slate-900 mb-2">{t.contact?.success_title || 'Message Sent!'}</h3>
                   <p className="text-slate-500 font-medium text-sm mb-6">{t.contact?.success_desc || 'Our team will get back to you within 24 hours.'}</p>
-                  <button onClick={() => setSuccess(false)} className="px-6 py-2.5 bg-teal-600 text-white rounded-xl font-bold text-sm hover:bg-teal-700 transition-all">
+                  <button onClick={() => setSuccess(false)} className="px-6 py-2.5 bg-[#0da993] text-white rounded-xl font-bold text-sm hover:bg-[#0da993]/90 transition-all">
                     {t.contact?.send_another || 'Send Another Message'}
                   </button>
                 </div>
@@ -242,7 +242,7 @@ const ContactPage: React.FC = () => {
                     {errors.message && touched.message && <p className="text-xs text-red-500 font-bold mt-1 ms-1">{errors.message}</p>}
                   </div>
 
-                  <button type="submit" disabled={loading} className="w-full py-3.5 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-all flex items-center justify-center gap-2 disabled:opacity-60 active:scale-[0.98]">
+                  <button type="submit" disabled={loading} className="w-full py-3.5 bg-[#0da993] text-white font-bold rounded-xl hover:bg-[#0da993]/90 transition-all flex items-center justify-center gap-2 disabled:opacity-60 active:scale-[0.98]">
                     {loading && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
                     {loading ? (t.contact?.sending || 'Sending...') : (t.contact?.send || 'Send Message')}
                   </button>
@@ -254,7 +254,7 @@ const ContactPage: React.FC = () => {
             <div className="md:col-span-1 lg:col-span-2 space-y-6">
               {/* Email */}
               <a href={`mailto:${config.contactEmail}`} className="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-lg transition-all group">
-                <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-600 flex-shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-all">
+                <div className="w-12 h-12 bg-[#0da993]/10 rounded-xl flex items-center justify-center text-[#0da993] flex-shrink-0 group-hover:bg-[#0da993] group-hover:text-white transition-all">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -267,7 +267,7 @@ const ContactPage: React.FC = () => {
 
               {/* Phone */}
               <a href={`tel:${config.contactPhone}`} className="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-lg transition-all group">
-                <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-600 flex-shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-all">
+                <div className="w-12 h-12 bg-[#0da993]/10 rounded-xl flex items-center justify-center text-[#0da993] flex-shrink-0 group-hover:bg-[#0da993] group-hover:text-white transition-all">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -297,7 +297,7 @@ const ContactPage: React.FC = () => {
                 <div className="space-y-3">
                   {config.addresses.map((addr, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-[#0da993] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>

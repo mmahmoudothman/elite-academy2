@@ -46,12 +46,12 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50/30 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#0d1b2a] via-[#1a2744] to-[#0d1b2a] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8 transition-all duration-300">
           <div className="flex flex-col items-center mb-6 sm:mb-8">
             <Link to="/" className="mb-4">
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-500 ${success ? 'bg-emerald-500' : 'bg-teal-600'}`}>
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-500 ${success ? 'bg-emerald-500' : 'bg-[#0da993]'}`}>
                 {success ? (
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -102,7 +102,7 @@ const LoginPage: React.FC = () => {
                   onChange={(e) => { setEmail(e.target.value); setError(''); }}
                   placeholder={t.auth?.email_placeholder || 'Enter email or username'}
                   disabled={loading}
-                  className="w-full ps-11 pe-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all disabled:opacity-60"
+                  className="w-full ps-11 pe-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:bg-white transition-all disabled:opacity-60"
                   autoFocus
                 />
               </div>
@@ -122,7 +122,7 @@ const LoginPage: React.FC = () => {
                   onChange={(e) => { setPassword(e.target.value); setError(''); }}
                   placeholder={t.auth?.password_placeholder || 'Enter password'}
                   disabled={loading}
-                  className="w-full ps-11 pe-12 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all disabled:opacity-60"
+                  className="w-full ps-11 pe-12 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:bg-white transition-all disabled:opacity-60"
                 />
                 <button
                   type="button"
@@ -148,7 +148,7 @@ const LoginPage: React.FC = () => {
               type="submit"
               disabled={loading}
               className={`w-full py-3 font-bold rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all flex items-center justify-center gap-2 ${
-                success ? 'bg-emerald-500 text-white' : 'bg-teal-600 text-white hover:bg-teal-700 focus:ring-teal-500'
+                success ? 'bg-emerald-500 text-white' : 'bg-[#0da993] text-white hover:bg-[#0da993]/90 focus:ring-[#0da993]'
               } disabled:cursor-not-allowed`}
             >
               {loading && !success && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
@@ -157,13 +157,13 @@ const LoginPage: React.FC = () => {
           </form>
 
           <div className="mt-6 text-center space-y-3">
-            <Link to="/register" className="text-sm font-bold text-teal-600 hover:text-teal-700 transition-colors">
+            <Link to="/register" className="text-sm font-bold text-[#0da993] hover:text-[#0da993] transition-colors">
               {t.auth?.no_account || "Don't have an account? Register"}
             </Link>
             <div>
               <button
                 onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-                className="text-sm font-bold text-slate-400 hover:text-teal-600 transition-colors"
+                className="text-sm font-bold text-slate-400 hover:text-[#0da993] transition-colors"
               >
                 {language === 'en' ? 'العربية' : 'English'}
               </button>

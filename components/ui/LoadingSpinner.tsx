@@ -10,7 +10,7 @@ const sizes = { sm: 'w-5 h-5 border-2', md: 'w-8 h-8 border-3', lg: 'w-12 h-12 b
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 'md', className = '', fullPage }) => {
   const spinner = (
-    <div className={`${sizes[size]} border-teal-200 border-t-teal-600 rounded-full animate-spin ${className}`} />
+    <div className={`${sizes[size]} border-[#0da993]/20 border-t-[#0da993] rounded-full animate-spin ${className}`} />
   );
 
   if (fullPage) {

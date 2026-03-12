@@ -116,12 +116,12 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
             value={search}
             onChange={e => { setSearch(e.target.value); setPage(0); }}
             placeholder={d.search_users}
-            className="w-full sm:w-64 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all"
+            className="w-full sm:w-64 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:bg-white transition-all"
           />
           {onCreateUser && (
             <button
               onClick={() => setShowCreateForm(v => !v)}
-              className="flex-shrink-0 bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1.5"
+              className="flex-shrink-0 bg-[#0da993] hover:bg-[#0da993]/90 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -134,7 +134,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
 
       {/* Create User Form */}
       {showCreateForm && onCreateUser && (
-        <div className="p-4 sm:p-6 border-b border-slate-100 bg-teal-50/30">
+        <div className="p-4 sm:p-6 border-b border-slate-100 bg-[#0da993]/10/30">
           <h4 className="text-sm font-black text-slate-800 mb-3">{d.create_user}</h4>
           {createError && (
             <div className="mb-3 flex items-center gap-2 text-xs font-bold text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
@@ -151,7 +151,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
                 type="text"
                 value={newDisplayName}
                 onChange={e => setNewDisplayName(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]"
               />
             </div>
             <div>
@@ -161,7 +161,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
                 value={newEmail}
                 onChange={e => setNewEmail(e.target.value)}
                 placeholder="email@example.com"
-                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]"
               />
             </div>
             <div>
@@ -171,7 +171,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
                 value={newPassword}
                 onChange={e => setNewPassword(e.target.value)}
                 placeholder={d.password_min}
-                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]"
               />
             </div>
             <div>
@@ -179,7 +179,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
               <select
                 value={newRole}
                 onChange={e => setNewRole(e.target.value as UserRole)}
-                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993]"
               >
                 {ROLES.map(r => (
                   <option key={r} value={r}>{formatRole(r)}</option>
@@ -206,7 +206,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
             <button
               onClick={handleCreateUser}
               disabled={!newDisplayName.trim() || !newEmail.trim() || !newPassword.trim()}
-              className="bg-teal-600 hover:bg-teal-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-bold px-5 py-2 rounded-lg transition-colors"
+              className="bg-[#0da993] hover:bg-[#0da993]/90 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-bold px-5 py-2 rounded-lg transition-colors"
             >
               {d.create}
             </button>
@@ -225,7 +225,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
         <select
           value={roleFilter}
           onChange={e => { setRoleFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]"
         >
           <option value="">{d.all_roles}</option>
           {ROLES.map(r => (
@@ -235,7 +235,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
         <select
           value={statusFilter}
           onChange={e => { setStatusFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]"
         >
           <option value="">{d.all_status}</option>
           <option value="active">{d.active}</option>
@@ -282,7 +282,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
               <tr key={user.id} className="hover:bg-slate-50/50 transition-colors">
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-teal-50 rounded-full flex items-center justify-center text-teal-600 font-bold text-xs flex-shrink-0">
+                    <div className="w-8 h-8 bg-[#0da993]/10 rounded-full flex items-center justify-center text-[#0da993] font-bold text-xs flex-shrink-0">
                       {user.displayName.charAt(0).toUpperCase()}
                     </div>
                     <span className="font-bold text-sm text-slate-900 truncate max-w-[150px]">
@@ -336,7 +336,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
                         <select
                           value={user.role}
                           onChange={e => onChangeRole(user.id, e.target.value as UserRole)}
-                          className="text-[10px] font-bold bg-white border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                          className="text-[10px] font-bold bg-white border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[#0da993]"
                         >
                           {ROLES.map(r => (
                             <option key={r} value={r}>{formatRole(r)}</option>
@@ -351,7 +351,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
                               value={resetPasswordValue}
                               onChange={e => setResetPasswordValue(e.target.value)}
                               placeholder={d.new_password}
-                              className="w-24 text-[10px] font-bold bg-white border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                              className="w-24 text-[10px] font-bold bg-white border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[#0da993]"
                               autoFocus
                             />
                             <button
@@ -363,7 +363,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
                                 }
                               }}
                               disabled={resetPasswordValue.length < 6}
-                              className="text-[10px] font-bold bg-teal-600 text-white px-2 py-1 rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-40"
+                              className="text-[10px] font-bold bg-[#0da993] text-white px-2 py-1 rounded-lg hover:bg-[#0da993]/90 transition-colors disabled:opacity-40"
                             >
                               {d.set_password}
                             </button>
@@ -377,7 +377,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
                         ) : (
                           <button
                             onClick={() => setResetPasswordId(user.id)}
-                            className="text-slate-400 hover:text-teal-600 transition-colors"
+                            className="text-slate-400 hover:text-[#0da993] transition-colors"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />

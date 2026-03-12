@@ -98,7 +98,7 @@ const PermissionEditor: React.FC<PermissionEditorProps> = ({ permissions, onChan
                     e.stopPropagation();
                     toggleAllInModule(mod.permissions);
                   }}
-                  className="text-[10px] font-black uppercase tracking-wider text-teal-600 hover:text-teal-700 transition-colors"
+                  className="text-[10px] font-black uppercase tracking-wider text-[#0da993] hover:text-[#0da993] transition-colors"
                 >
                   {allSelected ? 'Deselect All' : 'Select All'}
                 </button>
@@ -116,7 +116,7 @@ const PermissionEditor: React.FC<PermissionEditorProps> = ({ permissions, onChan
                       checked={isPermChecked(perm)}
                       onChange={() => togglePerm(perm)}
                       disabled={disabled}
-                      className="w-4 h-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500 disabled:opacity-50"
+                      className="w-4 h-4 rounded border-slate-300 text-[#0da993] focus:ring-[#0da993] disabled:opacity-50"
                     />
                     <span className={`text-xs font-bold ${disabled ? 'text-slate-400' : 'text-slate-600'}`}>
                       {formatPermission(perm)}
@@ -240,7 +240,7 @@ const RoleManagement: React.FC = () => {
   };
 
   const inputClass =
-    'w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm';
+    'w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm';
   const labelClass = 'block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5';
 
   const selectedRoleData = selectedRole ? roles[selectedRole] : null;
@@ -267,7 +267,7 @@ const RoleManagement: React.FC = () => {
                 type="button"
                 onClick={() => handleSelectRole(key)}
                 className={`w-full text-start bg-white rounded-2xl border p-4 transition-all hover:shadow-sm ${
-                  isSelected ? 'border-teal-500 ring-2 ring-teal-500/20' : 'border-slate-100'
+                  isSelected ? 'border-[#0da993] ring-2 ring-[#0da993]/20' : 'border-slate-100'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
@@ -289,7 +289,7 @@ const RoleManagement: React.FC = () => {
                       : `${role.permissions.length} permission${role.permissions.length !== 1 ? 's' : ''}`}
                   </span>
                   {isSelected && (
-                    <span className="w-2 h-2 rounded-full bg-teal-500" />
+                    <span className="w-2 h-2 rounded-full bg-[#0da993]" />
                   )}
                 </div>
               </button>
@@ -307,15 +307,15 @@ const RoleManagement: React.FC = () => {
               setNewRolePermissions([]);
               setKeyError('');
             }}
-            className={`w-full text-center rounded-2xl border-2 border-dashed p-4 transition-all hover:border-teal-400 hover:bg-teal-50/30 ${
-              createMode ? 'border-teal-500 bg-teal-50/30' : 'border-slate-200'
+            className={`w-full text-center rounded-2xl border-2 border-dashed p-4 transition-all hover:border-[#0da993] hover:bg-[#0da993]/10/30 ${
+              createMode ? 'border-[#0da993] bg-[#0da993]/10/30' : 'border-slate-200'
             }`}
           >
             <div className="flex items-center justify-center gap-2">
-              <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-[#0da993]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
-              <span className="text-sm font-bold text-teal-600">
+              <span className="text-sm font-bold text-[#0da993]">
                 {t.dashboard?.create_role || 'Create New Role'}
               </span>
             </div>
@@ -388,7 +388,7 @@ const RoleManagement: React.FC = () => {
                   type="button"
                   onClick={handleCreateRole}
                   disabled={saving || !newRoleKey || !newRoleLabel || !!keyError}
-                  className="px-6 py-2.5 bg-teal-600 text-white rounded-xl font-bold text-sm hover:bg-teal-700 transition-all flex items-center gap-2 disabled:opacity-60"
+                  className="px-6 py-2.5 bg-[#0da993] text-white rounded-xl font-bold text-sm hover:bg-[#0da993]/90 transition-all flex items-center gap-2 disabled:opacity-60"
                 >
                   {saving && (
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -465,7 +465,7 @@ const RoleManagement: React.FC = () => {
                     type="button"
                     onClick={handleSavePermissions}
                     disabled={saving}
-                    className="px-6 py-2.5 bg-teal-600 text-white rounded-xl font-bold text-sm hover:bg-teal-700 transition-all flex items-center gap-2 disabled:opacity-60"
+                    className="px-6 py-2.5 bg-[#0da993] text-white rounded-xl font-bold text-sm hover:bg-[#0da993]/90 transition-all flex items-center gap-2 disabled:opacity-60"
                   >
                     {saving && (
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

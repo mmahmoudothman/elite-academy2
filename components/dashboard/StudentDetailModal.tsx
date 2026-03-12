@@ -33,7 +33,7 @@ type LifecycleStage = typeof LIFECYCLE_STAGES[number] | 'inactive';
 const STAGE_COLORS: Record<string, string> = {
   lead: 'bg-blue-100 text-blue-700 border-blue-200',
   prospect: 'bg-purple-100 text-purple-700 border-purple-200',
-  enrolled: 'bg-teal-100 text-teal-700 border-teal-200',
+  enrolled: 'bg-[#0da993]/15 text-[#0da993] border-[#0da993]/20',
   active: 'bg-emerald-100 text-emerald-700 border-emerald-200',
   alumni: 'bg-amber-100 text-amber-700 border-amber-200',
   inactive: 'bg-slate-100 text-slate-500 border-slate-200',
@@ -42,7 +42,7 @@ const STAGE_COLORS: Record<string, string> = {
 const STAGE_RING: Record<string, string> = {
   lead: 'ring-blue-500',
   prospect: 'ring-purple-500',
-  enrolled: 'ring-teal-500',
+  enrolled: 'ring-[#0da993]',
   active: 'ring-emerald-500',
   alumni: 'ring-amber-500',
   inactive: 'ring-slate-400',
@@ -52,7 +52,7 @@ const SOURCE_OPTIONS = ['website', 'referral', 'social', 'ad', 'other'] as const
 
 const statusColors: Record<string, string> = {
   pending: 'bg-yellow-100 text-yellow-700',
-  confirmed: 'bg-teal-100 text-teal-700',
+  confirmed: 'bg-[#0da993]/15 text-[#0da993]',
   completed: 'bg-green-100 text-green-700',
   cancelled: 'bg-red-100 text-red-700',
   paid: 'bg-green-100 text-green-700',
@@ -235,7 +235,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
   const timelineColor = (type: string) => {
     switch (type) {
       case 'create': return 'text-blue-500 bg-blue-50';
-      case 'enroll': return 'text-teal-500 bg-teal-50';
+      case 'enroll': return 'text-[#0da993] bg-[#0da993]/10';
       case 'payment': return 'text-green-500 bg-green-50';
       case 'complete': return 'text-emerald-500 bg-emerald-50';
       case 'cancel': return 'text-red-500 bg-red-50';
@@ -262,7 +262,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
         {/* Header with Avatar */}
         <div className="p-6 sm:p-8 pb-0">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 rounded-full bg-teal-600 flex items-center justify-center text-white text-2xl font-black shrink-0">
+            <div className="w-16 h-16 rounded-full bg-[#0da993] flex items-center justify-center text-white text-2xl font-black shrink-0">
               {avatarLetter}
             </div>
             <div className="min-w-0 flex-1">
@@ -278,7 +278,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                   {roleLabel(student.role)}
                 </span>
                 {student.source && (
-                  <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600">
+                  <span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-[#3d66f1]/10 text-[#3d66f1]">
                     via {student.source}
                   </span>
                 )}
@@ -289,7 +289,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
           {/* Stats Row */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
             <div className="bg-slate-50 rounded-xl p-3 text-center">
-              <p className="text-2xl font-black text-teal-600">{stats.totalCourses}</p>
+              <p className="text-2xl font-black text-[#0da993]">{stats.totalCourses}</p>
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">Enrolled</p>
             </div>
             <div className="bg-slate-50 rounded-xl p-3 text-center">
@@ -354,7 +354,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                   onChange={e => setTagInput(e.target.value)}
                   onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); handleAddTag(); } }}
                   placeholder="Add tag..."
-                  className="w-24 text-xs bg-transparent border border-dashed border-slate-300 rounded-full px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-teal-500 focus:border-teal-500"
+                  className="w-24 text-xs bg-transparent border border-dashed border-slate-300 rounded-full px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-[#0da993] focus:border-[#0da993]"
                 />
               </div>
             </div>
@@ -370,7 +370,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                 onClick={() => setActiveTab(tab.key)}
                 className={`px-4 py-3 text-xs font-black uppercase tracking-wider border-b-2 transition-all whitespace-nowrap ${
                   activeTab === tab.key
-                    ? 'border-teal-500 text-teal-600'
+                    ? 'border-[#0da993] text-[#0da993]'
                     : 'border-transparent text-slate-400 hover:text-slate-600'
                 }`}
               >
@@ -412,17 +412,17 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                   <div>
                     <label className="block text-xs font-semibold text-slate-500 mb-1">{t.dashboard?.displayName || 'Display Name'}</label>
                     <input type="text" value={displayName} onChange={e => handleFieldChange(setDisplayName, e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-shadow" />
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent transition-shadow" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-500 mb-1">{t.dashboard?.phone || 'Phone'}</label>
                     <input type="text" value={phone} onChange={e => handleFieldChange(setPhone, e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-shadow" />
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent transition-shadow" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-500 mb-1">{t.dashboard?.country || 'Country'}</label>
                     <select value={country} onChange={e => handleFieldChange(setCountry, e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-shadow">
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent transition-shadow">
                       <option value="">{t.dashboard?.selectCountry || 'Select country'}</option>
                       {COUNTRIES.map(c => <option key={c.code} value={c.code}>{c.label}</option>)}
                     </select>
@@ -430,7 +430,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                   <div>
                     <label className="block text-xs font-semibold text-slate-500 mb-1">{t.dashboard?.role || 'Role'}</label>
                     <select value={role} onChange={e => handleRoleChange(e.target.value as UserRole)} disabled={isSelf}
-                      className={`w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-shadow ${isSelf ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                      className={`w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent transition-shadow ${isSelf ? 'opacity-50 cursor-not-allowed' : ''}`}>
                       {ROLES.map(r => <option key={r} value={r}>{roleLabel(r)}</option>)}
                     </select>
                     {isSelf && <p className="text-xs text-amber-600 mt-1">{t.dashboard?.cannotChangeOwnRole || 'You cannot change your own role.'}</p>}
@@ -438,7 +438,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                   <div>
                     <label className="block text-xs font-semibold text-slate-500 mb-1">Source</label>
                     <select value={source} onChange={e => { setSource(e.target.value); setHasChanges(true); }}
-                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-shadow">
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent transition-shadow">
                       <option value="">Select source</option>
                       {SOURCE_OPTIONS.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
                     </select>
@@ -546,7 +546,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                 onChange={e => { setNotes(e.target.value); setHasChanges(true); }}
                 rows={6}
                 placeholder="Add internal notes about this student..."
-                className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-shadow resize-none"
+                className="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:border-transparent transition-shadow resize-none"
               />
               {student.notes && (
                 <p className="text-[10px] text-slate-400">
@@ -565,7 +565,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
           </button>
           <button onClick={handleSave} disabled={!hasChanges}
             className={`px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all ${
-              hasChanges ? 'bg-teal-600 hover:bg-teal-700 shadow-lg shadow-teal-600/20' : 'bg-slate-300 cursor-not-allowed'
+              hasChanges ? 'bg-[#0da993] hover:bg-[#0da993]/90 shadow-lg shadow-[#0da993]/20' : 'bg-slate-300 cursor-not-allowed'
             }`}>
             {t.dashboard?.saveChanges || 'Save Changes'}
           </button>

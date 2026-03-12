@@ -34,8 +34,8 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqs: rawFaqs = [] }) => {
     <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6">
-            <span className="text-teal-700 font-bold text-[10px] sm:text-xs uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 bg-[#0da993]/10 border border-[#0da993]/15 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6">
+            <span className="text-[#0da993] font-bold text-[10px] sm:text-xs uppercase tracking-widest">
               {t.faq?.badge || (language === 'ar' ? 'الأسئلة الشائعة' : 'FAQ')}
             </span>
           </div>
@@ -50,7 +50,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqs: rawFaqs = [] }) => {
               onClick={() => setActiveCategory('all')}
               className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
                 activeCategory === 'all'
-                  ? 'bg-teal-600 text-white'
+                  ? 'bg-[#0da993] text-white'
                   : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
               }`}
             >
@@ -62,7 +62,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqs: rawFaqs = [] }) => {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
                   activeCategory === cat
-                    ? 'bg-teal-600 text-white'
+                    ? 'bg-[#0da993] text-white'
                     : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
                 }`}
               >

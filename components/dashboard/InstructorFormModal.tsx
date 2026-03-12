@@ -69,7 +69,7 @@ const InstructorFormModal: React.FC<InstructorFormModalProps> = ({ isOpen, instr
               type="text"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
             />
           </div>
 
@@ -81,7 +81,7 @@ const InstructorFormModal: React.FC<InstructorFormModalProps> = ({ isOpen, instr
                 type="text"
                 value={form.role}
                 onChange={(e) => setForm({ ...form, role: e.target.value })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
             <div className="space-y-1">
@@ -91,7 +91,7 @@ const InstructorFormModal: React.FC<InstructorFormModalProps> = ({ isOpen, instr
                 type="text"
                 value={form.specialization}
                 onChange={(e) => setForm({ ...form, specialization: e.target.value })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
           </div>
@@ -104,7 +104,7 @@ const InstructorFormModal: React.FC<InstructorFormModalProps> = ({ isOpen, instr
               value={form.experience}
               onChange={(e) => setForm({ ...form, experience: e.target.value })}
               placeholder="e.g. 15+ Years Executive Experience"
-              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
             />
           </div>
 
@@ -127,7 +127,7 @@ const InstructorFormModal: React.FC<InstructorFormModalProps> = ({ isOpen, instr
               onChange={(e) => setQualText(e.target.value)}
               rows={3}
               placeholder="PhD in Strategic Management&#10;Former McKinsey Consultant"
-              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none"
+              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none"
             />
           </div>
 
@@ -137,7 +137,7 @@ const InstructorFormModal: React.FC<InstructorFormModalProps> = ({ isOpen, instr
               value={form.bio}
               onChange={(e) => setForm({ ...form, bio: e.target.value })}
               rows={3}
-              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none"
+              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none"
             />
           </div>
 
@@ -148,13 +148,13 @@ const InstructorFormModal: React.FC<InstructorFormModalProps> = ({ isOpen, instr
               value={form.videoUrl || ''}
               onChange={(e) => setForm({ ...form, videoUrl: e.target.value })}
               placeholder="https://..."
-              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all mt-2"
+            className="w-full bg-[#0da993] text-white py-3 rounded-xl font-black text-sm hover:bg-[#0da993]/90 transition-all mt-2"
           >
             {t.dashboard.save}
           </button>

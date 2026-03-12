@@ -49,7 +49,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
     <section id="courses" className="py-16 sm:py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-teal-600 font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs mb-3 sm:mb-4">{t.courses.badge}</h2>
+          <h2 className="text-[#0da993] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs mb-3 sm:mb-4">{t.courses.badge}</h2>
           <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black font-heading text-slate-900">{t.courses.title}</h3>
         </div>
 
@@ -61,7 +61,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t.courses?.search_programs || (language === 'ar' ? 'ابحث عن البرامج...' : 'Search programs...')}
-              className="w-full ps-11 pe-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all"
+              className="w-full ps-11 pe-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:bg-white transition-all"
             />
           </div>
         </div>
@@ -73,8 +73,8 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
               onClick={() => setActiveCategory(category)}
               className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-bold text-xs sm:text-sm transition-all border ${
                 activeCategory === category
-                  ? 'bg-teal-600 border-teal-600 text-white shadow-lg'
-                  : 'bg-white border-slate-200 text-slate-500 hover:border-teal-600'
+                  ? 'bg-[#0da993] border-[#0da993] text-white shadow-lg'
+                  : 'bg-white border-slate-200 text-slate-500 hover:border-[#0da993]'
               }`}
             >
               {category === 'All' ? (t.courses?.all_category || (language === 'ar' ? 'الكل' : 'All')) : category}
@@ -101,7 +101,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
                     showPlayOverlay={false}
                   />
                   <div className="absolute top-3 start-3 sm:top-4 sm:start-4">
-                    <span className="bg-white/90 backdrop-blur-sm text-teal-600 text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 sm:px-3 rounded-lg shadow-sm">
+                    <span className="bg-white/90 backdrop-blur-sm text-[#0da993] text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 sm:px-3 rounded-lg shadow-sm">
                       {course.category}
                     </span>
                   </div>
@@ -113,7 +113,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
                     <span className="text-xs sm:text-sm font-bold text-slate-900">{course.rating}</span>
                   </div>
 
-                  <h4 className="text-base sm:text-lg lg:text-xl font-black font-heading mb-2 sm:mb-3 text-slate-900 group-hover:text-teal-600 transition-colors leading-snug">
+                  <h4 className="text-base sm:text-lg lg:text-xl font-black font-heading mb-2 sm:mb-3 text-slate-900 group-hover:text-[#3d66f1] transition-colors leading-snug">
                     {course.title}
                   </h4>
 
@@ -123,12 +123,12 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
 
                   <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-slate-50 gap-3">
                     <div className="flex flex-col min-w-0">
-                      <span className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 truncate">{course.price} <span className="text-[10px] sm:text-xs text-teal-600 font-bold">{course.currency}</span></span>
+                      <span className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 truncate">{course.price} <span className="text-[10px] sm:text-xs text-[#0da993] font-bold">{course.currency}</span></span>
                     </div>
                     <button
                       onClick={(e) => handleEnrollClick(e, course)}
                       disabled={course.capacity > 0 && course.enrolled >= course.capacity}
-                      className={`px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-3.5 rounded-lg sm:rounded-xl font-black text-[10px] sm:text-xs transition-all shadow-lg shadow-slate-100 flex-shrink-0 ${course.capacity > 0 && course.enrolled >= course.capacity ? 'bg-slate-400 text-white cursor-not-allowed' : 'bg-slate-900 text-white hover:bg-teal-600 active:scale-95'}`}
+                      className={`px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-3.5 rounded-lg sm:rounded-xl font-black text-[10px] sm:text-xs transition-all shadow-lg shadow-slate-100 flex-shrink-0 ${course.capacity > 0 && course.enrolled >= course.capacity ? 'bg-slate-400 text-white cursor-not-allowed' : 'bg-slate-900 text-white hover:bg-[#0da993] active:scale-95'}`}
                     >
                       {course.capacity > 0 && course.enrolled >= course.capacity ? (t.enrollment?.full_short || 'Full') : t.courses.enroll}
                     </button>
@@ -165,7 +165,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
 
               <div className="space-y-5 sm:space-y-6 lg:space-y-8">
                 <div className="space-y-3 sm:space-y-4 pe-8">
-                  <span className="bg-teal-50 text-teal-600 text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-2.5 sm:px-3 py-1 rounded-lg inline-block">
+                  <span className="bg-[#0da993]/10 text-[#0da993] text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-2.5 sm:px-3 py-1 rounded-lg inline-block">
                     {selectedCourse.category}
                   </span>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-black font-heading text-slate-900 leading-tight">
@@ -184,7 +184,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
                 </div>
 
                 <div className="space-y-3 sm:space-y-4">
-                  <h4 className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-teal-600">{t.courses.details}</h4>
+                  <h4 className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-[#0da993]">{t.courses.details}</h4>
                   <p className="text-slate-600 leading-relaxed font-medium text-sm sm:text-base lg:text-lg">
                     {selectedCourse.description}
                   </p>
@@ -196,7 +196,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                       {selectedCourse.prerequisites.map((pre, i) => (
                         <li key={i} className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold text-slate-700 bg-slate-50 px-3 sm:px-4 py-2 rounded-lg sm:rounded-xl">
-                          <span className="w-1.5 h-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0da993]/100 flex-shrink-0" />
                           {pre}
                         </li>
                       ))}

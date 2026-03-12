@@ -15,7 +15,7 @@ const NotFoundPage: React.FC = () => {
             404
           </h1>
           <div className="absolute inset-0 flex items-center justify-center">
-            <h2 className="text-5xl sm:text-7xl font-black font-heading text-teal-600">
+            <h2 className="text-5xl sm:text-7xl font-black font-heading text-[#0da993]">
               404
             </h2>
           </div>
@@ -37,7 +37,7 @@ const NotFoundPage: React.FC = () => {
         <div className="pt-4">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 bg-teal-600 text-white px-8 py-4 rounded-xl font-black text-sm sm:text-base hover:bg-teal-700 transition-all shadow-lg hover:shadow-xl active:scale-95"
+            className="inline-flex items-center gap-2 bg-[#0da993] text-white px-8 py-4 rounded-xl font-black text-sm sm:text-base hover:bg-[#0da993]/90 transition-all shadow-lg hover:shadow-xl active:scale-95"
           >
             <svg
               className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`}
@@ -59,7 +59,7 @@ const NotFoundPage: React.FC = () => {
         {/* Decorative element */}
         <div className="pt-8">
           <div className="flex items-center justify-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></div>
+            <div className="w-2 h-2 rounded-full bg-[#0da993] animate-pulse"></div>
             <div className="w-2 h-2 rounded-full bg-slate-300 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
             <div className="w-2 h-2 rounded-full bg-slate-200 animate-pulse" style={{ animationDelay: '0.4s' }}></div>
           </div>

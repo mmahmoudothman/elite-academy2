@@ -35,7 +35,7 @@ const InvoiceView: React.FC<InvoiceViewProps> = ({ enrollment, isModal = false, 
         </div>
         <div className="text-end">
           <p className="text-lg font-black text-slate-900">{t.invoice?.invoice_title || 'INVOICE'}</p>
-          <p className="text-sm font-mono text-teal-600 font-bold">{enrollment.invoiceNumber || 'N/A'}</p>
+          <p className="text-sm font-mono text-[#0da993] font-bold">{enrollment.invoiceNumber || 'N/A'}</p>
           <p className="text-xs text-slate-400 mt-1">{new Date(enrollment.enrolledAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
         </div>
       </div>

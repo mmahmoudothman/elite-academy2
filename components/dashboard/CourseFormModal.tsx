@@ -86,7 +86,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
               type="text"
               value={form.title}
               onChange={(e) => { setForm({ ...form, title: e.target.value }); setErrors((prev) => ({ ...prev, title: '' })); }}
-              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.title ? 'border-red-400' : 'border-slate-100'}`}
+              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.title ? 'border-red-400' : 'border-slate-100'}`}
             />
             {errors.title && <p className="text-red-500 text-xs mt-1">{errors.title}</p>}
           </div>
@@ -97,7 +97,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
               <select
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               >
                 <option value="">Select Category</option>
                 {categories.map(c => (
@@ -113,7 +113,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
               <select
                 value={form.level}
                 onChange={(e) => setForm({ ...form, level: e.target.value as Course['level'] })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               >
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
@@ -127,7 +127,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
             <select
               value={form.instructor}
               onChange={(e) => { setForm({ ...form, instructor: e.target.value }); setErrors((prev) => ({ ...prev, instructor: '' })); }}
-              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.instructor ? 'border-red-400' : 'border-slate-100'}`}
+              className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.instructor ? 'border-red-400' : 'border-slate-100'}`}
             >
               <option value="">{t.dashboard?.select_instructor || 'Select Instructor'}</option>
               {instructors.map(i => <option key={i.name} value={i.name}>{i.name}</option>)}
@@ -146,7 +146,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
                 min="0"
                 value={form.price}
                 onChange={(e) => { setForm({ ...form, price: Number(e.target.value) }); setErrors((prev) => ({ ...prev, price: '' })); }}
-                className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.price ? 'border-red-400' : 'border-slate-100'}`}
+                className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.price ? 'border-red-400' : 'border-slate-100'}`}
               />
               {errors.price && <p className="text-red-500 text-xs mt-1">{errors.price}</p>}
             </div>
@@ -155,7 +155,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
               <select
                 value={form.currency}
                 onChange={(e) => setForm({ ...form, currency: e.target.value as Course['currency'] })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               >
                 <option value="EGP">EGP</option>
                 <option value="SAR">SAR</option>
@@ -171,7 +171,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
                 value={form.duration}
                 onChange={(e) => setForm({ ...form, duration: e.target.value })}
                 placeholder="e.g. 8 weeks, 3 months"
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
           </div>
@@ -184,7 +184,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
                 min="1"
                 value={form.capacity ?? 200}
                 onChange={(e) => { setForm({ ...form, capacity: Number(e.target.value) }); setErrors((prev) => ({ ...prev, capacity: '' })); }}
-                className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.capacity ? 'border-red-400' : 'border-slate-100'}`}
+                className={`w-full bg-slate-50 border rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm ${errors.capacity ? 'border-red-400' : 'border-slate-100'}`}
               />
               {errors.capacity && <p className="text-red-500 text-xs mt-1">{errors.capacity}</p>}
             </div>
@@ -197,7 +197,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
                 step="0.1"
                 value={form.rating}
                 onChange={(e) => setForm({ ...form, rating: Number(e.target.value) })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
             <div className="space-y-1">
@@ -207,7 +207,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
                 min="0"
                 value={form.enrolled}
                 onChange={(e) => setForm({ ...form, enrolled: Number(e.target.value) })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
           </div>
@@ -219,7 +219,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
                 type="date"
                 value={form.startDate ? new Date(form.startDate).toISOString().split('T')[0] : ''}
                 onChange={(e) => setForm({ ...form, startDate: e.target.value ? new Date(e.target.value).getTime() : undefined })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
             <div className="space-y-1">
@@ -228,7 +228,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
                 type="date"
                 value={form.endDate ? new Date(form.endDate).toISOString().split('T')[0] : ''}
                 onChange={(e) => setForm({ ...form, endDate: e.target.value ? new Date(e.target.value).getTime() : undefined })}
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
             <div className="space-y-1">
@@ -238,7 +238,7 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
                 value={form.schedule || ''}
                 onChange={(e) => setForm({ ...form, schedule: e.target.value })}
                 placeholder="e.g. Mon/Wed 6-8 PM"
-                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
+                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               />
             </div>
           </div>
@@ -261,13 +261,13 @@ const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClo
               value={form.description || ''}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
-              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none"
+              className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm resize-none"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all mt-2"
+            className="w-full bg-[#0da993] text-white py-3 rounded-xl font-black text-sm hover:bg-[#0da993]/90 transition-all mt-2"
           >
             {t.dashboard.save}
           </button>

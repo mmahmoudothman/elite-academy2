@@ -66,7 +66,7 @@ const LandingPage: React.FC = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
                   <div className="lg:col-span-5 space-y-5 sm:space-y-8">
-                    <h2 className="text-xs sm:text-sm font-black text-teal-600 uppercase tracking-[0.2em] sm:tracking-[0.3em]">{t.advantage.badge}</h2>
+                    <h2 className="text-xs sm:text-sm font-black text-[#0da993] uppercase tracking-[0.2em] sm:tracking-[0.3em]">{t.advantage.badge}</h2>
                     <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black font-heading leading-tight text-slate-900">
                       {t.advantage.title1} <br />
                       <span className="text-slate-400">{t.advantage.title2}</span>
@@ -80,7 +80,7 @@ const LandingPage: React.FC = () => {
                         { title: t.advantage.item3_title, desc: t.advantage.item3_desc, icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg> },
                       ].map((item, i) => (
                         <div key={i} className="flex gap-3 sm:gap-4 items-start p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:shadow-slate-100 group">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center text-teal-600 shadow-sm border border-slate-200 group-hover:bg-teal-600 group-hover:text-white transition-all flex-shrink-0">{item.icon}</div>
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center text-[#0da993] shadow-sm border border-slate-200 group-hover:bg-[#0da993] group-hover:text-white transition-all flex-shrink-0">{item.icon}</div>
                           <div className="min-w-0">
                             <h4 className="font-black text-slate-900 mb-1 text-sm sm:text-base">{item.title}</h4>
                             <p className="text-xs sm:text-sm text-slate-500 font-medium">{item.desc}</p>
@@ -91,7 +91,7 @@ const LandingPage: React.FC = () => {
                   </div>
 
                   <div className="lg:col-span-7 grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 relative">
-                    <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-teal-50 rounded-full blur-[120px] opacity-40"></div>
+                    <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#0da993]/10 rounded-full blur-[120px] opacity-40"></div>
                     <div className="space-y-3 sm:space-y-4 lg:space-y-6 pt-6 sm:pt-8 lg:pt-12">
                       <div className="rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl">
                         <img src="https://images.unsplash.com/photo-1573496130141-20972021042f?q=80&w=2069" alt="Executive" className="w-full h-full object-cover" loading="lazy" />
@@ -102,9 +102,9 @@ const LandingPage: React.FC = () => {
                       </div>
                     </div>
                     <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-                      <div className="bg-teal-600 p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] text-white">
+                      <div className="innovative-gradient p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] text-white">
                         <h5 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-1">{t.analytics.stat2_val}</h5>
-                        <p className="text-[9px] sm:text-[10px] lg:text-xs font-bold text-teal-100 uppercase tracking-widest">{t.advantage.alumni}</p>
+                        <p className="text-[9px] sm:text-[10px] lg:text-xs font-bold text-white/80 uppercase tracking-widest">{t.advantage.alumni}</p>
                       </div>
                       <div className="rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl">
                         <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070" alt="Learning" className="w-full h-full object-cover" loading="lazy" />
@@ -122,7 +122,7 @@ const LandingPage: React.FC = () => {
         <section id="enterprise" className="py-20 sm:py-28 lg:py-40 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8 lg:space-y-10">
-              <h2 className="text-xs sm:text-sm font-black text-teal-600 uppercase tracking-[0.2em] sm:tracking-[0.4em]">{t.enterprise.badge}</h2>
+              <h2 className="text-xs sm:text-sm font-black text-[#0da993] uppercase tracking-[0.2em] sm:tracking-[0.4em]">{t.enterprise.badge}</h2>
               <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black font-heading leading-none text-slate-900">{t.enterprise.title}</h3>
               <p className="text-base sm:text-lg lg:text-xl text-slate-500 font-medium leading-relaxed px-2">{t.enterprise.desc}</p>
               <div className="pt-6 sm:pt-8 lg:pt-10 flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-10">
@@ -150,7 +150,7 @@ const LandingPage: React.FC = () => {
             <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:w-2/3 space-y-4 sm:space-y-6 lg:space-y-8">
                 <h4 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-black font-heading text-white leading-none">{t.apply_section.title}</h4>
-                <p className="text-base sm:text-lg lg:text-xl text-teal-50 font-medium max-w-xl mx-auto lg:mx-0">{t.apply_section.desc}</p>
+                <p className="text-base sm:text-lg lg:text-xl text-white/80 font-medium max-w-xl mx-auto lg:mx-0">{t.apply_section.desc}</p>
               </div>
               <div className="lg:w-1/3 w-full flex flex-col gap-3 sm:gap-4">
                 <button onClick={handleApplyClick} className="bg-white text-slate-900 px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-xl sm:rounded-2xl lg:rounded-[2rem] font-black text-sm sm:text-base lg:text-xl hover:bg-slate-100 transition-all shadow-2xl active:scale-95">{t.apply_section.cta_primary}</button>

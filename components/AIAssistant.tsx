@@ -48,7 +48,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ courses = [] }) => {
     <div className={`fixed bottom-4 sm:bottom-6 ${language === 'ar' ? 'left-3 sm:left-6' : 'right-3 sm:right-6'} z-[100] transition-all`}>
       {isOpen ? (
         <div className="bg-white w-[calc(100vw-1.5rem)] sm:w-[350px] max-w-[350px] h-[60vh] sm:h-[500px] max-h-[500px] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 animate-in slide-in-from-bottom-5">
-          <div className="p-4 bg-indigo-600 text-white flex justify-between items-center">
+          <div className="p-4 bg-[#3d66f1] text-white flex justify-between items-center">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                 <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,7 +69,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ courses = [] }) => {
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                   msg.role === 'user' 
-                    ? 'bg-indigo-600 text-white rounded-tr-none rtl:rounded-tr-2xl rtl:rounded-tl-none' 
+                    ? 'bg-[#3d66f1] text-white rounded-tr-none rtl:rounded-tr-2xl rtl:rounded-tl-none' 
                     : 'bg-white text-slate-700 shadow-sm border border-slate-100 rounded-tl-none rtl:rounded-tl-2xl rtl:rounded-tr-none'
                 }`}>
                   {msg.text}
@@ -97,12 +97,12 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ courses = [] }) => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder={t.ai_assistant?.ask_placeholder || "Ask about courses..."}
-                className="flex-1 bg-slate-100 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none rtl:text-right"
+                className="flex-1 bg-slate-100 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-[#3d66f1] outline-none rtl:text-right"
               />
               <button 
                 onClick={handleSend}
                 disabled={isLoading}
-                className="bg-indigo-600 text-white p-2 rounded-xl hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                className="bg-[#3d66f1] text-white p-2 rounded-xl hover:bg-[#4167e0] disabled:opacity-50 transition-colors"
               >
                 <svg className={`w-5 h-5 ${language === 'ar' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -114,7 +114,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ courses = [] }) => {
       ) : (
         <button 
           onClick={() => setIsOpen(true)}
-          className="w-16 h-16 bg-indigo-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 group relative"
+          className="w-16 h-16 bg-[#3d66f1] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 group relative"
         >
           <div className={`absolute -top-12 ${language === 'ar' ? 'left-0' : 'right-0'} bg-slate-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>
             {t.ai_assistant?.help_tooltip || 'How can I help you?'}

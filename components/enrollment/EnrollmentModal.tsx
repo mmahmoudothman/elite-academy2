@@ -218,7 +218,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
   const stepIndex = steps.findIndex(s => s.key === step);
 
   const inputClass = (field: string) =>
-    `w-full bg-slate-50 border ${errors[field] ? 'border-red-300' : 'border-slate-200'} rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm`;
+    `w-full bg-slate-50 border ${errors[field] ? 'border-red-300' : 'border-slate-200'} rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm`;
 
   return (
     <div className="fixed inset-0 z-[160] overflow-y-auto" style={{ animation: 'modalFadeIn 0.3s ease-out' }} onClick={handleClose}>
@@ -235,15 +235,15 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
             {steps.map((s, i) => (
               <React.Fragment key={s.key}>
                 <div className="flex flex-col items-center" style={{ minWidth: 48 }}>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black transition-all ${i < stepIndex ? 'bg-teal-600 text-white' : i === stepIndex ? 'bg-teal-600 text-white ring-4 ring-teal-100' : 'bg-slate-100 text-slate-400'}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black transition-all ${i < stepIndex ? 'bg-[#0da993] text-white' : i === stepIndex ? 'bg-[#0da993] text-white ring-4 ring-[#0da993]/15' : 'bg-slate-100 text-slate-400'}`}>
                     {i < stepIndex ? (
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                     ) : i + 1}
                   </div>
-                  <span className={`text-[9px] font-bold mt-1 ${i <= stepIndex ? 'text-teal-600' : 'text-slate-400'}`}>{s.label}</span>
+                  <span className={`text-[9px] font-bold mt-1 ${i <= stepIndex ? 'text-[#0da993]' : 'text-slate-400'}`}>{s.label}</span>
                 </div>
                 {i < steps.length - 1 && (
-                  <div className={`flex-1 h-0.5 mt-[-12px] ${i < stepIndex ? 'bg-teal-600' : 'bg-slate-200'}`} />
+                  <div className={`flex-1 h-0.5 mt-[-12px] ${i < stepIndex ? 'bg-[#0da993]' : 'bg-slate-200'}`} />
                 )}
               </React.Fragment>
             ))}
@@ -253,7 +253,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
           {step === 'details' && (
             <div className="space-y-5" style={{ animation: 'modalFadeIn 0.25s ease-out' }}>
               <div>
-                <span className="bg-teal-50 text-teal-600 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-lg">{course.category}</span>
+                <span className="bg-[#0da993]/10 text-[#0da993] text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-lg">{course.category}</span>
                 <h3 className="text-xl font-black text-slate-900 mt-3">{course.title}</h3>
                 <p className="text-sm text-slate-500 mt-2">{course.description}</p>
               </div>
@@ -272,14 +272,14 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                 </div>
                 <div className="bg-slate-50 rounded-xl p-3">
                   <p className="text-[10px] text-slate-400 font-bold uppercase">{t.enrollment?.price || 'Price'}</p>
-                  <p className="text-sm font-black text-teal-600">{course.price} {course.currency}</p>
+                  <p className="text-sm font-black text-[#0da993]">{course.price} {course.currency}</p>
                 </div>
               </div>
 
               {/* Available spots */}
               <div className="bg-slate-50 rounded-xl p-3 flex items-center justify-between">
                 <span className="text-sm font-bold text-slate-600">{t.enrollment?.available_spots || 'Available Spots'}</span>
-                <span className={`text-sm font-black ${availableSpots <= 5 && availableSpots > 0 ? 'text-amber-600' : availableSpots === 0 ? 'text-red-600' : 'text-teal-600'}`}>
+                <span className={`text-sm font-black ${availableSpots <= 5 && availableSpots > 0 ? 'text-amber-600' : availableSpots === 0 ? 'text-red-600' : 'text-[#0da993]'}`}>
                   {availableSpots === Infinity ? 'Unlimited' : availableSpots}
                 </span>
               </div>
@@ -295,7 +295,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                   <p className="text-sm font-bold text-blue-700">{t.enrollment?.already_enrolled || 'You are already enrolled in this course'}</p>
                 </div>
               ) : (
-                <button onClick={handleNext} className="w-full py-3.5 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-all active:scale-[0.98]">
+                <button onClick={handleNext} className="w-full py-3.5 bg-[#0da993] text-white font-bold rounded-xl hover:bg-[#0da993]/90 transition-all active:scale-[0.98]">
                   {t.enrollment?.continue || 'Continue Enrollment'}
                 </button>
               )}
@@ -307,7 +307,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
             <div className="space-y-4" style={{ animation: 'modalFadeIn 0.25s ease-out' }}>
               <h3 className="text-lg font-black text-slate-900">{t.enrollment?.your_info || 'Your Information'}</h3>
               {user && (
-                <div className="bg-teal-50 border border-teal-100 rounded-xl px-3 py-2 text-xs font-bold text-teal-700">
+                <div className="bg-[#0da993]/10 border border-[#0da993]/15 rounded-xl px-3 py-2 text-xs font-bold text-[#0da993]">
                   {t.enrollment?.prefilled || 'Pre-filled from your profile. You can edit if needed.'}
                 </div>
               )}
@@ -345,7 +345,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
               </div>
               <div className="flex gap-3 pt-2">
                 <button onClick={handleBack} className="flex-1 py-3 border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-all">{t.enrollment?.back || 'Back'}</button>
-                <button onClick={handleNext} className="flex-1 py-3 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-all">{t.enrollment?.next || 'Next'}</button>
+                <button onClick={handleNext} className="flex-1 py-3 bg-[#0da993] text-white font-bold rounded-xl hover:bg-[#0da993]/90 transition-all">{t.enrollment?.next || 'Next'}</button>
               </div>
             </div>
           )}
@@ -360,9 +360,9 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                 <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">{t.enrollment?.method || 'Payment Method'}</label>
                 <div className="space-y-2">
                   {/* Bank Transfer */}
-                  <label className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${form.paymentMethod === 'bank_transfer' ? 'border-teal-500 bg-teal-50/50' : 'border-slate-200 hover:border-slate-300'}`}>
-                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${form.paymentMethod === 'bank_transfer' ? 'border-teal-600' : 'border-slate-300'}`}>
-                      {form.paymentMethod === 'bank_transfer' && <div className="w-2.5 h-2.5 rounded-full bg-teal-600" />}
+                  <label className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${form.paymentMethod === 'bank_transfer' ? 'border-[#0da993] bg-[#0da993]/5' : 'border-slate-200 hover:border-slate-300'}`}>
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${form.paymentMethod === 'bank_transfer' ? 'border-[#0da993]' : 'border-slate-300'}`}>
+                      {form.paymentMethod === 'bank_transfer' && <div className="w-2.5 h-2.5 rounded-full bg-[#0da993]" />}
                     </div>
                     <div className="flex-1" onClick={() => update('paymentMethod', 'bank_transfer')}>
                       <div className="flex items-center gap-2">
@@ -378,7 +378,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                           <p>SWIFT: NBEGEGCX</p>
                           <div className="mt-2">
                             <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{t.enrollment?.transfer_reference || 'Transfer Reference'}</label>
-                            <input value={form.paymentReference} onChange={e => update('paymentReference', e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:border-teal-500 outline-none" placeholder="Enter transfer reference..." />
+                            <input value={form.paymentReference} onChange={e => update('paymentReference', e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:border-[#0da993] outline-none" placeholder="Enter transfer reference..." />
                           </div>
                         </div>
                       )}
@@ -386,9 +386,9 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                   </label>
 
                   {/* Credit Card */}
-                  <label className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${form.paymentMethod === 'credit_card' ? 'border-teal-500 bg-teal-50/50' : 'border-slate-200 hover:border-slate-300'}`}>
-                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${form.paymentMethod === 'credit_card' ? 'border-teal-600' : 'border-slate-300'}`}>
-                      {form.paymentMethod === 'credit_card' && <div className="w-2.5 h-2.5 rounded-full bg-teal-600" />}
+                  <label className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${form.paymentMethod === 'credit_card' ? 'border-[#0da993] bg-[#0da993]/5' : 'border-slate-200 hover:border-slate-300'}`}>
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${form.paymentMethod === 'credit_card' ? 'border-[#0da993]' : 'border-slate-300'}`}>
+                      {form.paymentMethod === 'credit_card' && <div className="w-2.5 h-2.5 rounded-full bg-[#0da993]" />}
                     </div>
                     <div className="flex-1" onClick={() => update('paymentMethod', 'credit_card')}>
                       <div className="flex items-center gap-2">
@@ -399,16 +399,16 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                         <div className="mt-3 space-y-2">
                           <div>
                             <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{t.enrollment?.card_number || 'Card Number'}</label>
-                            <input value={form.cardNumber} onChange={e => update('cardNumber', e.target.value.replace(/\D/g, '').slice(0, 16))} className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:border-teal-500 outline-none" placeholder="1234 5678 9012 3456" />
+                            <input value={form.cardNumber} onChange={e => update('cardNumber', e.target.value.replace(/\D/g, '').slice(0, 16))} className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:border-[#0da993] outline-none" placeholder="1234 5678 9012 3456" />
                           </div>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             <div>
                               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{t.enrollment?.card_expiry || 'Expiry'}</label>
-                              <input value={form.cardExpiry} onChange={e => update('cardExpiry', e.target.value.slice(0, 5))} className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:border-teal-500 outline-none" placeholder="MM/YY" />
+                              <input value={form.cardExpiry} onChange={e => update('cardExpiry', e.target.value.slice(0, 5))} className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:border-[#0da993] outline-none" placeholder="MM/YY" />
                             </div>
                             <div>
                               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">CVV</label>
-                              <input value={form.cardCvv} onChange={e => update('cardCvv', e.target.value.replace(/\D/g, '').slice(0, 4))} type="password" className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:border-teal-500 outline-none" placeholder="***" />
+                              <input value={form.cardCvv} onChange={e => update('cardCvv', e.target.value.replace(/\D/g, '').slice(0, 4))} type="password" className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:border-[#0da993] outline-none" placeholder="***" />
                             </div>
                           </div>
                         </div>
@@ -417,9 +417,9 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                   </label>
 
                   {/* Cash */}
-                  <label className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${form.paymentMethod === 'cash' ? 'border-teal-500 bg-teal-50/50' : 'border-slate-200 hover:border-slate-300'}`}>
-                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${form.paymentMethod === 'cash' ? 'border-teal-600' : 'border-slate-300'}`}>
-                      {form.paymentMethod === 'cash' && <div className="w-2.5 h-2.5 rounded-full bg-teal-600" />}
+                  <label className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${form.paymentMethod === 'cash' ? 'border-[#0da993] bg-[#0da993]/5' : 'border-slate-200 hover:border-slate-300'}`}>
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${form.paymentMethod === 'cash' ? 'border-[#0da993]' : 'border-slate-300'}`}>
+                      {form.paymentMethod === 'cash' && <div className="w-2.5 h-2.5 rounded-full bg-[#0da993]" />}
                     </div>
                     <div className="flex-1" onClick={() => update('paymentMethod', 'cash')}>
                       <div className="flex items-center gap-2">
@@ -444,13 +444,13 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
               <div>
                 <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{t.enrollment?.discount_code || 'Promo / Discount Code'}</label>
                 <div className="flex gap-2">
-                  <input value={form.discountCode} onChange={e => { update('discountCode', e.target.value); if (discountApplied) { setDiscountApplied(false); setDiscountAmount(0); } }} className={`flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:border-teal-500 outline-none ${discountApplied ? 'border-green-300 bg-green-50' : ''}`} placeholder="Enter code..." disabled={discountApplied} />
+                  <input value={form.discountCode} onChange={e => { update('discountCode', e.target.value); if (discountApplied) { setDiscountApplied(false); setDiscountAmount(0); } }} className={`flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:border-[#0da993] outline-none ${discountApplied ? 'border-green-300 bg-green-50' : ''}`} placeholder="Enter code..." disabled={discountApplied} />
                   {discountApplied ? (
                     <button onClick={() => { setDiscountApplied(false); setDiscountAmount(0); update('discountCode', ''); }} className="px-4 py-2.5 text-sm font-bold text-red-600 border border-red-200 rounded-xl hover:bg-red-50">
                       {t.enrollment?.remove || 'Remove'}
                     </button>
                   ) : (
-                    <button onClick={handleApplyDiscount} className="px-4 py-2.5 text-sm font-bold text-teal-600 border border-teal-200 rounded-xl hover:bg-teal-50">
+                    <button onClick={handleApplyDiscount} className="px-4 py-2.5 text-sm font-bold text-[#0da993] border border-[#0da993]/20 rounded-xl hover:bg-[#0da993]/10">
                       {t.enrollment?.apply || 'Apply'}
                     </button>
                   )}
@@ -465,7 +465,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                       type="checkbox"
                       checked={installmentPlan}
                       onChange={e => setInstallmentPlan(e.target.checked)}
-                      className="w-4 h-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
+                      className="w-4 h-4 rounded border-slate-300 text-[#0da993] focus:ring-[#0da993]"
                     />
                     <span className="text-sm font-bold text-slate-800">{t.dashboard?.enable_installments || 'Pay in installments'}</span>
                   </label>
@@ -475,7 +475,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                       <select
                         value={installmentCount}
                         onChange={e => setInstallmentCount(Number(e.target.value))}
-                        className="bg-white border border-blue-200 rounded-lg px-3 py-1.5 text-sm font-bold focus:border-teal-500 outline-none"
+                        className="bg-white border border-blue-200 rounded-lg px-3 py-1.5 text-sm font-bold focus:border-[#0da993] outline-none"
                       >
                         <option value={2}>2</option>
                         <option value={3}>3</option>
@@ -510,7 +510,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                 )}
                 <div className="flex justify-between text-sm border-t border-slate-200 pt-2">
                   <span className="font-bold text-slate-800">{t.enrollment?.total || 'Total Due'}</span>
-                  <span className="text-lg font-black text-teal-600">{totalDue} {course.currency}</span>
+                  <span className="text-lg font-black text-[#0da993]">{totalDue} {course.currency}</span>
                 </div>
                 {installmentPlan && (
                   <div className="flex justify-between text-xs text-blue-600 pt-1">
@@ -522,7 +522,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
 
               <div className="flex gap-3 pt-2">
                 <button onClick={handleBack} className="flex-1 py-3 border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-all">{t.enrollment?.back || 'Back'}</button>
-                <button onClick={handleNext} className="flex-1 py-3 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-all">{t.enrollment?.review || 'Review'}</button>
+                <button onClick={handleNext} className="flex-1 py-3 bg-[#0da993] text-white font-bold rounded-xl hover:bg-[#0da993]/90 transition-all">{t.enrollment?.review || 'Review'}</button>
               </div>
             </div>
           )}
@@ -554,12 +554,12 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
                 {discountApplied && (
                   <div className="flex justify-between"><span className="text-green-600">{t.enrollment?.discount_label || 'Discount'}</span><span className="font-bold text-green-600">-{discountAmount} {course.currency}</span></div>
                 )}
-                <div className="flex justify-between border-t border-slate-200 pt-2"><span className="font-bold text-slate-800">{t.enrollment?.total || 'Total'}</span><span className="font-black text-teal-600 text-lg">{totalDue} {course.currency}</span></div>
+                <div className="flex justify-between border-t border-slate-200 pt-2"><span className="font-bold text-slate-800">{t.enrollment?.total || 'Total'}</span><span className="font-black text-[#0da993] text-lg">{totalDue} {course.currency}</span></div>
               </div>
 
               {/* Terms & Conditions */}
-              <label className="flex items-start gap-3 cursor-pointer p-3 rounded-xl border border-slate-200 hover:border-teal-300 transition-all">
-                <input type="checkbox" checked={agreedToTerms} onChange={e => setAgreedToTerms(e.target.checked)} className="mt-0.5 w-4 h-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
+              <label className="flex items-start gap-3 cursor-pointer p-3 rounded-xl border border-slate-200 hover:border-[#0da993]/30 transition-all">
+                <input type="checkbox" checked={agreedToTerms} onChange={e => setAgreedToTerms(e.target.checked)} className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#0da993] focus:ring-[#0da993]" />
                 <span className="text-xs text-slate-600 leading-relaxed">
                   {t.enrollment?.terms_text || 'I agree to the Terms & Conditions and understand that my enrollment is subject to confirmation. I acknowledge that payment must be completed within 48 hours to secure my spot.'}
                 </span>
@@ -567,7 +567,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
 
               <div className="flex gap-3 pt-2">
                 <button onClick={handleBack} className="flex-1 py-3 border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-all">{t.enrollment?.back || 'Back'}</button>
-                <button onClick={handleSubmit} disabled={loading || !agreedToTerms} className={`flex-1 py-3 font-bold rounded-xl transition-all flex items-center justify-center gap-2 ${agreedToTerms ? 'bg-teal-600 text-white hover:bg-teal-700 active:scale-[0.98]' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}>
+                <button onClick={handleSubmit} disabled={loading || !agreedToTerms} className={`flex-1 py-3 font-bold rounded-xl transition-all flex items-center justify-center gap-2 ${agreedToTerms ? 'bg-[#0da993] text-white hover:bg-[#0da993]/90 active:scale-[0.98]' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}>
                   {loading && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
                   {loading ? (t.enrollment?.submitting || 'Submitting...') : (t.enrollment?.submit || 'Confirm & Enroll')}
                 </button>

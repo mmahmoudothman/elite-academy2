@@ -40,14 +40,14 @@ const SiteConfigEditor: React.FC = () => {
     }
   };
 
-  const inputClass = 'w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm';
+  const inputClass = 'w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-[#0da993] focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm';
   const labelClass = 'block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5';
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-black text-slate-900">{t.dashboard?.settings_tab || 'Site Settings'}</h3>
-        <button onClick={handleSave} disabled={saving} className="px-6 py-2.5 bg-teal-600 text-white rounded-xl font-bold text-sm hover:bg-teal-700 transition-all flex items-center gap-2 disabled:opacity-60">
+        <button onClick={handleSave} disabled={saving} className="px-6 py-2.5 bg-[#0da993] text-white rounded-xl font-bold text-sm hover:bg-[#0da993]/90 transition-all flex items-center gap-2 disabled:opacity-60">
           {saving && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
           {saving ? (t.dashboard?.saving || 'Saving...') : (t.dashboard?.save || 'Save Changes')}
         </button>
@@ -156,7 +156,7 @@ const SiteConfigEditor: React.FC = () => {
             <button
               type="button"
               onClick={() => update('announcement.visible', !form.announcement?.visible)}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.announcement?.visible ? 'bg-teal-600' : 'bg-slate-300'}`}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${form.announcement?.visible ? 'bg-[#0da993]' : 'bg-slate-300'}`}
             >
               <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${form.announcement?.visible ? 'translate-x-6' : 'translate-x-1'}`} />
             </button>
@@ -205,7 +205,7 @@ const SiteConfigEditor: React.FC = () => {
             <button
               type="button"
               onClick={() => update('telegram.enabled', !(form as any).telegram?.enabled)}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${(form as any).telegram?.enabled ? 'bg-teal-600' : 'bg-slate-300'}`}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${(form as any).telegram?.enabled ? 'bg-[#0da993]' : 'bg-slate-300'}`}
             >
               <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${(form as any).telegram?.enabled ? 'translate-x-6' : 'translate-x-1'}`} />
             </button>
@@ -241,7 +241,7 @@ const SiteConfigEditor: React.FC = () => {
                   type="checkbox"
                   checked={(form as any).telegram?.notifications?.[key] ?? false}
                   onChange={e => update(`telegram.notifications.${key}`, e.target.checked)}
-                  className="w-4 h-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
+                  className="w-4 h-4 rounded border-slate-300 text-[#0da993] focus:ring-[#0da993]"
                 />
                 <span className="text-xs font-bold text-slate-600">{label}</span>
               </label>
@@ -252,7 +252,7 @@ const SiteConfigEditor: React.FC = () => {
 
       {/* Save button bottom */}
       <div className="flex justify-end">
-        <button onClick={handleSave} disabled={saving} className="px-8 py-3 bg-teal-600 text-white rounded-xl font-bold text-sm hover:bg-teal-700 transition-all flex items-center gap-2 disabled:opacity-60">
+        <button onClick={handleSave} disabled={saving} className="px-8 py-3 bg-[#0da993] text-white rounded-xl font-bold text-sm hover:bg-[#0da993]/90 transition-all flex items-center gap-2 disabled:opacity-60">
           {saving && <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />}
           {saving ? (t.dashboard?.saving || 'Saving...') : (t.dashboard?.save || 'Save Changes')}
         </button>

@@ -395,7 +395,7 @@ const DashboardPage: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 font-heading">{t.dashboard.title}</h1>
           <div className="flex items-center gap-3">
             {can('analytics.export') && ['students', 'enrollments', 'contacts', 'courses'].includes(activeTab) && (
-              <button onClick={handleExport} className="px-4 py-2 text-sm font-bold text-teal-600 border border-teal-200 rounded-xl hover:bg-teal-50 transition-all flex items-center gap-2">
+              <button onClick={handleExport} className="px-4 py-2 text-sm font-bold text-[#0da993] border border-[#0da993]/20 rounded-xl hover:bg-[#0da993]/10 transition-all flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                 {t.dashboard?.export || 'Export CSV'}
               </button>
@@ -431,7 +431,7 @@ const DashboardPage: React.FC = () => {
                     {[...courses].sort((a: any, b: any) => b.enrolled - a.enrolled).slice(0, 5).map((c: any) => (
                       <div key={c.id} className="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl">
                         <div className="min-w-0"><p className="text-sm font-bold text-slate-900 truncate">{c.title}</p><p className="text-xs text-slate-400">{c.category}</p></div>
-                        <div className="flex items-center gap-2 flex-shrink-0"><span className="text-xs font-bold text-teal-600">{c.enrolled}/{c.capacity}</span><div className="w-16 h-2 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-teal-500 rounded-full" style={{ width: `${Math.min(100, (c.enrolled / c.capacity) * 100)}%` }} /></div></div>
+                        <div className="flex items-center gap-2 flex-shrink-0"><span className="text-xs font-bold text-[#0da993]">{c.enrolled}/{c.capacity}</span><div className="w-16 h-2 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-[#0da993] rounded-full" style={{ width: `${Math.min(100, (c.enrolled / c.capacity) * 100)}%` }} /></div></div>
                       </div>
                     ))}
                   </div>

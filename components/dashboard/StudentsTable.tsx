@@ -26,7 +26,7 @@ const LEVELS = ['beginner', 'intermediate', 'advanced'] as const;
 const STAGE_COLORS: Record<string, string> = {
   lead: 'bg-blue-100 text-blue-700',
   prospect: 'bg-purple-100 text-purple-700',
-  enrolled: 'bg-teal-100 text-teal-700',
+  enrolled: 'bg-[#0da993]/15 text-[#0da993]',
   active: 'bg-emerald-100 text-emerald-700',
   alumni: 'bg-amber-100 text-amber-700',
   inactive: 'bg-slate-100 text-slate-500',
@@ -221,9 +221,9 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
         <div className="flex items-center gap-2 w-full sm:w-auto">
           <input type="text" value={search} onChange={e => { setSearch(e.target.value); setPage(0); }}
             placeholder={d.search_students}
-            className="w-full sm:w-64 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all" />
+            className="w-full sm:w-64 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#0da993] focus:bg-white transition-all" />
           {onAdd && (
-            <button onClick={onAdd} className="flex-shrink-0 bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1.5">
+            <button onClick={onAdd} className="flex-shrink-0 bg-[#0da993] hover:bg-[#0da993]/90 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1.5">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
               <span className="hidden sm:inline">{d.add_student}</span>
             </button>
@@ -234,37 +234,37 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
       {/* Filter Bar */}
       <div className="px-4 sm:px-6 py-3 border-b border-slate-100 bg-slate-50/50 flex flex-wrap items-center gap-2">
         <select value={groupFilter} onChange={e => { setGroupFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_groups}</option>
           {groups.map(g => <option key={g.id} value={g.id}>{language === 'ar' ? g.name.ar : g.name.en}</option>)}
         </select>
         <select value={courseFilter} onChange={e => { setCourseFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_courses}</option>
           {courses.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}
         </select>
         <select value={instructorFilter} onChange={e => { setInstructorFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_instructors}</option>
           {instructors.map(i => <option key={i.id} value={i.id}>{i.name}</option>)}
         </select>
         <select value={levelFilter} onChange={e => { setLevelFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_levels}</option>
           {LEVELS.map(l => <option key={l} value={l}>{levelLabels[l]}</option>)}
         </select>
         <select value={stageFilter} onChange={e => { setStageFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_stages}</option>
           {LIFECYCLE_STAGES.map(s => <option key={s} value={s}>{stageLabels[s]}</option>)}
         </select>
         <select value={countryFilter} onChange={e => { setCountryFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_countries}</option>
           {countries.map(c => <option key={c} value={c}>{countryLabels[c] || c}</option>)}
         </select>
         <select value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setPage(0); }}
-          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          className="text-xs font-bold bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
           <option value="">{d.all_status}</option>
           <option value="active">{d.active}</option>
           <option value="inactive">{d.inactive}</option>
@@ -281,10 +281,10 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
 
       {/* Bulk Actions */}
       {selectedIds.size > 0 && (
-        <div className="px-4 sm:px-6 py-3 border-b border-slate-100 bg-teal-50 flex flex-wrap items-center gap-3">
-          <span className="text-xs font-black text-teal-700">{selectedIds.size} {d.selected}</span>
+        <div className="px-4 sm:px-6 py-3 border-b border-slate-100 bg-[#0da993]/10 flex flex-wrap items-center gap-3">
+          <span className="text-xs font-black text-[#0da993]">{selectedIds.size} {d.selected}</span>
           <select value={bulkAction} onChange={e => setBulkAction(e.target.value)}
-            className="text-xs font-bold bg-white border border-teal-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            className="text-xs font-bold bg-white border border-[#0da993]/20 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0da993]">
             <option value="">{d.bulk_actions}</option>
             <option value="export">{d.bulk_export}</option>
             <optgroup label={d.bulk_change_status}>
@@ -301,7 +301,7 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
             )}
           </select>
           <button onClick={handleBulkAction} disabled={!bulkAction}
-            className="text-xs font-black text-white bg-teal-600 hover:bg-teal-700 disabled:bg-slate-300 disabled:cursor-not-allowed px-4 py-2 rounded-lg transition-all">{d.apply_action}</button>
+            className="text-xs font-black text-white bg-[#0da993] hover:bg-[#0da993]/90 disabled:bg-slate-300 disabled:cursor-not-allowed px-4 py-2 rounded-lg transition-all">{d.apply_action}</button>
           <button onClick={() => setSelectedIds(new Set())} className="text-xs font-bold text-slate-500 hover:text-slate-700">{d.clear}</button>
         </div>
       )}
@@ -312,7 +312,7 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
             <tr className="text-start">
               <th className="px-4 py-3 w-10">
                 <input type="checkbox" checked={paged.length > 0 && selectedIds.size === paged.length} onChange={toggleSelectAll}
-                  className="rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
+                  className="rounded border-slate-300 text-[#0da993] focus:ring-[#0da993]" />
               </th>
               <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 cursor-pointer select-none hover:text-slate-600" onClick={() => handleSort('name')}>
                 {d.col_name}<SortIcon field="name" />
@@ -334,14 +334,14 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
           </thead>
           <tbody className="divide-y divide-slate-50">
             {paged.map(student => (
-              <tr key={student.id} className={`hover:bg-slate-50/50 transition-colors ${selectedIds.has(student.id) ? 'bg-teal-50/30' : ''}`}>
+              <tr key={student.id} className={`hover:bg-slate-50/50 transition-colors ${selectedIds.has(student.id) ? 'bg-[#0da993]/10/30' : ''}`}>
                 <td className="px-4 py-3">
                   <input type="checkbox" checked={selectedIds.has(student.id)} onChange={() => toggleSelect(student.id)}
-                    className="rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
+                    className="rounded border-slate-300 text-[#0da993] focus:ring-[#0da993]" />
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-teal-50 rounded-full flex items-center justify-center text-teal-600 font-bold text-xs flex-shrink-0">
+                    <div className="w-8 h-8 bg-[#0da993]/10 rounded-full flex items-center justify-center text-[#0da993] font-bold text-xs flex-shrink-0">
                       {student.name.charAt(0).toUpperCase()}
                     </div>
                     <div className="min-w-0">
@@ -384,7 +384,7 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     {onView && (
-                      <button onClick={() => onView(student)} className="text-teal-600 hover:text-teal-700 transition-colors">
+                      <button onClick={() => onView(student)} className="text-[#0da993] hover:text-[#0da993] transition-colors">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                       </button>
                     )}
@@ -427,7 +427,7 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
       {filtered.length === 0 && students.length > 0 && (
         <div className="p-8 text-center">
           <p className="text-sm text-slate-400">{d.no_match}</p>
-          <button onClick={clearFilters} className="mt-2 text-sm font-bold text-teal-600 hover:text-teal-700">{d.clear_all_filters}</button>
+          <button onClick={clearFilters} className="mt-2 text-sm font-bold text-[#0da993] hover:text-[#0da993]">{d.clear_all_filters}</button>
         </div>
       )}
     </div>
