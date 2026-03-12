@@ -62,7 +62,7 @@ const DashboardPage: React.FC = () => {
     if (can('audit.view')) tabs.push('audit');
     if (can('settings.view')) tabs.push('settings');
     return tabs;
-  }, [currentUser?.role]);
+  }, [currentUser?.role, can]);
 
   const {
     courses, instructors, enrollments, contacts,

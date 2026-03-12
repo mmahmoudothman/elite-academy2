@@ -58,7 +58,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const unsub = onAuthChange(async (fbUser) => {
       setFirebaseUser(fbUser);
       if (fbUser) {
-        const profile = await getUserProfile(fbUser.uid);
+        let profile = await getUserProfile(fbUser.uid);
+        // Retry once if profile not yet written (race condition on sign-up)
+        if (!profile) {
+          await new Promise(r => setTimeout(r, 1000));
+          profile = await getUserProfile(fbUser.uid);
+        }
         setUser(profile);
       } else {
         setUser(null);
