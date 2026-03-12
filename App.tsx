@@ -6,7 +6,6 @@ import ErrorBoundary from './components/ui/ErrorBoundary';
 import ToastProvider from './components/ui/Toast';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import LoadingSpinner from './components/ui/LoadingSpinner';
-import { seedSampleData } from './utils/sampleData';
 
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
@@ -23,10 +22,6 @@ const PageFallback = () => (
 );
 
 const App: React.FC = () => {
-  useEffect(() => {
-    seedSampleData();
-  }, []);
-
   return (
     <ErrorBoundary>
       <AuthProvider>

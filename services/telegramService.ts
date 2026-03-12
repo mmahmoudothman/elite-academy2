@@ -1,6 +1,8 @@
 // Telegram Bot Notification Service
 // Sends notifications to a configured Telegram chat via Bot API
 
+import { getSiteConfig } from './firestoreService';
+
 interface TelegramConfig {
   botToken: string;
   chatId: string;
@@ -13,22 +15,19 @@ interface TelegramConfig {
   };
 }
 
-function getConfig(): TelegramConfig | null {
+async function getConfig(): Promise<TelegramConfig | null> {
   try {
-    const stored = localStorage.getItem('elite_academy_site_config');
-    if (stored) {
-      const config = JSON.parse(stored);
-      const tg = config.telegram;
-      if (tg?.enabled && tg?.botToken && tg?.chatId) {
-        return tg;
-      }
+    const config = await getSiteConfig();
+    const tg = config?.telegram;
+    if (tg?.enabled && tg?.botToken && tg?.chatId) {
+      return tg;
     }
   } catch { /* ignore */ }
   return null;
 }
 
 async function sendMessage(text: string, config?: TelegramConfig | null): Promise<boolean> {
-  const cfg = config || getConfig();
+  const cfg = config || await getConfig();
   if (!cfg || !cfg.botToken || !cfg.chatId) return false;
 
   try {
@@ -54,7 +53,7 @@ async function sendMessage(text: string, config?: TelegramConfig | null): Promis
 }
 
 export async function notifyNewRegistration(name: string, email: string): Promise<boolean> {
-  const config = getConfig();
+  const config = await getConfig();
   if (!config?.notifications.newRegistration) return false;
 
   return sendMessage(
@@ -66,7 +65,7 @@ export async function notifyNewRegistration(name: string, email: string): Promis
 }
 
 export async function notifyNewEnrollment(studentName: string, courseTitle: string, amount: number, currency: string): Promise<boolean> {
-  const config = getConfig();
+  const config = await getConfig();
   if (!config?.notifications.newEnrollment) return false;
 
   return sendMessage(
@@ -79,7 +78,7 @@ export async function notifyNewEnrollment(studentName: string, courseTitle: stri
 }
 
 export async function notifyNewPayment(studentName: string, amount: number, currency: string, method: string): Promise<boolean> {
-  const config = getConfig();
+  const config = await getConfig();
   if (!config?.notifications.newPayment) return false;
 
   return sendMessage(
@@ -92,7 +91,7 @@ export async function notifyNewPayment(studentName: string, amount: number, curr
 }
 
 export async function notifyNewContact(name: string, subject: string, inquiryType?: string): Promise<boolean> {
-  const config = getConfig();
+  const config = await getConfig();
   if (!config?.notifications.newContact) return false;
 
   return sendMessage(
@@ -104,18 +103,8 @@ export async function notifyNewContact(name: string, subject: string, inquiryTyp
   );
 }
 
-export async function sendTestMessage(): Promise<boolean> {
-  // For test, read config directly even if not fully "enabled" yet
-  // so we can test before saving
-  let config: TelegramConfig | null = null;
-  try {
-    const stored = localStorage.getItem('elite_academy_site_config');
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      config = parsed.telegram || null;
-    }
-  } catch { /* ignore */ }
-
+export async function sendTestMessage(telegramConfig?: TelegramConfig): Promise<boolean> {
+  const config = telegramConfig || await getConfig();
   if (!config || !config.botToken || !config.chatId) return false;
 
   return sendMessage(

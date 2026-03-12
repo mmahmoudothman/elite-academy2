@@ -17,23 +17,9 @@ const Footer: React.FC = () => {
     e.preventDefault();
     if (!email) return;
 
-    // Load existing subscriptions from localStorage
-    const stored = localStorage.getItem('elite_academy_newsletter');
-    const subscriptions: string[] = stored ? JSON.parse(stored) : [];
-
-    // Prevent duplicate subscriptions
     const normalizedEmail = email.trim().toLowerCase();
-    if (subscriptions.includes(normalizedEmail)) {
-      setAlreadySubscribed(true);
-      setTimeout(() => setAlreadySubscribed(false), 5000);
-      setEmail('');
-      return;
-    }
 
-    // Save new subscription
-    subscriptions.push(normalizedEmail);
-    localStorage.setItem('elite_academy_newsletter', JSON.stringify(subscriptions));
-
+    // TODO: Save newsletter subscription to Firestore via useDataManager
     setSubscribed(true);
     setTimeout(() => setSubscribed(false), 5000);
     setEmail('');

@@ -2,10 +2,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { getAIResponse } from '../services/geminiService';
 import { ChatMessage } from '../types';
-import { COURSES } from '../constants';
+import { Course } from '../types';
 import { useLanguage } from './LanguageContext';
 
-const AIAssistant: React.FC = () => {
+interface AIAssistantProps {
+  courses?: Course[];
+}
+
+const AIAssistant: React.FC<AIAssistantProps> = ({ courses = [] }) => {
   const { language, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -35,7 +39,7 @@ const AIAssistant: React.FC = () => {
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setIsLoading(true);
 
-    const response = await getAIResponse(userMsg, COURSES, language);
+    const response = await getAIResponse(userMsg, courses, language);
     setMessages(prev => [...prev, { role: 'model', text: response }]);
     setIsLoading(false);
   };

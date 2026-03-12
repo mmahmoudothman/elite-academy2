@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Enrollment, Course } from '../types';
+import { Enrollment, Course, Student } from '../types';
 
 interface MonthlyData {
   month: string;
@@ -20,7 +20,7 @@ interface DemographicData {
   count: number;
 }
 
-export function useAnalytics(enrollments: Enrollment[], courses: Course[]) {
+export function useAnalytics(enrollments: Enrollment[], courses: Course[], students: Student[] = []) {
   const monthlyData = useMemo((): MonthlyData[] => {
     const months: Record<string, MonthlyData> = {};
     const now = new Date();
@@ -67,17 +67,8 @@ export function useAnalytics(enrollments: Enrollment[], courses: Course[]) {
     const seen = new Set<string>();
     const countryLabels: Record<string, string> = { EG: 'Egypt', SA: 'Saudi Arabia', AE: 'UAE', KW: 'Kuwait', QA: 'Qatar', BH: 'Bahrain', OM: 'Oman', JO: 'Jordan' };
 
-    // Use students data if available via closure
     const studentMap = new Map<string, string>();
-    if (typeof window !== 'undefined') {
-      try {
-        const stored = localStorage.getItem('elite_academy_students');
-        if (stored) {
-          const students = JSON.parse(stored);
-          students.forEach((s: any) => { if (s.country) studentMap.set(s.id, s.country); });
-        }
-      } catch { /* ignore */ }
-    }
+    students.forEach((s) => { if (s.country) studentMap.set(s.id, s.country); });
 
     enrollments.forEach(e => {
       if (!seen.has(e.studentId)) {

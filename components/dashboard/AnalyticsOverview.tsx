@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { useLanguage } from '../LanguageContext';
-import { Enrollment, Course, DashboardStats } from '../../types';
+import { Enrollment, Course, DashboardStats, Student, ContactSubmission } from '../../types';
 import { useAnalytics } from '../../hooks/useAnalytics';
 import { getAnalyticsEvents, getEventsByDateRange } from '../../services/analyticsTracker';
 import { StatSkeleton } from '../ui/Skeleton';
@@ -10,6 +10,8 @@ interface AnalyticsOverviewProps {
   enrollments: Enrollment[];
   courses: Course[];
   stats: DashboardStats;
+  students?: Student[];
+  contacts?: ContactSubmission[];
   loading?: boolean;
 }
 
@@ -17,9 +19,9 @@ const COLORS = ['#0d9488', '#6366f1', '#f59e0b', '#ef4444', '#10b981', '#8b5cf6'
 
 type DateRange = '7d' | '30d' | '90d' | 'all';
 
-const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, courses, stats, loading }) => {
+const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, courses, stats, students = [], contacts = [], loading }) => {
   const { t } = useLanguage();
-  const { monthlyData, courseAnalytics, statusBreakdown, paymentBreakdown, totalRevenue, categoryRevenue } = useAnalytics(enrollments, courses);
+  const { monthlyData, courseAnalytics, statusBreakdown, paymentBreakdown, totalRevenue, categoryRevenue } = useAnalytics(enrollments, courses, students);
   const [dateRange, setDateRange] = useState<DateRange>('all');
 
   // Compute date range bounds
@@ -66,17 +68,12 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
 
   // Filtered contacts count
   const filteredContacts = useMemo(() => {
-    try {
-      const stored = localStorage.getItem('elite_academy_contacts');
-      if (!stored) return { total: 0, responded: 0 };
-      const contacts = JSON.parse(stored);
-      const filtered = contacts.filter((c: any) => c.submittedAt >= dateRangeBounds.start && c.submittedAt <= dateRangeBounds.end);
-      return {
-        total: filtered.length,
-        responded: filtered.filter((c: any) => c.status === 'responded').length,
-      };
-    } catch { return { total: 0, responded: 0 }; }
-  }, [dateRangeBounds]);
+    const filtered = contacts.filter((c) => c.submittedAt >= dateRangeBounds.start && c.submittedAt <= dateRangeBounds.end);
+    return {
+      total: filtered.length,
+      responded: filtered.filter((c) => c.status === 'responded').length,
+    };
+  }, [contacts, dateRangeBounds]);
 
   // KPI calculations
   const kpis = useMemo(() => {

@@ -1,6 +1,5 @@
 
 import React, { useState, useMemo } from 'react';
-import { COURSES } from '../constants';
 import { Course } from '../types';
 import { useLanguage } from './LanguageContext';
 import MediaDisplay from './MediaDisplay';
@@ -19,7 +18,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const courseData = courses ?? COURSES;
+  const courseData = courses ?? [];
 
   const dynamicCategories = useMemo(() => {
     const cats = new Set(courseData.map(c => c.category));

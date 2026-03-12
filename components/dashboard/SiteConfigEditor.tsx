@@ -215,11 +215,8 @@ const SiteConfigEditor: React.FC = () => {
               type="button"
               onClick={async () => {
                 try {
-                  // Save current form to localStorage first so test reads latest values
-                  const current = { ...form, updatedAt: Date.now() };
-                  localStorage.setItem('elite_academy_site_config', JSON.stringify(current));
                   const { sendTestMessage } = await import('../../services/telegramService');
-                  const ok = await sendTestMessage();
+                  const ok = await sendTestMessage(form.telegram);
                   if (ok) toast.success(t.dashboard?.test_sent || 'Test message sent!');
                   else toast.error(t.dashboard?.telegram_test_failed || 'Failed - check bot token and chat ID');
                 } catch { toast.error(t.dashboard?.telegram_test_failed || 'Failed to send test message'); }

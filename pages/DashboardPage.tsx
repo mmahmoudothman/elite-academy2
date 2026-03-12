@@ -496,7 +496,7 @@ const DashboardPage: React.FC = () => {
           />
         )}
 
-        {!loading && activeTab === 'analytics' && <AnalyticsOverview enrollments={enrollments} courses={courses} stats={stats} />}
+        {!loading && activeTab === 'analytics' && <AnalyticsOverview enrollments={enrollments} courses={courses} stats={stats} students={students} contacts={contacts} />}
         {!loading && activeTab === 'settings' && (can('settings.edit') ? <SiteConfigEditor /> : <div className="bg-white rounded-2xl border border-slate-100 p-8 text-center"><p className="text-slate-400 font-bold">No permission to edit settings.</p></div>)}
         {!loading && activeTab === 'testimonials' && <TestimonialsTable testimonials={testimonials} onAdd={can('content.create') ? handleAddTestimonial : undefined} onEdit={can('content.edit') ? handleEditTestimonial : undefined} onDelete={can('content.delete') ? handleDeleteTestimonial : undefined} onToggleVisibility={can('content.edit') ? handleToggleTestimonialVisibility : undefined} />}
         {!loading && activeTab === 'faqs' && <FAQsTable faqs={faqs} onAdd={can('content.create') ? handleAddFaq : undefined} onEdit={can('content.edit') ? handleEditFaq : undefined} onDelete={can('content.delete') ? handleDeleteFaq : undefined} onToggleVisibility={can('content.edit') ? handleToggleFaqVisibility : undefined} onReorder={can('content.edit') ? handleReorderFaq : undefined} />}
@@ -509,7 +509,7 @@ const DashboardPage: React.FC = () => {
       </div>
 
       {/* Modals */}
-      <CourseFormModal isOpen={courseModalOpen} course={editingCourse} onClose={() => setCourseModalOpen(false)} onSave={handleSaveCourse} />
+      <CourseFormModal isOpen={courseModalOpen} course={editingCourse} onClose={() => setCourseModalOpen(false)} onSave={handleSaveCourse} categories={categories} instructors={instructors} />
       <InstructorFormModal isOpen={instructorModalOpen} instructor={editingInstructor} onClose={() => setInstructorModalOpen(false)} onSave={handleSaveInstructor} />
       <DeleteConfirmModal isOpen={deleteModalOpen} onClose={() => { setDeleteModalOpen(false); setDeleteWarning(undefined); }} onConfirm={handleConfirmDelete} warningMessage={deleteWarning} />
       <StudentFormModal isOpen={studentModalOpen} student={editingStudent} groups={groups} instructors={instructors} courses={courses} onClose={() => setStudentModalOpen(false)} onSave={handleSaveStudent} />

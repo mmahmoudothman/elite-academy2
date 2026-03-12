@@ -2,23 +2,16 @@ import React from 'react';
 import { useLanguage } from './LanguageContext';
 import { Testimonial } from '../types';
 
-const Testimonials: React.FC = () => {
+interface TestimonialsProps {
+  testimonials?: Testimonial[];
+}
+
+const Testimonials: React.FC<TestimonialsProps> = ({ testimonials: rawTestimonials = [] }) => {
   const { t, language } = useLanguage();
 
-  const getTestimonials = (): Testimonial[] => {
-    try {
-      const stored = localStorage.getItem('elite_academy_testimonials');
-      if (!stored) return [];
-      const all: Testimonial[] = JSON.parse(stored);
-      return all
-        .filter(item => item.visible)
-        .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
-    } catch {
-      return [];
-    }
-  };
-
-  const testimonials = getTestimonials();
+  const testimonials = rawTestimonials
+    .filter(item => item.visible)
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
   const renderStars = (rating: number) => {
     return (

@@ -1,0 +1,91 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Courses — public read, authenticated write
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Instructors — public read, authenticated write
+    match /instructors/{instructorId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Enrollments — authenticated only
+    match /enrollments/{enrollmentId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Users — authenticated only
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // Contacts — anyone can create, authenticated can read/update
+    match /contacts/{contactId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Testimonials — public read, authenticated write
+    match /testimonials/{testimonialId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // FAQs — public read, authenticated write
+    match /faqs/{faqId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Categories — public read, authenticated write
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Newsletters — anyone can create, authenticated can manage
+    match /newsletters/{newsletterId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Ads — public read, authenticated write
+    match /ads/{adId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Site config — public read, authenticated write
+    match /siteConfig/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Audit log — authenticated only
+    match /auditLog/{logId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Financials — authenticated only
+    match /financials/{financialId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Student groups — authenticated only
+    match /groups/{groupId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Students — authenticated only
+    match /students/{studentId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

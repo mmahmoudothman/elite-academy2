@@ -1,19 +1,18 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from './LanguageContext';
-import { INSTRUCTORS } from '../constants';
 import { Instructor } from '../types';
 import MediaDisplay from './MediaDisplay';
 
 interface InstructorsProps {
-  instructors?: typeof INSTRUCTORS;
+  instructors?: Instructor[];
 }
 
 const Instructors: React.FC<InstructorsProps> = ({ instructors }) => {
   const { language, t } = useLanguage();
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [profileInstructor, setProfileInstructor] = useState<Instructor | null>(null);
-  const instructorData = instructors ?? INSTRUCTORS;
+  const instructorData = instructors ?? [];
 
   const closeVideo = () => setActiveVideo(null);
 

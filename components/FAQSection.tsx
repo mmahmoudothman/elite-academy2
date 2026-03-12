@@ -2,25 +2,18 @@ import React, { useState, useMemo } from 'react';
 import { useLanguage } from './LanguageContext';
 import { FAQ } from '../types';
 
-const FAQSection: React.FC = () => {
+interface FAQSectionProps {
+  faqs?: FAQ[];
+}
+
+const FAQSection: React.FC<FAQSectionProps> = ({ faqs: rawFaqs = [] }) => {
   const { t, language } = useLanguage();
   const [openId, setOpenId] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
-  const getFAQs = (): FAQ[] => {
-    try {
-      const stored = localStorage.getItem('elite_academy_faqs');
-      if (!stored) return [];
-      const all: FAQ[] = JSON.parse(stored);
-      return all
-        .filter(item => item.visible)
-        .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
-    } catch {
-      return [];
-    }
-  };
-
-  const faqs = getFAQs();
+  const faqs = rawFaqs
+    .filter(item => item.visible)
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
   const categories = useMemo(() => {
     const cats = Array.from(new Set(faqs.map(f => f.category).filter(Boolean)));

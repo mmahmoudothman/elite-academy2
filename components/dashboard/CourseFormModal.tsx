@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Course } from '../../types';
+import { Course, Category, Instructor } from '../../types';
 import { useLanguage } from '../LanguageContext';
 import ImageUploader from './ImageUploader';
 
@@ -8,6 +8,8 @@ interface CourseFormModalProps {
   course: Course | null;
   onClose: () => void;
   onSave: (data: Omit<Course, 'id'>) => void;
+  categories?: Category[];
+  instructors?: Instructor[];
 }
 
 const EMPTY_COURSE: Omit<Course, 'id'> = {
@@ -25,27 +27,12 @@ const EMPTY_COURSE: Omit<Course, 'id'> = {
   capacity: 200,
 };
 
-const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClose, onSave }) => {
+const CourseFormModal: React.FC<CourseFormModalProps> = ({ isOpen, course, onClose, onSave, categories: propCategories = [], instructors: propInstructors = [] }) => {
   const { t } = useLanguage();
   const [form, setForm] = useState<Omit<Course, 'id'>>(EMPTY_COURSE);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [categories, setCategories] = useState<{id: string, name: {en: string, ar: string}}[]>([]);
-  const [instructors, setInstructors] = useState<{name: string}[]>([]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('elite_academy_categories');
-    if (stored) {
-      try {
-        setCategories(JSON.parse(stored).filter((c: any) => c.visible !== false));
-      } catch {}
-    }
-    const storedInstructors = localStorage.getItem('elite_academy_instructors');
-    if (storedInstructors) {
-      try {
-        setInstructors(JSON.parse(storedInstructors).filter((i: any) => i.visible !== false));
-      } catch {}
-    }
-  }, [isOpen]);
+  const categories = propCategories.filter(c => c.visible !== false);
+  const instructors = propInstructors.filter(i => i.visible !== false);
 
   useEffect(() => {
     if (course) {

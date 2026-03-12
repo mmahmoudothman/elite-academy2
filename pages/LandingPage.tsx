@@ -26,7 +26,7 @@ const LandingPage: React.FC = () => {
   usePageView('home');
   const [isRegOpen, setIsRegOpen] = useState(false);
   const [enrollCourse, setEnrollCourse] = useState<Course | null>(null);
-  const { courses: allCourses, instructors: allInstructors, loading } = useDataManager();
+  const { courses: allCourses, instructors: allInstructors, testimonials, faqs, loading } = useDataManager();
   const courses = allCourses.filter(c => c.visible !== false);
   const instructors = allInstructors.filter(i => i.visible !== false);
 
@@ -141,8 +141,8 @@ const LandingPage: React.FC = () => {
           </div>
         </section>
 
-        <Testimonials />
-        <FAQSection />
+        <Testimonials testimonials={testimonials} />
+        <FAQSection faqs={faqs} />
 
         <section id="apply" className="py-10 sm:py-16 lg:py-20 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto innovative-gradient rounded-2xl sm:rounded-3xl lg:rounded-[4rem] p-6 sm:p-10 lg:p-16 xl:p-24 relative overflow-hidden text-center lg:text-left rtl:text-right">
@@ -163,7 +163,7 @@ const LandingPage: React.FC = () => {
 
       <Footer />
       <WhatsAppButton />
-      <AIAssistant />
+      <AIAssistant courses={courses} />
       <RegistrationForm isOpen={isRegOpen} onClose={() => setIsRegOpen(false)} />
       <EnrollmentModal isOpen={!!enrollCourse} course={enrollCourse} onClose={() => setEnrollCourse(null)} />
     </div>
