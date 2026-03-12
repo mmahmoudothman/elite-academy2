@@ -341,3 +341,233 @@ export interface SiteConfig {
   telegram?: TelegramConfig;
   updatedAt?: number;
 }
+
+// Live Sessions
+export type SessionStatus = 'scheduled' | 'live' | 'ended' | 'cancelled';
+export type SessionPlatform = 'jitsi' | 'youtube_live' | 'google_meet' | 'external_link';
+
+export interface LiveSession {
+  id: string;
+  courseId: string;
+  groupId?: string;
+  instructorId: string;
+  title: string;
+  description?: string;
+  scheduledStartTime: number;
+  scheduledEndTime: number;
+  actualStartTime?: number;
+  actualEndTime?: number;
+  status: SessionStatus;
+  platform: SessionPlatform;
+  roomName: string;
+  roomPassword?: string;
+  meetingUrl?: string;
+  recordingEnabled: boolean;
+  recordingId?: string;
+  maxParticipants?: number;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export type AttendanceStatus = 'joined' | 'left' | 'kicked';
+
+export interface SessionAttendance {
+  id: string;
+  sessionId: string;
+  userId: string;
+  studentId?: string;
+  courseId: string;
+  joinedAt: number;
+  leftAt?: number;
+  durationMinutes?: number;
+  status: AttendanceStatus;
+}
+
+// Recordings
+export type RecordingStorageType = 'firebase_storage' | 'youtube_unlisted' | 'external_url';
+export type RecordingVisibility = 'enrolled_only' | 'public' | 'unlisted';
+export type ProcessingStatus = 'uploading' | 'processing' | 'ready' | 'failed';
+
+export interface Recording {
+  id: string;
+  sessionId?: string;
+  courseId: string;
+  groupId?: string;
+  instructorId: string;
+  title: string;
+  description?: string;
+  storageType: RecordingStorageType;
+  url: string;
+  storagePath?: string;
+  thumbnailUrl?: string;
+  durationSeconds?: number;
+  fileSizeBytes?: number;
+  mimeType?: string;
+  processingStatus: ProcessingStatus;
+  visibility: RecordingVisibility;
+  viewCount: number;
+  order: number;
+  publishedAt?: number;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface RecordingProgress {
+  id: string;
+  recordingId: string;
+  userId: string;
+  courseId: string;
+  watchedSeconds: number;
+  totalSeconds: number;
+  percentWatched: number;
+  completed: boolean;
+  lastWatchedAt: number;
+  updatedAt: number;
+}
+
+// Quizzes
+export type QuizStatus = 'draft' | 'published' | 'closed';
+export type QuestionType = 'mcq' | 'true_false' | 'short_answer';
+export type QuizSubmissionStatus = 'in_progress' | 'submitted' | 'graded';
+
+export interface Quiz {
+  id: string;
+  courseId: string;
+  groupId?: string;
+  instructorId: string;
+  title: string;
+  description?: string;
+  instructions?: string;
+  timeLimitMinutes?: number;
+  dueDate?: number;
+  publishedAt?: number;
+  status: QuizStatus;
+  passingScore: number;
+  maxAttempts: number;
+  shuffleQuestions: boolean;
+  shuffleOptions: boolean;
+  showResultsToStudent: boolean;
+  totalMarks: number;
+  questionCount: number;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface QuizQuestion {
+  id: string;
+  questionText: string;
+  questionType: QuestionType;
+  options: Array<{
+    id: string;
+    text: string;
+    isCorrect: boolean;
+  }>;
+  correctAnswer?: string;
+  marks: number;
+  order: number;
+  explanation?: string;
+}
+
+export interface QuizSubmission {
+  id: string;
+  quizId: string;
+  courseId: string;
+  userId: string;
+  studentId?: string;
+  answers: Array<{
+    questionId: string;
+    selectedOptionId?: string;
+    textAnswer?: string;
+    isCorrect?: boolean;
+    marksAwarded?: number;
+  }>;
+  startedAt: number;
+  submittedAt?: number;
+  totalMarks: number;
+  scoredMarks: number;
+  percentage: number;
+  passed: boolean;
+  attemptNumber: number;
+  status: QuizSubmissionStatus;
+  gradedBy?: string;
+  gradedAt?: number;
+}
+
+// Capstones
+export type CapstoneStatus = 'draft' | 'published' | 'closed';
+export type CapstoneSubmissionStatus = 'assigned' | 'submitted' | 'under_review' | 'graded' | 'late' | 'resubmit_requested';
+
+export interface Capstone {
+  id: string;
+  courseId: string;
+  groupId?: string;
+  instructorId: string;
+  title: string;
+  instructions: string;
+  dueDate?: number;
+  maxScore: number;
+  rubric?: string;
+  status: CapstoneStatus;
+  allowLateSubmission: boolean;
+  latePenaltyPercent?: number;
+  allowedFileTypes?: string[];
+  maxFileSizeMB?: number;
+  resources: Array<{
+    type: 'file' | 'link';
+    name: string;
+    url: string;
+  }>;
+  publishedAt?: number;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface CapstoneSubmission {
+  id: string;
+  capstoneId: string;
+  courseId: string;
+  userId: string;
+  studentId?: string;
+  textResponse?: string;
+  links: string[];
+  files: Array<{
+    name: string;
+    url: string;
+    storagePath: string;
+    sizeBytes: number;
+    mimeType: string;
+  }>;
+  status: CapstoneSubmissionStatus;
+  submittedAt?: number;
+  score?: number;
+  maxScore: number;
+  feedback?: string;
+  gradedBy?: string;
+  gradedAt?: number;
+  isLate: boolean;
+  resubmissionCount: number;
+  createdAt: number;
+  updatedAt: number;
+}
+
+// Course Progress
+export interface CourseProgress {
+  id: string;
+  userId: string;
+  studentId?: string;
+  courseId: string;
+  sessionsAttended: number;
+  totalSessions: number;
+  recordingsWatched: number;
+  totalRecordings: number;
+  recordingWatchPercent: number;
+  quizzesCompleted: number;
+  totalQuizzes: number;
+  quizAvgScore: number;
+  capstonesCompleted: number;
+  totalCapstones: number;
+  capstoneAvgScore: number;
+  overallCompletionPercent: number;
+  lastActivityAt: number;
+  updatedAt: number;
+}

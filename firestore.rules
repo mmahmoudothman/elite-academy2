@@ -3,89 +3,144 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
     // Courses — public read, authenticated write
     match /courses/{courseId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAuthenticated();
     }
 
     // Instructors — public read, authenticated write
     match /instructors/{instructorId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAuthenticated();
     }
 
-    // Enrollments — authenticated only
+    // Enrollments — authenticated read/write
     match /enrollments/{enrollmentId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if isAuthenticated();
     }
 
-    // Users — authenticated only
+    // Users — authenticated read/write
     match /users/{userId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null;
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
     }
 
-    // Contacts — anyone can create, authenticated can read/update
+    // Contacts — anyone can create, authenticated can read/manage
     match /contacts/{contactId} {
       allow create: if true;
-      allow read, update, delete: if request.auth != null;
+      allow read, update, delete: if isAuthenticated();
     }
 
     // Testimonials — public read, authenticated write
     match /testimonials/{testimonialId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAuthenticated();
     }
 
     // FAQs — public read, authenticated write
     match /faqs/{faqId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAuthenticated();
     }
 
     // Categories — public read, authenticated write
     match /categories/{categoryId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAuthenticated();
     }
 
     // Newsletters — anyone can create, authenticated can manage
     match /newsletters/{newsletterId} {
       allow create: if true;
-      allow read, update, delete: if request.auth != null;
+      allow read, update, delete: if isAuthenticated();
     }
 
     // Ads — public read, authenticated write
     match /ads/{adId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAuthenticated();
     }
 
     // Site config — public read, authenticated write
     match /siteConfig/{docId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAuthenticated();
     }
 
-    // Audit log — authenticated only
+    // Audit log — authenticated read/write
     match /auditLog/{logId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if isAuthenticated();
     }
 
     // Financials — authenticated only
     match /financials/{financialId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if isAuthenticated();
     }
 
     // Student groups — authenticated only
     match /groups/{groupId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if isAuthenticated();
     }
 
     // Students — authenticated only
     match /students/{studentId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if isAuthenticated();
+    }
+
+    // === LEARNING PLATFORM COLLECTIONS ===
+
+    // Live Sessions
+    match /liveSessions/{sessionId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Session Attendance
+    match /sessionAttendance/{attendanceId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Recordings
+    match /recordings/{recordingId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Recording Progress
+    match /recordingProgress/{progressId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Quizzes + questions subcollection
+    match /quizzes/{quizId} {
+      allow read, write: if isAuthenticated();
+
+      match /questions/{questionId} {
+        allow read, write: if isAuthenticated();
+      }
+    }
+
+    // Quiz Submissions
+    match /quizSubmissions/{submissionId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Capstones
+    match /capstones/{capstoneId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Capstone Submissions
+    match /capstoneSubmissions/{submissionId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Course Progress
+    match /courseProgress/{progressId} {
+      allow read, write: if isAuthenticated();
     }
   }
 }

@@ -12,6 +12,11 @@ export const PERMISSION_MODULES = {
   financial: { label: 'Financial', permissions: ['payments.view', 'payments.manage', 'payments.refund', 'financials.view', 'financials.edit', 'financial_reports.view'] },
   analytics: { label: 'Analytics', permissions: ['analytics.view', 'analytics.export'] },
   system: { label: 'System', permissions: ['settings.view', 'settings.edit', 'roles.view', 'roles.manage', 'permissions.manage', 'audit.view', 'integrations.manage'] },
+  liveSessions: { label: 'Live Sessions', permissions: ['sessions.view', 'sessions.create', 'sessions.start', 'sessions.delete'] },
+  recordings: { label: 'Recordings', permissions: ['recordings.view', 'recordings.upload', 'recordings.delete'] },
+  quizzes: { label: 'Quizzes', permissions: ['quizzes.view', 'quizzes.create', 'quizzes.edit', 'quizzes.delete', 'quizzes.grade'] },
+  capstones: { label: 'Capstones', permissions: ['capstones.view', 'capstones.create', 'capstones.edit', 'capstones.delete', 'capstones.grade'] },
+  progress: { label: 'Progress', permissions: ['progress.view_all', 'progress.view_own'] },
 } as const;
 
 // Derive Permission type from PERMISSION_MODULES
@@ -51,6 +56,16 @@ const DEFAULT_ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
     'settings.view', 'settings.edit',
     'roles.view',
     'audit.view',
+    // Live Sessions
+    'sessions.view', 'sessions.create', 'sessions.start', 'sessions.delete',
+    // Recordings
+    'recordings.view', 'recordings.upload', 'recordings.delete',
+    // Quizzes
+    'quizzes.view', 'quizzes.create', 'quizzes.edit', 'quizzes.delete', 'quizzes.grade',
+    // Capstones
+    'capstones.view', 'capstones.create', 'capstones.edit', 'capstones.delete', 'capstones.grade',
+    // Progress
+    'progress.view_all',
   ],
   content_creator: [
     'courses.view', 'courses.create', 'courses.edit', 'courses.publish',
@@ -58,6 +73,10 @@ const DEFAULT_ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
     'announcements.create', 'announcements.edit',
     'ads.view', 'ads.create', 'ads.edit', 'ads.delete',
     'analytics.view',
+    // Recordings
+    'recordings.view', 'recordings.upload',
+    // Quizzes
+    'quizzes.view', 'quizzes.create', 'quizzes.edit',
   ],
   moderator: [
     'contacts.view', 'contacts.edit',
@@ -72,8 +91,26 @@ const DEFAULT_ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
     'students.view',
     'enrollments.view',
     'analytics.view',
+    // Live Sessions
+    'sessions.view', 'sessions.create', 'sessions.start', 'sessions.delete',
+    // Recordings
+    'recordings.view', 'recordings.upload', 'recordings.delete',
+    // Quizzes
+    'quizzes.view', 'quizzes.create', 'quizzes.edit', 'quizzes.delete', 'quizzes.grade',
+    // Capstones
+    'capstones.view', 'capstones.create', 'capstones.edit', 'capstones.delete', 'capstones.grade',
+    // Progress
+    'progress.view_all',
   ],
-  student: [],
+  student: [
+    // Students can view courses, sessions, recordings, quizzes, capstones, and their own progress
+    'courses.view',
+    'sessions.view',
+    'recordings.view',
+    'quizzes.view',
+    'capstones.view',
+    'progress.view_own',
+  ],
 };
 
 // Storage key for custom role-permission overrides

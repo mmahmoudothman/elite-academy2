@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 
-export type Tab = 'overview' | 'courses' | 'instructors' | 'categories' | 'students' | 'groups' | 'enrollments' | 'contacts' | 'newsletters' | 'analytics' | 'testimonials' | 'faqs' | 'audit' | 'settings' | 'users' | 'ads' | 'financials' | 'roles';
+export type Tab = 'overview' | 'courses' | 'instructors' | 'categories' | 'students' | 'groups' | 'enrollments' | 'contacts' | 'newsletters' | 'analytics' | 'testimonials' | 'faqs' | 'audit' | 'settings' | 'users' | 'ads' | 'financials' | 'roles' | 'sessions' | 'recordings' | 'quizzes' | 'capstones' | 'progress';
 
 interface DashboardLayoutProps {
   activeTab: Tab;
@@ -59,6 +59,31 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ activeTab, onTabChang
         {
           key: 'enrollments', label: d.enrollments_tab,
           icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>,
+        },
+      ],
+    },
+    {
+      label: d.learning_group || 'Learning',
+      tabs: [
+        {
+          key: 'sessions', label: d.sessions_tab || 'Live Sessions',
+          icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>,
+        },
+        {
+          key: 'recordings', label: d.recordings_tab || 'Recordings',
+          icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+        },
+        {
+          key: 'quizzes', label: d.quizzes_tab || 'Quizzes',
+          icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>,
+        },
+        {
+          key: 'capstones', label: d.capstones_tab || 'Capstones',
+          icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>,
+        },
+        {
+          key: 'progress', label: d.progress_tab || 'Progress',
+          icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>,
         },
       ],
     },
