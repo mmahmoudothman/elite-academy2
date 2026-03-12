@@ -101,14 +101,14 @@ const AdsTable: React.FC<AdsTableProps> = ({ ads, onAdd, onEdit, onDelete, onTog
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-100 bg-slate-50">
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_title || 'Title'}</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_placement || 'Placement'}</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_status || 'Status'}</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_date_range || 'Date Range'}</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_impressions || 'Impressions'}</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_clicks || 'Clicks'}</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_ctr || 'CTR'}</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_actions || 'Actions'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_title || 'Title'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_placement || 'Placement'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_status || 'Status'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_date_range || 'Date Range'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_impressions || 'Impressions'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_clicks || 'Clicks'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_ctr || 'CTR'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{t.dashboard?.col_actions || 'Actions'}</th>
                 </tr>
               </thead>
               <tbody>

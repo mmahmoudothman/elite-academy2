@@ -8,17 +8,17 @@ import { usePageView } from '../hooks/useAnalyticsTracker';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const COUNTRIES: Record<string, string> = {
-  EG: 'Egypt',
-  SA: 'Saudi Arabia',
-  AE: 'UAE',
-  KW: 'Kuwait',
-  QA: 'Qatar',
-  BH: 'Bahrain',
-  OM: 'Oman',
-  JO: 'Jordan',
-  Other: 'Other',
-};
+const getCountries = (t: any): Record<string, string> => ({
+  EG: t.dashboard?.country_eg || 'Egypt',
+  SA: t.dashboard?.country_sa || 'Saudi Arabia',
+  AE: t.dashboard?.country_ae || 'UAE',
+  KW: t.dashboard?.country_kw || 'Kuwait',
+  QA: t.dashboard?.country_qa || 'Qatar',
+  BH: t.dashboard?.country_bh || 'Bahrain',
+  OM: t.dashboard?.country_om || 'Oman',
+  JO: t.dashboard?.country_jo || 'Jordan',
+  Other: t.dashboard?.country_other || 'Other',
+});
 
 const ProfilePage: React.FC = () => {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
@@ -26,6 +26,7 @@ const ProfilePage: React.FC = () => {
   const { enrollments, courses, updateStudent } = useDataManager() as any;
   usePageView('profile');
   const isRTL = language === 'ar';
+  const COUNTRIES = getCountries(t);
 
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -82,14 +83,10 @@ const ProfilePage: React.FC = () => {
         country: formData.country,
         updatedAt: Date.now(),
       });
-      toast.success(
-        isRTL ? 'تم حفظ التغييرات بنجاح' : 'Profile updated successfully'
-      );
+      toast.success(t?.profile_page?.profile_updated || 'Profile updated successfully');
       setIsEditing(false);
     } catch {
-      toast.error(
-        isRTL ? 'حدث خطأ أثناء الحفظ' : 'Failed to update profile'
-      );
+      toast.error(t?.profile_page?.profile_update_failed || 'Failed to update profile');
     } finally {
       setSaving(false);
     }
@@ -103,10 +100,10 @@ const ProfilePage: React.FC = () => {
       student: 'bg-teal-100 text-teal-700',
     };
     const labels: Record<string, string> = {
-      super_admin: isRTL ? 'مدير عام' : 'Super Admin',
-      admin: isRTL ? 'مدير' : 'Admin',
-      instructor: isRTL ? 'مدرب' : 'Instructor',
-      student: isRTL ? 'طالب' : 'Student',
+      super_admin: t.dashboard?.role_super_admin || 'Super Admin',
+      admin: t.dashboard?.role_admin || 'Admin',
+      instructor: t.dashboard?.role_instructor || 'Instructor',
+      student: t.dashboard?.role_student || 'Student',
     };
     return (
       <span className={`px-3 py-1 rounded-full text-xs font-black ${styles[role] || styles.student}`}>
@@ -173,7 +170,7 @@ const ProfilePage: React.FC = () => {
                     {getRoleBadge(user.role)}
                   </div>
                   <p className="text-slate-500 font-medium text-sm">
-                    {isRTL ? 'عضو منذ' : 'Member since'} {memberSince}
+                    {t?.profile_page?.member_since || 'Member since'} {memberSince}
                   </p>
                 </div>
 
@@ -182,8 +179,8 @@ const ProfilePage: React.FC = () => {
                   className="px-5 py-2.5 rounded-xl font-black text-sm bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all active:scale-95"
                 >
                   {isEditing
-                    ? (isRTL ? 'إلغاء' : 'Cancel')
-                    : (t?.profile?.edit || (isRTL ? 'تعديل الملف' : 'Edit Profile'))}
+                    ? (t?.common?.cancel || 'Cancel')
+                    : (t?.profile?.edit || 'Edit Profile')}
                 </button>
               </div>
             </div>
@@ -199,7 +196,7 @@ const ProfilePage: React.FC = () => {
               </div>
               <div>
                 <p className="text-2xl font-black text-slate-900">{stats.total}</p>
-                <p className="text-xs font-bold text-slate-400">{isRTL ? 'دورات مسجلة' : 'Courses Enrolled'}</p>
+                <p className="text-xs font-bold text-slate-400">{t?.profile_page?.courses_enrolled || 'Courses Enrolled'}</p>
               </div>
             </div>
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-5 flex items-center gap-4">
@@ -210,7 +207,7 @@ const ProfilePage: React.FC = () => {
               </div>
               <div>
                 <p className="text-2xl font-black text-slate-900">{stats.completed}</p>
-                <p className="text-xs font-bold text-slate-400">{isRTL ? 'مكتملة' : 'Completed'}</p>
+                <p className="text-xs font-bold text-slate-400">{t?.profile_page?.completed_count || 'Completed'}</p>
               </div>
             </div>
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-5 flex items-center gap-4">
@@ -221,7 +218,7 @@ const ProfilePage: React.FC = () => {
               </div>
               <div>
                 <p className="text-2xl font-black text-slate-900">{stats.totalInvested.toLocaleString()}</p>
-                <p className="text-xs font-bold text-slate-400">{isRTL ? 'إجمالي الاستثمار' : 'Total Invested'}</p>
+                <p className="text-xs font-bold text-slate-400">{t?.profile_page?.total_invested || 'Total Invested'}</p>
               </div>
             </div>
           </div>
@@ -231,14 +228,14 @@ const ProfilePage: React.FC = () => {
             <div className="lg:col-span-1 space-y-6">
               <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-6 space-y-5">
                 <h2 className="text-lg font-black font-heading text-slate-900">
-                  {t?.profile?.info || (isRTL ? 'معلومات الحساب' : 'Account Info')}
+                  {t?.profile?.info || 'Account Info'}
                 </h2>
 
                 {isEditing ? (
                   <div className="space-y-4">
                     <div>
                       <label className="block text-xs font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                        {t?.profile?.name || (isRTL ? 'الاسم' : 'Name')}
+                        {t?.profile?.name || 'Name'}
                       </label>
                       <input
                         type="text"
@@ -249,7 +246,7 @@ const ProfilePage: React.FC = () => {
                     </div>
                     <div>
                       <label className="block text-xs font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                        {t?.profile?.phone || (isRTL ? 'الهاتف' : 'Phone')}
+                        {t?.profile?.phone || 'Phone'}
                       </label>
                       <input
                         type="tel"
@@ -260,14 +257,14 @@ const ProfilePage: React.FC = () => {
                     </div>
                     <div>
                       <label className="block text-xs font-black text-slate-500 uppercase tracking-wider mb-1.5">
-                        {t?.profile?.country || (isRTL ? 'الدولة' : 'Country')}
+                        {t?.profile?.country || 'Country'}
                       </label>
                       <select
                         value={formData.country}
                         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm font-medium text-slate-900 bg-white"
                       >
-                        <option value="">{isRTL ? 'اختر الدولة' : 'Select country'}</option>
+                        <option value="">{t?.profile_page?.select_country || 'Select country'}</option>
                         {Object.entries(COUNTRIES).map(([code, label]) => (
                           <option key={code} value={code}>{label}</option>
                         ))}
@@ -279,8 +276,8 @@ const ProfilePage: React.FC = () => {
                       className="w-full bg-teal-600 text-white px-6 py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {saving
-                        ? (isRTL ? 'جاري الحفظ...' : 'Saving...')
-                        : (t?.profile?.save || (isRTL ? 'حفظ التغييرات' : 'Save Changes'))}
+                        ? (t?.profile_page?.saving || 'Saving...')
+                        : (t?.profile?.save || 'Save Changes')}
                     </button>
                   </div>
                 ) : (
@@ -293,7 +290,7 @@ const ProfilePage: React.FC = () => {
                       </div>
                       <div className="min-w-0">
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
-                          {isRTL ? 'الاسم' : 'Name'}
+                          {t?.profile?.name || 'Name'}
                         </p>
                         <p className="text-sm font-medium text-slate-900 truncate">{user.displayName}</p>
                       </div>
@@ -307,7 +304,7 @@ const ProfilePage: React.FC = () => {
                       </div>
                       <div className="min-w-0">
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
-                          {isRTL ? 'البريد الإلكتروني' : 'Email'}
+                          {t?.profile_page?.email_address || 'Email'}
                         </p>
                         <p className="text-sm font-medium text-slate-900 truncate">{user.email}</p>
                       </div>
@@ -321,10 +318,10 @@ const ProfilePage: React.FC = () => {
                       </div>
                       <div className="min-w-0">
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
-                          {isRTL ? 'الهاتف' : 'Phone'}
+                          {t?.profile?.phone || 'Phone'}
                         </p>
                         <p className="text-sm font-medium text-slate-900 truncate">
-                          {user.phone || (isRTL ? 'غير محدد' : 'Not provided')}
+                          {user.phone || (t?.profile_page?.not_provided || 'Not provided')}
                         </p>
                       </div>
                     </div>
@@ -337,10 +334,10 @@ const ProfilePage: React.FC = () => {
                       </div>
                       <div className="min-w-0">
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
-                          {isRTL ? 'الدولة' : 'Country'}
+                          {t?.profile?.country || 'Country'}
                         </p>
                         <p className="text-sm font-medium text-slate-900 truncate">
-                          {COUNTRIES[user.country || ''] || user.country || (isRTL ? 'غير محدد' : 'Not provided')}
+                          {COUNTRIES[user.country || ''] || user.country || (t?.profile_page?.not_provided || 'Not provided')}
                         </p>
                       </div>
                     </div>
@@ -351,14 +348,14 @@ const ProfilePage: React.FC = () => {
               {/* Account Settings */}
               <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-6 space-y-5">
                 <h2 className="text-lg font-black font-heading text-slate-900">
-                  {isRTL ? 'إعدادات الحساب' : 'Account Settings'}
+                  {t?.profile_page?.account_settings || 'Account Settings'}
                 </h2>
 
                 <div className="space-y-4">
                   {/* Language Preference */}
                   <div>
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">
-                      {isRTL ? 'اللغة المفضلة' : 'Language Preference'}
+                      {t?.profile_page?.language_preference || 'Language Preference'}
                     </p>
                     <div className="flex items-center gap-2">
                       <button
@@ -387,13 +384,13 @@ const ProfilePage: React.FC = () => {
                   {/* Email (read-only) */}
                   <div>
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">
-                      {isRTL ? 'البريد الإلكتروني' : 'Email Address'}
+                      {t?.profile_page?.email_address || 'Email Address'}
                     </p>
                     <div className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 font-medium">
                       {user.email}
                     </div>
                     <p className="text-[10px] text-slate-400 mt-1">
-                      {isRTL ? 'لا يمكن تغيير البريد الإلكتروني' : 'Email cannot be changed'}
+                      {t?.profile_page?.email_cannot_change || 'Email cannot be changed'}
                     </p>
                   </div>
                 </div>
@@ -405,10 +402,10 @@ const ProfilePage: React.FC = () => {
               <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-lg font-black font-heading text-slate-900">
-                    {t?.profile?.enrollments || (isRTL ? 'تسجيلاتي' : 'My Enrollments')}
+                    {t?.profile?.enrollments || 'My Enrollments'}
                   </h2>
                   <span className="text-xs font-black text-slate-400 bg-slate-100 px-3 py-1 rounded-full">
-                    {userEnrollments.length} {isRTL ? 'دورة' : 'course(s)'}
+                    {userEnrollments.length} {t?.profile_page?.courses_label || 'course(s)'}
                   </span>
                 </div>
 
@@ -420,7 +417,7 @@ const ProfilePage: React.FC = () => {
                       </svg>
                     </div>
                     <p className="text-sm font-medium text-slate-400">
-                      {t?.profile?.noEnrollments || (isRTL ? 'لم تسجل في أي دورة بعد' : 'You have not enrolled in any courses yet')}
+                      {t?.profile?.noEnrollments || 'You have not enrolled in any courses yet'}
                     </p>
                   </div>
                 ) : (
@@ -461,7 +458,7 @@ const ProfilePage: React.FC = () => {
                                 </div>
                                 <div className="text-right sm:text-left flex-shrink-0">
                                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
-                                    {isRTL ? 'تاريخ التسجيل' : 'Enrolled'}
+                                    {t?.profile_page?.enrolled_date || 'Enrolled'}
                                   </p>
                                   <p className="text-sm font-medium text-slate-600">
                                     {new Date(enrollment.enrolledAt).toLocaleDateString(
@@ -472,7 +469,7 @@ const ProfilePage: React.FC = () => {
                                   {enrollment.completedAt && (
                                     <>
                                       <p className="text-[10px] font-black text-emerald-500 uppercase tracking-wider mt-1">
-                                        {isRTL ? 'تاريخ الإكمال' : 'Completed'}
+                                        {t?.profile_page?.completed_date || 'Completed'}
                                       </p>
                                       <p className="text-sm font-medium text-emerald-600">
                                         {new Date(enrollment.completedAt).toLocaleDateString(

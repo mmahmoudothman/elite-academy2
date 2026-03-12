@@ -293,7 +293,7 @@ const AnalyticsOverview: React.FC<AnalyticsOverviewProps> = ({ enrollments, cour
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-100">
-                  <th className="text-left py-3 px-2 text-[10px] font-black uppercase tracking-widest text-slate-400">Course</th>
+                  <th className="text-start py-3 px-2 text-[10px] font-black uppercase tracking-widest text-slate-400">Course</th>
                   <th className="text-center py-3 px-2 text-[10px] font-black uppercase tracking-widest text-slate-400">Views</th>
                   <th className="text-center py-3 px-2 text-[10px] font-black uppercase tracking-widest text-slate-400">Enrollments</th>
                   <th className="text-center py-3 px-2 text-[10px] font-black uppercase tracking-widest text-slate-400">Revenue</th>

@@ -144,17 +144,17 @@ const FinancialsTable: React.FC<FinancialsTableProps> = ({ courses, enrollments,
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-slate-50 text-left">
+            <tr className="bg-slate-50 text-start">
               <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400">{t.dashboard?.col_title || 'Course Title'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.total_revenue_financial || 'Revenue'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.instructor_payout || 'Instructor'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.venue_rent || 'Venue'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.materials_cost || 'Materials'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.marketing_cost || 'Marketing'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.other_costs || 'Other'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.total_cost || 'Total Cost'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.net_profit || 'Profit'}</th>
-              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-right">{t.dashboard?.profit_margin || 'Margin%'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.total_revenue_financial || 'Revenue'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.instructor_payout || 'Instructor'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.venue_rent || 'Venue'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.materials_cost || 'Materials'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.marketing_cost || 'Marketing'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.other_costs || 'Other'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.total_cost || 'Total Cost'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.net_profit || 'Profit'}</th>
+              <th className="px-4 py-3 font-black text-[10px] uppercase tracking-widest text-slate-400 text-end">{t.dashboard?.profit_margin || 'Margin%'}</th>
             </tr>
           </thead>
           <tbody>
@@ -165,15 +165,15 @@ const FinancialsTable: React.FC<FinancialsTableProps> = ({ courses, enrollments,
                   className={`border-t border-slate-50 ${onSaveFinancial ? 'cursor-pointer hover:bg-slate-50' : ''} ${editingCourseId === row.courseId ? 'bg-teal-50' : ''}`}
                 >
                   <td className="px-4 py-3 font-bold text-slate-900">{row.title}</td>
-                  <td className="px-4 py-3 text-right font-bold text-slate-700">{formatCurrency(row.revenue)}</td>
-                  <td className="px-4 py-3 text-right text-slate-600">{formatCurrency(row.instructorPayout)}</td>
-                  <td className="px-4 py-3 text-right text-slate-600">{formatCurrency(row.venueRent)}</td>
-                  <td className="px-4 py-3 text-right text-slate-600">{formatCurrency(row.materialsCost)}</td>
-                  <td className="px-4 py-3 text-right text-slate-600">{formatCurrency(row.marketingCost)}</td>
-                  <td className="px-4 py-3 text-right text-slate-600">{formatCurrency(row.otherCosts)}</td>
-                  <td className="px-4 py-3 text-right font-bold text-slate-700">{formatCurrency(row.totalCost)}</td>
-                  <td className={`px-4 py-3 text-right font-black ${profitColor(row.profit)}`}>{formatCurrency(row.profit)}</td>
-                  <td className={`px-4 py-3 text-right font-bold ${profitColor(row.margin)}`}>{formatMargin(row.margin)}</td>
+                  <td className="px-4 py-3 text-end font-bold text-slate-700">{formatCurrency(row.revenue)}</td>
+                  <td className="px-4 py-3 text-end text-slate-600">{formatCurrency(row.instructorPayout)}</td>
+                  <td className="px-4 py-3 text-end text-slate-600">{formatCurrency(row.venueRent)}</td>
+                  <td className="px-4 py-3 text-end text-slate-600">{formatCurrency(row.materialsCost)}</td>
+                  <td className="px-4 py-3 text-end text-slate-600">{formatCurrency(row.marketingCost)}</td>
+                  <td className="px-4 py-3 text-end text-slate-600">{formatCurrency(row.otherCosts)}</td>
+                  <td className="px-4 py-3 text-end font-bold text-slate-700">{formatCurrency(row.totalCost)}</td>
+                  <td className={`px-4 py-3 text-end font-black ${profitColor(row.profit)}`}>{formatCurrency(row.profit)}</td>
+                  <td className={`px-4 py-3 text-end font-bold ${profitColor(row.margin)}`}>{formatMargin(row.margin)}</td>
                 </tr>
 
                 {/* Inline edit form */}
@@ -260,15 +260,15 @@ const FinancialsTable: React.FC<FinancialsTableProps> = ({ courses, enrollments,
             {/* Summary row */}
             <tr className="border-t-2 border-slate-200 bg-slate-50 font-black">
               <td className="px-4 py-3 text-slate-900">{t.dashboard?.financial_summary || 'Total'}</td>
-              <td className="px-4 py-3 text-right text-slate-900">{formatCurrency(totals.revenue)}</td>
-              <td className="px-4 py-3 text-right text-slate-700">{formatCurrency(totals.instructorPayout)}</td>
-              <td className="px-4 py-3 text-right text-slate-700">{formatCurrency(totals.venueRent)}</td>
-              <td className="px-4 py-3 text-right text-slate-700">{formatCurrency(totals.materialsCost)}</td>
-              <td className="px-4 py-3 text-right text-slate-700">{formatCurrency(totals.marketingCost)}</td>
-              <td className="px-4 py-3 text-right text-slate-700">{formatCurrency(totals.otherCosts)}</td>
-              <td className="px-4 py-3 text-right text-slate-900">{formatCurrency(totals.totalCost)}</td>
-              <td className={`px-4 py-3 text-right ${profitColor(totals.profit)}`}>{formatCurrency(totals.profit)}</td>
-              <td className={`px-4 py-3 text-right ${profitColor(totalMargin)}`}>{formatMargin(totalMargin)}</td>
+              <td className="px-4 py-3 text-end text-slate-900">{formatCurrency(totals.revenue)}</td>
+              <td className="px-4 py-3 text-end text-slate-700">{formatCurrency(totals.instructorPayout)}</td>
+              <td className="px-4 py-3 text-end text-slate-700">{formatCurrency(totals.venueRent)}</td>
+              <td className="px-4 py-3 text-end text-slate-700">{formatCurrency(totals.materialsCost)}</td>
+              <td className="px-4 py-3 text-end text-slate-700">{formatCurrency(totals.marketingCost)}</td>
+              <td className="px-4 py-3 text-end text-slate-700">{formatCurrency(totals.otherCosts)}</td>
+              <td className="px-4 py-3 text-end text-slate-900">{formatCurrency(totals.totalCost)}</td>
+              <td className={`px-4 py-3 text-end ${profitColor(totals.profit)}`}>{formatCurrency(totals.profit)}</td>
+              <td className={`px-4 py-3 text-end ${profitColor(totalMargin)}`}>{formatMargin(totalMargin)}</td>
             </tr>
           </tbody>
         </table>

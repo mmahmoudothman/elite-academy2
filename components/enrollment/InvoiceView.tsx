@@ -33,7 +33,7 @@ const InvoiceView: React.FC<InvoiceViewProps> = ({ enrollment, isModal = false, 
           <h1 className="text-2xl font-black text-slate-900 tracking-tight">ELITE ACADEMY</h1>
           <p className="text-xs text-slate-400 font-bold mt-1">{t.invoice?.tagline || 'Excellence in Executive Education'}</p>
         </div>
-        <div className="text-right">
+        <div className="text-end">
           <p className="text-lg font-black text-slate-900">{t.invoice?.invoice_title || 'INVOICE'}</p>
           <p className="text-sm font-mono text-teal-600 font-bold">{enrollment.invoiceNumber || 'N/A'}</p>
           <p className="text-xs text-slate-400 mt-1">{new Date(enrollment.enrolledAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
@@ -60,8 +60,8 @@ const InvoiceView: React.FC<InvoiceViewProps> = ({ enrollment, isModal = false, 
         <table className="w-full">
           <thead>
             <tr className="border-b-2 border-slate-200">
-              <th className="text-left py-3 text-[10px] font-black uppercase tracking-widest text-slate-400">{t.invoice?.description || 'Description'}</th>
-              <th className="text-right py-3 text-[10px] font-black uppercase tracking-widest text-slate-400">{t.invoice?.amount || 'Amount'}</th>
+              <th className="text-start py-3 text-[10px] font-black uppercase tracking-widest text-slate-400">{t.invoice?.description || 'Description'}</th>
+              <th className="text-end py-3 text-[10px] font-black uppercase tracking-widest text-slate-400">{t.invoice?.amount || 'Amount'}</th>
             </tr>
           </thead>
           <tbody>
@@ -70,7 +70,7 @@ const InvoiceView: React.FC<InvoiceViewProps> = ({ enrollment, isModal = false, 
                 <p className="text-sm font-bold text-slate-900">{enrollment.courseTitle}</p>
                 <p className="text-xs text-slate-400">{t.invoice?.course_enrollment || 'Course Enrollment'}</p>
               </td>
-              <td className="py-4 text-right text-sm font-bold text-slate-900">
+              <td className="py-4 text-end text-sm font-bold text-slate-900">
                 {enrollment.discountCode
                   ? ((enrollment.paymentAmount + (enrollment.discountAmount || 0)).toLocaleString())
                   : enrollment.paymentAmount.toLocaleString()
@@ -82,7 +82,7 @@ const InvoiceView: React.FC<InvoiceViewProps> = ({ enrollment, isModal = false, 
                 <td className="py-3">
                   <p className="text-sm text-green-600">{t.invoice?.discount || 'Discount'} ({enrollment.discountCode})</p>
                 </td>
-                <td className="py-3 text-right text-sm font-bold text-green-600">
+                <td className="py-3 text-end text-sm font-bold text-green-600">
                   -{enrollment.discountAmount.toLocaleString()} {enrollment.paymentCurrency}
                 </td>
               </tr>
@@ -91,7 +91,7 @@ const InvoiceView: React.FC<InvoiceViewProps> = ({ enrollment, isModal = false, 
           <tfoot>
             <tr className="border-t-2 border-slate-900">
               <td className="py-4 text-sm font-black text-slate-900">{t.invoice?.total_due || 'Total Due'}</td>
-              <td className="py-4 text-right text-lg font-black text-slate-900">
+              <td className="py-4 text-end text-lg font-black text-slate-900">
                 {enrollment.paymentAmount.toLocaleString()} {enrollment.paymentCurrency}
               </td>
             </tr>
@@ -146,7 +146,7 @@ const InvoiceView: React.FC<InvoiceViewProps> = ({ enrollment, isModal = false, 
       <div className="relative min-h-full flex items-start justify-center p-4">
         <div className="relative bg-white w-full max-w-2xl rounded-2xl shadow-2xl my-8" style={{ animation: 'modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }} onClick={e => e.stopPropagation()}>
           {/* Close button */}
-          <button onClick={onClose} className="no-print absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all z-10">
+          <button onClick={onClose} className="no-print absolute top-4 end-4 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all z-10">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
           {invoiceContent}

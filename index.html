@@ -4,16 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230d9488'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-weight='bold' fill='white' font-family='sans-serif'>E</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230da993'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='18' font-weight='bold' fill='white' font-family='serif'>E</text></svg>">
     <title>ELITE ACADEMY | Innovative Executive Learning</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:wght@600;700;800&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Neuton:wght@400;700;800&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-primary: #0d9488;
-            --brand-secondary: #f97316;
-            --brand-navy: #0f172a;
+            --brand-primary: #0da993;
+            --brand-secondary: #3d66f1;
+            --brand-navy: #0d1b2a;
+            --brand-cream: #e8e4d8;
+            --brand-blue: #4167e0;
+            --brand-royal: #3d66f1;
         }
         body {
             font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
@@ -25,16 +28,22 @@
             font-family: 'Cairo', sans-serif;
         }
         .font-heading {
-            font-family: 'Bricolage Grotesque', 'Cairo', sans-serif;
-            letter-spacing: -0.03em;
+            font-family: 'Neuton', 'Cairo', serif;
+            letter-spacing: -0.01em;
         }
         .glass-light {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         .innovative-gradient {
-            background: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+            background: linear-gradient(135deg, #3d66f1 0%, #0da993 100%);
+        }
+        .brand-gradient {
+            background: linear-gradient(135deg, #3d66f1, #0da993);
+        }
+        .brand-gradient-subtle {
+            background: linear-gradient(135deg, #4167e0, #0da993);
         }
         .text-innovative {
             color: var(--brand-primary);
@@ -43,14 +52,14 @@
             background-color: var(--brand-primary);
         }
         .btn-action {
-            background-color: var(--brand-secondary);
+            background: linear-gradient(135deg, #3d66f1, #0da993);
             color: white;
             transition: all 0.3s ease;
         }
         .btn-action:hover {
-            background-color: #ea580c;
+            background: linear-gradient(135deg, #4167e0, #0da993);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.4);
+            box-shadow: 0 10px 20px -5px rgba(13, 169, 147, 0.4);
         }
         .card-innovative {
             background: white;
@@ -58,8 +67,8 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-innovative:hover {
-            border-color: #0d9488;
-            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.08);
+            border-color: #0da993;
+            box-shadow: 0 30px 60px -12px rgba(13, 27, 42, 0.08);
             transform: translateY(-5px);
         }
         .hero-shape {
@@ -68,7 +77,7 @@
             top: 0;
             width: 50%;
             height: 100%;
-            background: #f8fafc;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 100%);
             clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
             z-index: -1;
         }
@@ -76,6 +85,11 @@
             left: 0;
             right: auto;
             clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 0% 100%);
+        }
+        .glass-dark {
+            background: rgba(26, 39, 68, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         @keyframes fadeSlideIn {
             from { opacity: 0; transform: translateY(-8px); }
@@ -106,7 +120,7 @@
 }
 </script>
 </head>
-<body class="selection:bg-teal-500 selection:text-white">
+<body class="selection:bg-[#0da993] selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>

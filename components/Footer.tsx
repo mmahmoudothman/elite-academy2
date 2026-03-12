@@ -28,12 +28,12 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 text-white pt-12 sm:pt-16 lg:pt-24 pb-8 sm:pb-12">
+    <footer className="bg-[#0d1b2a] text-white pt-12 sm:pt-16 lg:pt-24 pb-8 sm:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-16">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-[#0da993] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg font-heading">E</span>
               </div>
               <span className="text-xl font-black font-heading tracking-tight uppercase">
@@ -69,40 +69,40 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-widest mb-6 text-teal-500">{t.footer?.navigation || (language === 'ar' ? 'التنقل' : 'Navigation')}</h4>
+            <h4 className="font-bold text-sm uppercase tracking-widest mb-6 text-[#0da993]">{t.footer?.navigation || (language === 'ar' ? 'التنقل' : 'Navigation')}</h4>
             <ul className="space-y-4 text-sm">
-              <li><a href="#courses" className="hover:text-teal-400 transition-colors">{t.footer?.strategic_programs || t.nav.programs}</a></li>
-              <li><Link to="/contact" className="hover:text-teal-400 transition-colors">{t.footer?.contact_us || t.contact?.nav_link || 'Contact Us'}</Link></li>
-              <li><Link to="/login" className="hover:text-teal-400 transition-colors">{t.footer?.sign_in || t.auth?.login_button || 'Sign In'}</Link></li>
-              <li><Link to="/register" className="hover:text-teal-400 transition-colors">{t.footer?.register || t.auth?.register_button || 'Register'}</Link></li>
+              <li><a href="#courses" className="hover:text-[#0da993] transition-colors">{t.footer?.strategic_programs || t.nav.programs}</a></li>
+              <li><Link to="/contact" className="hover:text-[#0da993] transition-colors">{t.footer?.contact_us || t.contact?.nav_link || 'Contact Us'}</Link></li>
+              <li><Link to="/login" className="hover:text-[#0da993] transition-colors">{t.footer?.sign_in || t.auth?.login_button || 'Sign In'}</Link></li>
+              <li><Link to="/register" className="hover:text-[#0da993] transition-colors">{t.footer?.register || t.auth?.register_button || 'Register'}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-widest mb-6 text-teal-500">{t.footer?.contact_heading || (language === 'ar' ? 'تواصل معنا' : 'Contact')}</h4>
+            <h4 className="font-bold text-sm uppercase tracking-widest mb-6 text-[#0da993]">{t.footer?.contact_heading || (language === 'ar' ? 'تواصل معنا' : 'Contact')}</h4>
             <ul className="space-y-4 text-sm text-slate-400">
               {config.addresses.map((addr, i) => (
                 <li key={i}>{addr.value}</li>
               ))}
               <li>
-                <a href={`mailto:${config.contactEmail}`} className="hover:text-teal-400 transition-colors">{config.contactEmail}</a>
+                <a href={`mailto:${config.contactEmail}`} className="hover:text-[#0da993] transition-colors">{config.contactEmail}</a>
               </li>
               <li>
-                <a href={`tel:${config.contactPhone}`} className="hover:text-teal-400 transition-colors">{config.contactPhone}</a>
+                <a href={`tel:${config.contactPhone}`} className="hover:text-[#0da993] transition-colors">{config.contactPhone}</a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-widest mb-6 text-teal-500">{t.footer?.stay_updated || (language === 'ar' ? 'ابق على اطلاع' : 'Stay Updated')}</h4>
+            <h4 className="font-bold text-sm uppercase tracking-widest mb-6 text-[#0da993]">{t.footer?.stay_updated || (language === 'ar' ? 'ابق على اطلاع' : 'Stay Updated')}</h4>
             <form onSubmit={handleSubscribe} className="flex gap-2">
               <input
                 type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
                 placeholder={t.footer?.email_placeholder || (language === 'ar' ? 'البريد الإلكتروني' : 'Email Address')}
-                className="bg-slate-800 border-none rounded-xl px-4 py-3 w-full text-sm outline-none focus:ring-2 focus:ring-teal-500"
+                className="bg-slate-800 border-none rounded-xl px-4 py-3 w-full text-sm outline-none focus:ring-2 focus:ring-[#0da993]"
               />
               <button type="submit" className="bg-teal-600 px-4 py-3 rounded-xl hover:bg-teal-700 transition-all active:scale-95 flex-shrink-0">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                <svg className="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </button>
             </form>
             {subscribed && (

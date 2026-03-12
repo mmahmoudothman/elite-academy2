@@ -8,7 +8,7 @@ interface AdBannerProps {
 }
 
 const AdBanner: React.FC<AdBannerProps> = ({ page = 'home' }) => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const { ads } = useDataManager();
   const [dismissed, setDismissed] = useState<Set<string>>(() => {
     try {
@@ -57,7 +57,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ page = 'home' }) => {
           </span>
           <div className="min-w-0">
             <span className="font-black text-sm sm:text-base">{title}</span>
-            {content && <span className="hidden md:inline text-sm text-white/90 font-medium ml-2">— {content}</span>}
+            {content && <span className="hidden md:inline text-sm text-white/90 font-medium ms-2">— {content}</span>}
           </div>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
@@ -68,7 +68,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ page = 'home' }) => {
               rel="noopener noreferrer"
               className="px-4 py-1.5 bg-white text-teal-700 rounded-full text-xs font-black hover:bg-teal-50 transition-all"
             >
-              {language === 'ar' ? 'المزيد' : 'Learn More'}
+              {t.common?.learn_more || 'Learn More'}
             </a>
           )}
           <button

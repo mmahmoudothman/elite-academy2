@@ -251,7 +251,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users, onToggleActive, onChange
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-slate-50">
-            <tr className="text-left rtl:text-right">
+            <tr className="text-start">
               <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400">
                 {d.col_name}
               </th>

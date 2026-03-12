@@ -94,7 +94,7 @@ const AdFormModal: React.FC<AdFormModalProps> = ({ isOpen, ad, onClose, onSave }
       <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl p-5 sm:p-8 my-8" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
+          className="absolute top-4 end-4 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -105,7 +105,7 @@ const AdFormModal: React.FC<AdFormModalProps> = ({ isOpen, ad, onClose, onSave }
           {ad ? (t.dashboard?.ad_updated || 'Edit Ad') : (t.dashboard?.ad_created || 'Add Ad')}
         </h3>
 
-        <form onSubmit={handleSubmit} className="space-y-4 max-h-[70vh] overflow-y-auto pr-1">
+        <form onSubmit={handleSubmit} className="space-y-4 max-h-[70vh] overflow-y-auto pe-1">
           {/* Title EN */}
           <div className="space-y-1">
             <label className={labelClass}>{t.dashboard?.ad_title || 'Ad Title'} (EN) *</label>
@@ -181,7 +181,7 @@ const AdFormModal: React.FC<AdFormModalProps> = ({ isOpen, ad, onClose, onSave }
           </div>
 
           {/* Placement & Status */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1">
               <label className={labelClass}>{t.dashboard?.ad_placement || 'Placement'}</label>
               <select
@@ -210,7 +210,7 @@ const AdFormModal: React.FC<AdFormModalProps> = ({ isOpen, ad, onClose, onSave }
           </div>
 
           {/* Start Date & End Date */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1">
               <label className={labelClass}>{t.dashboard?.start_date || 'Start Date'}</label>
               <input

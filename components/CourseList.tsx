@@ -55,13 +55,13 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
 
         <div className="flex justify-center mb-6 px-4">
           <div className="relative w-full max-w-md">
-            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            <svg className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t.courses?.search_programs || (language === 'ar' ? 'ابحث عن البرامج...' : 'Search programs...')}
-              className="w-full pl-11 rtl:pl-4 rtl:pr-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all"
+              className="w-full ps-11 pe-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all"
             />
           </div>
         </div>
@@ -100,7 +100,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
                     fallbackIcon="image"
                     showPlayOverlay={false}
                   />
-                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
+                  <div className="absolute top-3 start-3 sm:top-4 sm:start-4">
                     <span className="bg-white/90 backdrop-blur-sm text-teal-600 text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 sm:px-3 rounded-lg shadow-sm">
                       {course.category}
                     </span>
@@ -156,7 +156,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
             >
               <button
                 onClick={() => setSelectedCourse(null)}
-                className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all z-10"
+                className="absolute top-4 end-4 sm:top-6 sm:end-6 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all z-10"
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -164,7 +164,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses, onEnroll, loading }) =
               </button>
 
               <div className="space-y-5 sm:space-y-6 lg:space-y-8">
-                <div className="space-y-3 sm:space-y-4 pr-8">
+                <div className="space-y-3 sm:space-y-4 pe-8">
                   <span className="bg-teal-50 text-teal-600 text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-2.5 sm:px-3 py-1 rounded-lg inline-block">
                     {selectedCourse.category}
                   </span>

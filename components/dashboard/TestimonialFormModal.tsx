@@ -59,7 +59,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
       <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl p-5 sm:p-8 my-8" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
+          className="absolute top-4 end-4 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -72,7 +72,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Student Name *</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_student_name || 'Student Name'} *</label>
             <input
               type="text"
               value={form.studentName}
@@ -83,7 +83,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
           </div>
 
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Student Role</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_student_role || 'Student Role'}</label>
             <input
               type="text"
               value={form.studentRole}
@@ -94,7 +94,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
           </div>
 
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Content *</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_content || 'Content'} *</label>
             <textarea
               value={form.content}
               onChange={(e) => { setForm({ ...form, content: e.target.value }); setErrors(prev => ({ ...prev, content: '' })); }}
@@ -104,32 +104,32 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
             {errors.content && <p className="text-red-500 text-xs mt-1">{errors.content}</p>}
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Rating</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_rating || 'Rating'}</label>
               <select
                 value={form.rating}
                 onChange={(e) => setForm({ ...form, rating: Number(e.target.value) })}
                 className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               >
-                {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n} Star{n > 1 ? 's' : ''}</option>)}
+                {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n} {n > 1 ? (t.dashboard?.stars || 'Stars') : (t.dashboard?.star || 'Star')}</option>)}
               </select>
             </div>
             <div className="space-y-1">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Course</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_course || 'Course'}</label>
               <select
                 value={form.courseId}
                 onChange={(e) => setForm({ ...form, courseId: e.target.value })}
                 className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm"
               >
-                <option value="">None</option>
+                <option value="">{t.dashboard?.none_option || 'None'}</option>
                 {courses.map(c => <option key={c.id} value={c.id}>{c.title}</option>)}
               </select>
             </div>
           </div>
 
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Image URL</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_image_url || 'Image URL'}</label>
             <input
               type="text"
               value={form.image || ''}
@@ -139,9 +139,9 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Order</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_order || 'Order'}</label>
               <input
                 type="number"
                 min="0"
@@ -158,7 +158,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
                   onChange={(e) => setForm({ ...form, visible: e.target.checked })}
                   className="w-5 h-5 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
                 />
-                <span className="text-sm font-bold text-slate-700">Visible</span>
+                <span className="text-sm font-bold text-slate-700">{t.dashboard?.label_visible || 'Visible'}</span>
               </label>
             </div>
           </div>
@@ -167,7 +167,7 @@ const TestimonialFormModal: React.FC<TestimonialFormModalProps> = ({ isOpen, tes
             type="submit"
             className="w-full bg-teal-600 text-white py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all mt-2"
           >
-            Save
+            {t.dashboard?.save || 'Save'}
           </button>
         </form>
       </div>

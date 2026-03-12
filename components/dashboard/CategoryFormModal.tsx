@@ -81,7 +81,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
       <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl p-5 sm:p-8 my-8" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
+          className="absolute top-4 end-4 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -94,7 +94,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Name (EN) *</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.col_name_en || 'Name (EN)'} *</label>
             <input
               type="text"
               value={form.name.en}
@@ -105,7 +105,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
           </div>
 
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Name (AR) *</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.col_name_ar || 'Name (AR)'} *</label>
             <input
               type="text"
               dir="rtl"
@@ -117,7 +117,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
           </div>
 
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Slug</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_slug || 'Slug'}</label>
             <input
               type="text"
               value={form.slug}
@@ -128,7 +128,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
           </div>
 
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Description (EN)</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_description_en || 'Description (EN)'}</label>
             <textarea
               value={form.description?.en || ''}
               onChange={(e) => setForm({ ...form, description: { en: e.target.value, ar: form.description?.ar || '' } })}
@@ -138,7 +138,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
           </div>
 
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Description (AR)</label>
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_description_ar || 'Description (AR)'}</label>
             <textarea
               dir="rtl"
               value={form.description?.ar || ''}
@@ -148,9 +148,9 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
             />
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="space-y-1">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Color</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_color || 'Color'}</label>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
@@ -167,7 +167,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
               </div>
             </div>
             <div className="space-y-1">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Icon</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_icon || 'Icon'}</label>
               <input
                 type="text"
                 value={form.icon || ''}
@@ -177,7 +177,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
               />
             </div>
             <div className="space-y-1">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Order</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.label_order || 'Order'}</label>
               <input
                 type="number"
                 min="0"
@@ -196,7 +196,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
                 onChange={(e) => setForm({ ...form, visible: e.target.checked })}
                 className="w-5 h-5 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
               />
-              <span className="text-sm font-bold text-slate-700">Visible</span>
+              <span className="text-sm font-bold text-slate-700">{t.dashboard?.label_visible || 'Visible'}</span>
             </label>
           </div>
 
@@ -204,7 +204,7 @@ const CategoryFormModal: React.FC<CategoryFormModalProps> = ({ isOpen, category,
             type="submit"
             className="w-full bg-teal-600 text-white py-3 rounded-xl font-black text-sm hover:bg-teal-700 transition-all mt-2"
           >
-            Save
+            {t.dashboard?.save || 'Save'}
           </button>
         </form>
       </div>

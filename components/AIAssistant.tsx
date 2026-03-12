@@ -96,7 +96,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ courses = [] }) => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                placeholder={language === 'ar' ? 'اسأل عن الدورات...' : "Ask about courses..."}
+                placeholder={t.ai_assistant?.ask_placeholder || "Ask about courses..."}
                 className="flex-1 bg-slate-100 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none rtl:text-right"
               />
               <button 
@@ -117,7 +117,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ courses = [] }) => {
           className="w-16 h-16 bg-indigo-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 group relative"
         >
           <div className={`absolute -top-12 ${language === 'ar' ? 'left-0' : 'right-0'} bg-slate-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap`}>
-            {language === 'ar' ? 'كيف يمكنني مساعدتك؟' : 'How can I help you?'}
+            {t.ai_assistant?.help_tooltip || 'How can I help you?'}
           </div>
           <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />

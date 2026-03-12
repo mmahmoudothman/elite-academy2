@@ -83,16 +83,16 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
       <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
         <div className="p-6 border-b border-slate-100">
           <h2 className="text-lg font-black text-slate-900">{group ? d.edit_group : d.create_group}</h2>
-          <button onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+          <button onClick={onClose} className="absolute top-4 end-4 text-slate-400 hover:text-slate-700">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.name_en}</label>
-              <input type="text" value={nameEn} onChange={e => setNameEn(e.target.value)} placeholder="Group name"
+              <input type="text" value={nameEn} onChange={e => setNameEn(e.target.value)} placeholder={t.dashboard?.group_name_placeholder || "Group name"}
                 className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" />
             </div>
             <div>
@@ -102,7 +102,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.desc_en}</label>
               <textarea value={descEn} onChange={e => setDescEn(e.target.value)} rows={2}
@@ -126,7 +126,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.course}</label>
               <select value={courseId} onChange={e => setCourseId(e.target.value)}
@@ -145,7 +145,7 @@ const GroupFormModal: React.FC<GroupFormModalProps> = ({ isOpen, group, instruct
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{d.capacity}</label>
               <input type="number" value={capacity} onChange={e => setCapacity(e.target.value)} min={0} placeholder="0"

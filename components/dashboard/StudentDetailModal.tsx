@@ -253,7 +253,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
         onClick={e => e.stopPropagation()}
       >
         {/* Close Button */}
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 text-slate-400 hover:text-slate-700 transition-colors" aria-label="Close">
+        <button onClick={onClose} className="absolute top-4 end-4 z-10 text-slate-400 hover:text-slate-700 transition-colors" aria-label="Close">
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -492,7 +492,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                               </div>
                             </div>
                           </div>
-                          <div className="text-right flex-shrink-0">
+                          <div className="text-end flex-shrink-0">
                             <p className="text-sm font-black text-slate-900">
                               {enrollment.paymentAmount.toLocaleString()} {enrollment.paymentCurrency}
                             </p>
@@ -516,7 +516,7 @@ const StudentDetailModal: React.FC<StudentDetailModalProps> = ({
                 <p className="text-sm text-slate-400 italic text-center py-8">No activity recorded.</p>
               ) : (
                 <div className="relative">
-                  <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-200" />
+                  <div className="absolute start-4 top-0 bottom-0 w-px bg-slate-200" />
                   <div className="space-y-4">
                     {activityTimeline.map((event, idx) => (
                       <div key={idx} className="flex items-start gap-4 relative">

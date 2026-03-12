@@ -309,7 +309,7 @@ const StudentsTable: React.FC<StudentsTableProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-slate-50">
-            <tr className="text-left rtl:text-right">
+            <tr className="text-start">
               <th className="px-4 py-3 w-10">
                 <input type="checkbox" checked={paged.length > 0 && selectedIds.size === paged.length} onChange={toggleSelectAll}
                   className="rounded border-slate-300 text-teal-600 focus:ring-teal-500" />

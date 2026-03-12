@@ -138,7 +138,7 @@ const ContactsTable: React.FC<ContactsTableProps> = ({ contacts, onMarkRead, onM
             <h3 className="text-lg font-black text-slate-900">
               {t.dashboard?.contacts_tab || 'Contact Messages'} ({filtered.length})
               {stats.newUnread > 0 && (
-                <span className="ms-2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{stats.newUnread} new</span>
+                <span className="ms-2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{stats.newUnread} {t.dashboard?.new_label || 'new'}</span>
               )}
             </h3>
             <input type="text" value={search} onChange={e => { setSearch(e.target.value); setPage(0); }} placeholder={t.dashboard?.search_contacts || 'Search messages...'} className="w-full sm:w-64 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all" />
@@ -187,12 +187,12 @@ const ContactsTable: React.FC<ContactsTableProps> = ({ contacts, onMarkRead, onM
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
                   {onMarkResponded && contact.status !== 'responded' && (
-                    <button onClick={() => onMarkResponded(contact.id)} className="text-emerald-500 hover:text-emerald-600 transition-colors" title="Mark responded">
+                    <button onClick={() => onMarkResponded(contact.id)} className="text-emerald-500 hover:text-emerald-600 transition-colors" title={t.dashboard?.marked_responded || "Mark responded"}>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     </button>
                   )}
                   {onDelete && (
-                  <button onClick={() => onDelete(contact.id)} className="text-red-400 hover:text-red-600 transition-colors" title="Delete">
+                  <button onClick={() => onDelete(contact.id)} className="text-red-400 hover:text-red-600 transition-colors" title={t.dashboard?.delete || "Delete"}>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                   </button>
                   )}
@@ -261,8 +261,8 @@ const ContactsTable: React.FC<ContactsTableProps> = ({ contacts, onMarkRead, onM
           <div className="p-4 border-t border-slate-100 flex items-center justify-between">
             <span className="text-xs font-bold text-slate-400">{page * pageSize + 1}-{Math.min((page + 1) * pageSize, filtered.length)} / {filtered.length}</span>
             <div className="flex gap-1">
-              <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 disabled:opacity-40 hover:bg-slate-50 transition-all">Prev</button>
-              <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page >= totalPages - 1} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 disabled:opacity-40 hover:bg-slate-50 transition-all">Next</button>
+              <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 disabled:opacity-40 hover:bg-slate-50 transition-all">{t.dashboard?.prev || 'Prev'}</button>
+              <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page >= totalPages - 1} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 disabled:opacity-40 hover:bg-slate-50 transition-all">{t.dashboard?.next_page || 'Next'}</button>
             </div>
           </div>
         )}

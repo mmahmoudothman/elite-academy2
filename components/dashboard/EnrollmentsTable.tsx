@@ -95,19 +95,19 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
       {/* Summary Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
-          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Total Enrollments</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.total_enrollments_stat || 'Total Enrollments'}</p>
           <p className="text-2xl font-black text-slate-900 mt-1">{stats.total}</p>
         </div>
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
-          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Pending Payments</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.pending_payments_stat || 'Pending Payments'}</p>
           <p className="text-2xl font-black text-amber-600 mt-1">{stats.pendingPayments}</p>
         </div>
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
-          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Total Revenue</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.total_revenue_stat || 'Total Revenue'}</p>
           <p className="text-2xl font-black text-emerald-600 mt-1">{stats.totalRevenue.toLocaleString()}</p>
         </div>
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
-          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">This Month</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.this_month_stat || 'This Month'}</p>
           <p className="text-2xl font-black text-teal-600 mt-1">{stats.monthRevenue.toLocaleString()}</p>
         </div>
       </div>
@@ -122,26 +122,26 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
           <div className="flex flex-wrap gap-2">
             <select value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none">
               <option value="all">{t.dashboard?.all_statuses || 'All Statuses'}</option>
-              <option value="pending">Pending</option>
-              <option value="confirmed">Confirmed</option>
-              <option value="completed">Completed</option>
-              <option value="cancelled">Cancelled</option>
+              <option value="pending">{t.dashboard?.filter_pending || 'Pending'}</option>
+              <option value="confirmed">{t.dashboard?.filter_confirmed || 'Confirmed'}</option>
+              <option value="completed">{t.dashboard?.filter_completed || 'Completed'}</option>
+              <option value="cancelled">{t.dashboard?.filter_cancelled || 'Cancelled'}</option>
             </select>
             <select value={paymentFilter} onChange={e => { setPaymentFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none">
-              <option value="all">All Payments</option>
-              <option value="pending">Payment Pending</option>
-              <option value="paid">Paid</option>
-              <option value="refunded">Refunded</option>
+              <option value="all">{t.dashboard?.filter_all_payments || 'All Payments'}</option>
+              <option value="pending">{t.dashboard?.filter_payment_pending || 'Payment Pending'}</option>
+              <option value="paid">{t.dashboard?.filter_paid || 'Paid'}</option>
+              <option value="refunded">{t.dashboard?.filter_refunded || 'Refunded'}</option>
             </select>
             <select value={courseFilter} onChange={e => { setCourseFilter(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none max-w-[180px]">
-              <option value="all">All Courses</option>
+              <option value="all">{t.dashboard?.filter_all_courses || 'All Courses'}</option>
               {courseOptions.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
             <input type="date" value={dateFrom} onChange={e => { setDateFrom(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="From" />
             <input type="date" value={dateTo} onChange={e => { setDateTo(e.target.value); setPage(0); }} className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="To" />
             {(statusFilter !== 'all' || paymentFilter !== 'all' || courseFilter !== 'all' || dateFrom || dateTo) && (
               <button onClick={() => { setStatusFilter('all'); setPaymentFilter('all'); setCourseFilter('all'); setDateFrom(''); setDateTo(''); setPage(0); }} className="text-xs font-bold text-red-500 hover:text-red-700 px-3 py-2">
-                Clear Filters
+                {t.dashboard?.clear_filters || 'Clear Filters'}
               </button>
             )}
           </div>
@@ -150,13 +150,13 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-slate-50">
-              <tr className="text-left rtl:text-right">
+              <tr className="text-start">
                 <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.col_student || 'Student'}</th>
                 <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.col_course || 'Course'}</th>
-                <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hidden sm:table-cell">Invoice #</th>
+                <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hidden sm:table-cell">{t.dashboard?.col_invoice || 'Invoice #'}</th>
                 <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hidden sm:table-cell">{t.dashboard?.col_status || 'Status'}</th>
                 <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hidden md:table-cell">{t.dashboard?.col_payment || 'Payment'}</th>
-                <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hidden md:table-cell">Method</th>
+                <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hidden md:table-cell">{t.dashboard?.col_method || 'Method'}</th>
                 <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hidden lg:table-cell">{t.dashboard?.col_amount || 'Amount'}</th>
                 <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hidden lg:table-cell">{t.dashboard?.col_date || 'Date'}</th>
                 <th className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400">{t.dashboard?.col_actions || 'Actions'}</th>
@@ -205,46 +205,46 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
                       <div className="flex items-center gap-1 flex-wrap">
                         {/* Status workflow buttons */}
                         {onUpdateStatus && enrollment.status === 'pending' && (
-                          <button onClick={() => onUpdateStatus(enrollment.id, 'confirmed')} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors" title="Confirm">
-                            Confirm
+                          <button onClick={() => onUpdateStatus(enrollment.id, 'confirmed')} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors" title={t.dashboard?.confirm_action_label || "Confirm"}>
+                            {t.dashboard?.confirm_action_label || 'Confirm'}
                           </button>
                         )}
                         {onUpdateStatus && enrollment.status === 'confirmed' && (
-                          <button onClick={() => onUpdateStatus(enrollment.id, 'completed')} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors" title="Complete">
-                            Complete
+                          <button onClick={() => onUpdateStatus(enrollment.id, 'completed')} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors" title={t.dashboard?.complete_action_label || "Complete"}>
+                            {t.dashboard?.complete_action_label || 'Complete'}
                           </button>
                         )}
                         {onUpdateStatus && enrollment.status !== 'cancelled' && (
                           cancelConfirm === enrollment.id ? (
                             <div className="flex gap-1">
-                              <button onClick={() => handleCancelEnrollment(enrollment.id)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-red-100 text-red-600 hover:bg-red-200">Yes</button>
-                              <button onClick={() => setCancelConfirm(null)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200">No</button>
+                              <button onClick={() => handleCancelEnrollment(enrollment.id)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-red-100 text-red-600 hover:bg-red-200">{t.dashboard?.yes || 'Yes'}</button>
+                              <button onClick={() => setCancelConfirm(null)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200">{t.dashboard?.no || 'No'}</button>
                             </div>
                           ) : (
-                            <button onClick={() => setCancelConfirm(enrollment.id)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 transition-colors" title="Cancel">
-                              Cancel
+                            <button onClick={() => setCancelConfirm(enrollment.id)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 transition-colors" title={t.dashboard?.cancel_enrollment || "Cancel"}>
+                              {t.dashboard?.cancel_enrollment || 'Cancel'}
                             </button>
                           )
                         )}
                         {/* Payment status */}
                         {onUpdatePayment && enrollment.paymentStatus === 'pending' && enrollment.status !== 'cancelled' && (
-                          <button onClick={() => onUpdatePayment(enrollment.id, 'paid')} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-teal-50 text-teal-600 hover:bg-teal-100 transition-colors" title="Mark Paid">
-                            Paid
+                          <button onClick={() => onUpdatePayment(enrollment.id, 'paid')} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-teal-50 text-teal-600 hover:bg-teal-100 transition-colors" title={t.dashboard?.mark_paid || "Mark Paid"}>
+                            {t.dashboard?.paid_action || 'Paid'}
                           </button>
                         )}
                         {/* Admin notes toggle */}
-                        <button onClick={() => { if (expandedNotes === enrollment.id) { setExpandedNotes(null); } else { setExpandedNotes(enrollment.id); } }} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-50 text-slate-500 hover:bg-slate-100 transition-colors" title="Notes">
+                        <button onClick={() => { if (expandedNotes === enrollment.id) { setExpandedNotes(null); } else { setExpandedNotes(enrollment.id); } }} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-50 text-slate-500 hover:bg-slate-100 transition-colors" title={t.dashboard?.notes_action || "Notes"}>
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                         </button>
                         {/* Invoice */}
                         {onViewInvoice && enrollment.invoiceNumber && (
-                          <button onClick={() => onViewInvoice(enrollment)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-colors" title="Invoice">
+                          <button onClick={() => onViewInvoice(enrollment)} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-colors" title={t.dashboard?.col_invoice || "Invoice"}>
                             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                           </button>
                         )}
                         {/* Delete */}
                         {onDelete && (
-                        <button onClick={() => onDelete(enrollment.id)} className="text-red-400 hover:text-red-600 transition-colors p-2 w-8 h-8 flex items-center justify-center" title="Delete">
+                        <button onClick={() => onDelete(enrollment.id)} className="text-red-400 hover:text-red-600 transition-colors p-2 w-8 h-8 flex items-center justify-center" title={t.dashboard?.delete || "Delete"}>
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                         </button>
                         )}
@@ -256,20 +256,20 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
                     <tr className="bg-slate-50/80">
                       <td colSpan={9} className="px-4 py-3">
                         <div className="flex items-start gap-3">
-                          <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-2 flex-shrink-0">Admin Notes:</span>
+                          <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-2 flex-shrink-0">{t.dashboard?.admin_notes_label || 'Admin Notes:'}</span>
                           {editingNotes === enrollment.id ? (
                             <div className="flex-1 flex gap-2">
-                              <textarea value={notesValue} onChange={e => setNotesValue(e.target.value)} className="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" rows={2} placeholder="Add admin notes..." />
+                              <textarea value={notesValue} onChange={e => setNotesValue(e.target.value)} className="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none" rows={2} placeholder={t.dashboard?.add_admin_notes || "Add admin notes..."} />
                               <div className="flex flex-col gap-1">
-                                <button onClick={() => handleSaveNotes(enrollment.id)} className="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-teal-600 text-white hover:bg-teal-700">Save</button>
-                                <button onClick={() => setEditingNotes(null)} className="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-slate-200 text-slate-600 hover:bg-slate-300">Cancel</button>
+                                <button onClick={() => handleSaveNotes(enrollment.id)} className="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-teal-600 text-white hover:bg-teal-700">{t.dashboard?.save_notes || 'Save'}</button>
+                                <button onClick={() => setEditingNotes(null)} className="text-[10px] font-bold px-3 py-1.5 rounded-lg bg-slate-200 text-slate-600 hover:bg-slate-300">{t.dashboard?.cancel_notes || 'Cancel'}</button>
                               </div>
                             </div>
                           ) : (
                             <div className="flex-1 flex items-start gap-2">
-                              <p className="text-xs text-slate-600 flex-1">{enrollment.adminNotes || <span className="text-slate-400 italic">No notes</span>}</p>
+                              <p className="text-xs text-slate-600 flex-1">{enrollment.adminNotes || <span className="text-slate-400 italic">{t.dashboard?.no_notes_label || 'No notes'}</span>}</p>
                               <button onClick={() => { setEditingNotes(enrollment.id); setNotesValue(enrollment.adminNotes || ''); }} className="text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex-shrink-0">
-                                Edit
+                                {t.dashboard?.edit_notes || 'Edit'}
                               </button>
                             </div>
                           )}
@@ -287,8 +287,8 @@ const EnrollmentsTable: React.FC<EnrollmentsTableProps> = ({ enrollments, onUpda
           <div className="p-4 border-t border-slate-100 flex items-center justify-between">
             <span className="text-xs font-bold text-slate-400">{page * pageSize + 1}-{Math.min((page + 1) * pageSize, filtered.length)} / {filtered.length}</span>
             <div className="flex gap-1">
-              <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 disabled:opacity-40 hover:bg-slate-50 transition-all">Prev</button>
-              <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page >= totalPages - 1} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 disabled:opacity-40 hover:bg-slate-50 transition-all">Next</button>
+              <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 disabled:opacity-40 hover:bg-slate-50 transition-all">{t.dashboard?.prev || 'Prev'}</button>
+              <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page >= totalPages - 1} className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 disabled:opacity-40 hover:bg-slate-50 transition-all">{t.dashboard?.next_page || 'Next'}</button>
             </div>
           </div>
         )}

@@ -91,7 +91,7 @@ const LoginPage: React.FC = () => {
             <div>
               <label className="block text-sm font-bold text-slate-700 mb-2">{t.auth?.email || 'Email / Username'}</label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-4 rtl:pr-4 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 start-0 ps-4 flex items-center pointer-events-none">
                   <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
@@ -102,7 +102,7 @@ const LoginPage: React.FC = () => {
                   onChange={(e) => { setEmail(e.target.value); setError(''); }}
                   placeholder={t.auth?.email_placeholder || 'Enter email or username'}
                   disabled={loading}
-                  className="w-full pl-11 rtl:pl-4 rtl:pr-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all disabled:opacity-60"
+                  className="w-full ps-11 pe-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all disabled:opacity-60"
                   autoFocus
                 />
               </div>
@@ -111,7 +111,7 @@ const LoginPage: React.FC = () => {
             <div>
               <label className="block text-sm font-bold text-slate-700 mb-2">{t.auth?.password || 'Password'}</label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-4 rtl:pr-4 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 start-0 ps-4 flex items-center pointer-events-none">
                   <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
@@ -122,13 +122,13 @@ const LoginPage: React.FC = () => {
                   onChange={(e) => { setPassword(e.target.value); setError(''); }}
                   placeholder={t.auth?.password_placeholder || 'Enter password'}
                   disabled={loading}
-                  className="w-full pl-11 rtl:pl-12 rtl:pr-11 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all disabled:opacity-60"
+                  className="w-full ps-11 pe-12 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all disabled:opacity-60"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   tabIndex={-1}
-                  className="absolute inset-y-0 right-0 rtl:right-auto rtl:left-0 pr-4 rtl:pl-4 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
+                  className="absolute inset-y-0 end-0 pe-4 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     {showPassword ? (

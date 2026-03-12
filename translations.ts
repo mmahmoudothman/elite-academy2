@@ -164,7 +164,10 @@ export const translations = {
       hint_uppercase: "At least one uppercase letter",
       hint_number: "At least one number",
       too_many_attempts: "Too many login attempts. Please wait",
-      seconds: "seconds"
+      seconds: "seconds",
+      check_min_8: "At least 8 characters",
+      check_uppercase: "At least one uppercase letter",
+      check_number: "At least one number"
     },
     contact: {
       nav_link: "Contact",
@@ -785,7 +788,142 @@ export const translations = {
       groups_label: "groups",
       users_label: "users",
       instructor: "Instructor",
-      course: "Course"
+      course: "Course",
+
+      // Table headers - Testimonials
+      search_testimonials: "Search testimonials...",
+      add_testimonial: "Add Testimonial",
+      edit_testimonial: "Edit Testimonial",
+      no_testimonials_found: "No testimonials found",
+      col_student_name: "Student Name",
+      col_content: "Content",
+      col_order: "Order",
+
+      // Table headers - FAQs
+      search_faqs: "Search FAQs...",
+      add_faq: "Add FAQ",
+      edit_faq: "Edit FAQ",
+      no_faqs_found: "No FAQs found",
+      col_question_en: "Question (EN)",
+      col_question_ar: "Question (AR)",
+      all_categories: "All Categories",
+
+      // Table headers - Categories
+      search_categories: "Search categories...",
+      add_category: "Add Category",
+      edit_category: "Edit Category",
+      no_categories_found: "No categories found",
+      col_name_en: "Name (EN)",
+      col_name_ar: "Name (AR)",
+      col_slug: "Slug",
+      col_courses: "Courses",
+      col_color: "Color",
+
+      // Form labels
+      label_student_name: "Student Name",
+      label_student_role: "Student Role",
+      label_content: "Content",
+      label_rating: "Rating",
+      label_course: "Course",
+      label_image_url: "Image URL",
+      label_order: "Order",
+      label_slug: "Slug",
+      label_description_en: "Description (EN)",
+      label_description_ar: "Description (AR)",
+      label_color: "Color",
+      label_icon: "Icon",
+      label_question_en: "Question (EN)",
+      label_question_ar: "Question (AR)",
+      label_answer_en: "Answer (EN)",
+      label_answer_ar: "Answer (AR)",
+      label_category: "Category",
+      label_visible: "Visible",
+      none_option: "None",
+      group_name_placeholder: "Group name",
+
+      // Enrollment table
+      total_enrollments_stat: "Total Enrollments",
+      pending_payments_stat: "Pending Payments",
+      total_revenue_stat: "Total Revenue",
+      this_month_stat: "This Month",
+      col_placement: "Placement",
+      col_date_range: "Date Range",
+      col_impressions: "Impressions",
+      col_clicks: "Clicks",
+      col_ctr: "CTR",
+      confirm_action_label: "Confirm",
+      complete_action_label: "Complete",
+      cancel_enrollment: "Cancel",
+      paid_action: "Paid",
+      notes_action: "Notes",
+      admin_notes_label: "Admin Notes:",
+      add_admin_notes: "Add admin notes...",
+      no_notes_label: "No notes",
+      edit_notes: "Edit",
+      save_notes: "Save",
+      cancel_notes: "Cancel",
+
+      // Filter options
+      filter_all_statuses: "All Statuses",
+      filter_all_placements: "All Placements",
+      filter_all_payments: "All Payments",
+      filter_payment_pending: "Payment Pending",
+      filter_paid: "Paid",
+      filter_refunded: "Refunded",
+      filter_pending: "Pending",
+      filter_confirmed: "Confirmed",
+      filter_completed: "Completed",
+      filter_cancelled: "Cancelled",
+      filter_all_courses: "All Courses",
+
+      // Ad statuses
+      status_draft: "Draft",
+      status_active: "Active",
+      status_paused: "Paused",
+      status_expired: "Expired",
+      placement_banner: "Banner",
+      placement_popup: "Popup",
+      placement_sidebar: "Sidebar",
+      placement_inline: "Inline",
+      add_ad: "Add Ad",
+      no_ads: "No ads found",
+      pause: "Pause",
+      activate: "Activate",
+      edit: "Edit",
+
+      // Stars
+      star: "Star",
+      stars: "Stars",
+
+      // Contact table new
+      new_label: "new",
+
+      // Audit Log
+      audit_log_title: "Audit Log",
+      all_actions: "All Actions",
+      all_entities: "All Entities",
+      from_label: "From:",
+      to_label: "To:",
+      no_audit_entries: "No audit log entries found",
+      col_timestamp: "Timestamp",
+      col_user: "User",
+      col_action: "Action",
+      col_entity_type: "Entity Type",
+      col_entity_id: "Entity ID",
+      col_details: "Details",
+
+      // Newsletter
+      newsletter_title: "Newsletter Subscribers",
+      search_by_email: "Search by email...",
+      export_emails: "Export Emails",
+      no_subscribers_found: "No subscribers found",
+      col_email: "Email",
+      col_subscribed_date: "Subscribed Date",
+      col_source: "Source",
+      col_active: "Active",
+      active_label: "Active",
+      unsubscribed_label: "Unsubscribed",
+      unsubscribe: "Unsubscribe"
     },
     footer: {
       navigation: "Navigation",
@@ -868,10 +1006,33 @@ export const translations = {
       confirm: "Confirm",
       loading: "Loading...",
       error: "An error occurred",
-      success: "Success"
+      success: "Success",
+      something_went_wrong: "Something went wrong",
+      try_again: "Try Again",
+      learn_more: "Learn More",
+      no_data_yet: "No data yet",
+      no_permission: "You do not have permission to access this section."
     },
     landing: {
       prospectus_toast: "The prospectus will be sent to your email address."
+    },
+    profile_page: {
+      member_since: "Member since",
+      courses_enrolled: "Courses Enrolled",
+      completed_count: "Completed",
+      total_invested: "Total Invested",
+      account_settings: "Account Settings",
+      language_preference: "Language Preference",
+      email_address: "Email Address",
+      email_cannot_change: "Email cannot be changed",
+      not_provided: "Not provided",
+      select_country: "Select country",
+      saving: "Saving...",
+      profile_updated: "Profile updated successfully",
+      profile_update_failed: "Failed to update profile",
+      courses_label: "course(s)",
+      enrolled_date: "Enrolled",
+      completed_date: "Completed"
     }
   },
   ar: {
@@ -1038,7 +1199,10 @@ export const translations = {
       hint_uppercase: "حرف كبير واحد على الأقل",
       hint_number: "رقم واحد على الأقل",
       too_many_attempts: "محاولات تسجيل دخول كثيرة. يرجى الانتظار",
-      seconds: "ثوانٍ"
+      seconds: "ثوانٍ",
+      check_min_8: "8 أحرف على الأقل",
+      check_uppercase: "حرف كبير واحد على الأقل",
+      check_number: "رقم واحد على الأقل"
     },
     contact: {
       nav_link: "اتصل بنا",
@@ -1659,7 +1823,142 @@ export const translations = {
       groups_label: "مجموعات",
       users_label: "مستخدمين",
       instructor: "المدرب",
-      course: "الدورة"
+      course: "الدورة",
+
+      // Table headers - Testimonials
+      search_testimonials: "بحث في التوصيات...",
+      add_testimonial: "إضافة توصية",
+      edit_testimonial: "تعديل التوصية",
+      no_testimonials_found: "لا توجد توصيات",
+      col_student_name: "اسم الطالب",
+      col_content: "المحتوى",
+      col_order: "الترتيب",
+
+      // Table headers - FAQs
+      search_faqs: "بحث في الأسئلة...",
+      add_faq: "إضافة سؤال",
+      edit_faq: "تعديل السؤال",
+      no_faqs_found: "لا توجد أسئلة شائعة",
+      col_question_en: "السؤال (EN)",
+      col_question_ar: "السؤال (AR)",
+      all_categories: "جميع الفئات",
+
+      // Table headers - Categories
+      search_categories: "بحث في الفئات...",
+      add_category: "إضافة فئة",
+      edit_category: "تعديل الفئة",
+      no_categories_found: "لا توجد فئات",
+      col_name_en: "الاسم (EN)",
+      col_name_ar: "الاسم (AR)",
+      col_slug: "المعرّف",
+      col_courses: "الدورات",
+      col_color: "اللون",
+
+      // Form labels
+      label_student_name: "اسم الطالب",
+      label_student_role: "دور الطالب",
+      label_content: "المحتوى",
+      label_rating: "التقييم",
+      label_course: "الدورة",
+      label_image_url: "رابط الصورة",
+      label_order: "الترتيب",
+      label_slug: "المعرّف",
+      label_description_en: "الوصف (EN)",
+      label_description_ar: "الوصف (AR)",
+      label_color: "اللون",
+      label_icon: "الأيقونة",
+      label_question_en: "السؤال (EN)",
+      label_question_ar: "السؤال (AR)",
+      label_answer_en: "الإجابة (EN)",
+      label_answer_ar: "الإجابة (AR)",
+      label_category: "الفئة",
+      label_visible: "مرئي",
+      none_option: "بدون",
+      group_name_placeholder: "اسم المجموعة",
+
+      // Enrollment table
+      total_enrollments_stat: "إجمالي التسجيلات",
+      pending_payments_stat: "مدفوعات معلقة",
+      total_revenue_stat: "إجمالي الإيرادات",
+      this_month_stat: "هذا الشهر",
+      col_placement: "الموضع",
+      col_date_range: "نطاق التاريخ",
+      col_impressions: "مرات الظهور",
+      col_clicks: "النقرات",
+      col_ctr: "معدل النقر",
+      confirm_action_label: "تأكيد",
+      complete_action_label: "إكمال",
+      cancel_enrollment: "إلغاء",
+      paid_action: "مدفوع",
+      notes_action: "ملاحظات",
+      admin_notes_label: "ملاحظات المسؤول:",
+      add_admin_notes: "أضف ملاحظات...",
+      no_notes_label: "لا توجد ملاحظات",
+      edit_notes: "تعديل",
+      save_notes: "حفظ",
+      cancel_notes: "إلغاء",
+
+      // Filter options
+      filter_all_statuses: "جميع الحالات",
+      filter_all_placements: "جميع المواضع",
+      filter_all_payments: "جميع المدفوعات",
+      filter_payment_pending: "دفع معلق",
+      filter_paid: "مدفوع",
+      filter_refunded: "مسترد",
+      filter_pending: "معلق",
+      filter_confirmed: "مؤكد",
+      filter_completed: "مكتمل",
+      filter_cancelled: "ملغي",
+      filter_all_courses: "جميع الدورات",
+
+      // Ad statuses
+      status_draft: "مسودة",
+      status_active: "نشط",
+      status_paused: "متوقف",
+      status_expired: "منتهي",
+      placement_banner: "بانر",
+      placement_popup: "نافذة منبثقة",
+      placement_sidebar: "شريط جانبي",
+      placement_inline: "مضمن",
+      add_ad: "إضافة إعلان",
+      no_ads: "لا توجد إعلانات",
+      pause: "إيقاف",
+      activate: "تفعيل",
+      edit: "تعديل",
+
+      // Stars
+      star: "نجمة",
+      stars: "نجوم",
+
+      // Contact table new
+      new_label: "جديد",
+
+      // Audit Log
+      audit_log_title: "سجل التدقيق",
+      all_actions: "جميع الإجراءات",
+      all_entities: "جميع الكيانات",
+      from_label: "من:",
+      to_label: "إلى:",
+      no_audit_entries: "لا توجد سجلات تدقيق",
+      col_timestamp: "التوقيت",
+      col_user: "المستخدم",
+      col_action: "الإجراء",
+      col_entity_type: "نوع الكيان",
+      col_entity_id: "معرّف الكيان",
+      col_details: "التفاصيل",
+
+      // Newsletter
+      newsletter_title: "مشتركو النشرة البريدية",
+      search_by_email: "بحث بالبريد الإلكتروني...",
+      export_emails: "تصدير البريد",
+      no_subscribers_found: "لا يوجد مشتركون",
+      col_email: "البريد الإلكتروني",
+      col_subscribed_date: "تاريخ الاشتراك",
+      col_source: "المصدر",
+      col_active: "نشط",
+      active_label: "نشط",
+      unsubscribed_label: "غير مشترك",
+      unsubscribe: "إلغاء الاشتراك"
     },
     footer: {
       navigation: "التنقل",
@@ -1742,10 +2041,33 @@ export const translations = {
       confirm: "تأكيد",
       loading: "جاري التحميل...",
       error: "حدث خطأ",
-      success: "تم بنجاح"
+      success: "تم بنجاح",
+      something_went_wrong: "حدث خطأ ما",
+      try_again: "حاول مرة أخرى",
+      learn_more: "المزيد",
+      no_data_yet: "لا توجد بيانات بعد",
+      no_permission: "ليس لديك صلاحية للوصول لهذا القسم."
     },
     landing: {
       prospectus_toast: "سيتم إرسال النشرة إلى بريدك الإلكتروني."
+    },
+    profile_page: {
+      member_since: "عضو منذ",
+      courses_enrolled: "دورات مسجلة",
+      completed_count: "مكتملة",
+      total_invested: "إجمالي الاستثمار",
+      account_settings: "إعدادات الحساب",
+      language_preference: "اللغة المفضلة",
+      email_address: "البريد الإلكتروني",
+      email_cannot_change: "لا يمكن تغيير البريد الإلكتروني",
+      not_provided: "غير محدد",
+      select_country: "اختر الدولة",
+      saving: "جاري الحفظ...",
+      profile_updated: "تم حفظ التغييرات بنجاح",
+      profile_update_failed: "حدث خطأ أثناء الحفظ",
+      courses_label: "دورة",
+      enrolled_date: "تاريخ التسجيل",
+      completed_date: "تاريخ الإكمال"
     }
   }
 };

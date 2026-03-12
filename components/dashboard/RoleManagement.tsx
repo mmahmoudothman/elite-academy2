@@ -266,7 +266,7 @@ const RoleManagement: React.FC = () => {
                 key={key}
                 type="button"
                 onClick={() => handleSelectRole(key)}
-                className={`w-full text-left bg-white rounded-2xl border p-4 transition-all hover:shadow-sm ${
+                className={`w-full text-start bg-white rounded-2xl border p-4 transition-all hover:shadow-sm ${
                   isSelected ? 'border-teal-500 ring-2 ring-teal-500/20' : 'border-slate-100'
                 }`}
               >

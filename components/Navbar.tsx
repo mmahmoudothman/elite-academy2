@@ -51,21 +51,21 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
   };
 
   const navLinkClass = (section: string) =>
-    `font-bold text-sm transition-colors ${activeSection === section ? 'text-teal-600 underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-teal-600'}`;
+    `font-bold text-sm transition-colors ${activeSection === section ? 'text-[#0da993] underline underline-offset-8 decoration-2' : 'text-slate-600 hover:text-[#0da993]'}`;
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 glass-light shadow-sm' : 'py-6 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-teal-100">
+            <div className="w-10 h-10 bg-[#0da993] rounded-xl flex items-center justify-center shadow-lg shadow-[#0da993]/20">
               <span className="text-white font-bold text-xl font-heading">E</span>
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-black font-heading tracking-tight text-slate-900 leading-none">
                 {language === 'ar' ? 'أكاديمية النخبة' : 'ELITE ACADEMY'}
               </span>
-              <span className="text-[9px] font-bold text-teal-600 tracking-[0.2em] uppercase">
+              <span className="text-[9px] font-bold text-[#0da993] tracking-[0.2em] uppercase">
                 {language === 'ar' ? (config.companyTagline?.ar || 'التعلم المبتكر') : (config.companyTagline?.en || 'Innovative Learning')}
               </span>
             </div>
@@ -81,26 +81,26 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
             )}
 
             <div className="flex items-center gap-4">
-              <Link to="/contact" className="font-bold text-sm text-slate-600 hover:text-teal-600 transition-colors">
+              <Link to="/contact" className="font-bold text-sm text-slate-600 hover:text-[#0da993] transition-colors">
                 {t.contact?.nav_link || 'Contact'}
               </Link>
 
-              <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="text-xs font-black text-slate-400 hover:text-teal-600 transition-colors">
+              <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="text-xs font-black text-slate-400 hover:text-[#0da993] transition-colors">
                 {language === 'en' ? 'AR' : 'EN'}
               </button>
 
               {isAuthenticated ? (
                 <div className="flex items-center gap-3">
                   {(userRole === 'super_admin' || userRole === 'admin') && (
-                    <Link to="/dashboard" className="text-sm font-bold text-teal-600 hover:text-teal-700 transition-colors">
+                    <Link to="/dashboard" className="text-sm font-bold text-[#0da993] hover:text-[#0da993] transition-colors">
                       {t.dashboard?.nav_link || 'Dashboard'}
                     </Link>
                   )}
-                  <Link to="/profile" className="text-sm font-bold text-slate-600 hover:text-teal-600 transition-colors">
+                  <Link to="/profile" className="text-sm font-bold text-slate-600 hover:text-[#0da993] transition-colors">
                     {t.profile_modal?.title || 'Profile'}
                   </Link>
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-teal-50 rounded-full flex items-center justify-center text-teal-600 font-bold text-xs">
+                    <div className="w-8 h-8 bg-[#0da993]/10 rounded-full flex items-center justify-center text-[#0da993] font-bold text-xs">
                       {user?.displayName?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                     <button onClick={logout} className="text-xs font-bold text-slate-400 hover:text-red-500 transition-colors">
@@ -110,11 +110,11 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
                 </div>
               ) : (
                 <div className="flex items-center gap-3">
-                  <Link to="/login" className="text-sm font-bold text-slate-600 hover:text-teal-600 transition-colors">
+                  <Link to="/login" className="text-sm font-bold text-slate-600 hover:text-[#0da993] transition-colors">
                     {t.auth?.login_button || 'Sign In'}
                   </Link>
                   {onApplyClick && (
-                    <button onClick={onApplyClick} className="bg-teal-600 text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-teal-700 transition-all shadow-xl shadow-teal-100 active:scale-95">
+                    <button onClick={onApplyClick} className="bg-[#0da993] text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-[#0da993]/90 transition-all shadow-xl shadow-[#0da993]/20 active:scale-95">
                       {t.nav.apply}
                     </button>
                   )}
@@ -125,7 +125,7 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
 
           {/* Mobile */}
           <div className="lg:hidden flex items-center gap-3">
-            <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="text-xs font-black text-slate-400 hover:text-teal-600 transition-colors px-2 py-1">
+            <button onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')} className="text-xs font-black text-slate-400 hover:text-[#0da993] transition-colors px-2 py-1">
               {language === 'en' ? 'AR' : 'EN'}
             </button>
             <button onClick={() => setIsOpen(!isOpen)} className="text-slate-900 p-2">
@@ -138,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
       </div>
 
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl p-6 border-t border-slate-100 animate-in fade-in slide-in-from-top-2 max-h-[calc(100vh-80px)] overflow-y-auto">
+        <div className="lg:hidden absolute top-full inset-x-0 w-full bg-white shadow-2xl p-6 border-t border-slate-100 animate-in fade-in slide-in-from-top-2 max-h-[calc(100vh-80px)] overflow-y-auto">
           <div className="flex flex-col space-y-4">
             {isLanding && (
               <>
@@ -152,20 +152,20 @@ const Navbar: React.FC<NavbarProps> = ({ onApplyClick }) => {
             {isAuthenticated ? (
               <>
                 {(userRole === 'super_admin' || userRole === 'admin') && (
-                  <Link to="/dashboard" onClick={() => setIsOpen(false)} className="text-teal-600 font-bold text-lg">{t.dashboard?.nav_link || 'Dashboard'}</Link>
+                  <Link to="/dashboard" onClick={() => setIsOpen(false)} className="text-[#0da993] font-bold text-lg">{t.dashboard?.nav_link || 'Dashboard'}</Link>
                 )}
-                <Link to="/profile" onClick={() => setIsOpen(false)} className="text-teal-600 font-bold text-lg">{t.profile_modal?.title || 'Profile'}</Link>
-                <button onClick={() => { setIsOpen(false); logout(); }} className="text-red-500 font-bold text-lg text-left">{t.dashboard?.logout || 'Logout'}</button>
+                <Link to="/profile" onClick={() => setIsOpen(false)} className="text-[#0da993] font-bold text-lg">{t.profile_modal?.title || 'Profile'}</Link>
+                <button onClick={() => { setIsOpen(false); logout(); }} className="text-red-500 font-bold text-lg text-start">{t.dashboard?.logout || 'Logout'}</button>
               </>
             ) : (
               <>
-                <Link to="/login" onClick={() => setIsOpen(false)} className="text-teal-600 font-bold text-lg">{t.auth?.login_button || 'Sign In'}</Link>
-                <Link to="/register" onClick={() => setIsOpen(false)} className="text-teal-600 font-bold text-lg">{t.auth?.register_button || 'Register'}</Link>
+                <Link to="/login" onClick={() => setIsOpen(false)} className="text-[#0da993] font-bold text-lg">{t.auth?.login_button || 'Sign In'}</Link>
+                <Link to="/register" onClick={() => setIsOpen(false)} className="text-[#0da993] font-bold text-lg">{t.auth?.register_button || 'Register'}</Link>
               </>
             )}
 
             {onApplyClick && (
-              <button onClick={() => { setIsOpen(false); onApplyClick(); }} className="bg-teal-600 text-white w-full py-4 rounded-xl font-bold">{t.nav.apply}</button>
+              <button onClick={() => { setIsOpen(false); onApplyClick(); }} className="bg-[#0da993] text-white w-full py-4 rounded-xl font-bold">{t.nav.apply}</button>
             )}
           </div>
         </div>

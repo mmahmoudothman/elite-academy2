@@ -117,7 +117,7 @@ const RegisterPage: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ml-1">{t.form?.name || 'Full Name'}</label>
+              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ms-1">{t.form?.name || 'Full Name'}</label>
               <input
                 required type="text" value={form.name} onChange={e => update('name', e.target.value)}
                 placeholder={t.form?.name_placeholder || 'Enter your name'}
@@ -126,7 +126,7 @@ const RegisterPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ml-1">{t.form?.email || 'Email'}</label>
+              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ms-1">{t.form?.email || 'Email'}</label>
               <input
                 required type="email" value={form.email} onChange={e => update('email', e.target.value)}
                 placeholder="example@mail.com"
@@ -134,9 +134,9 @@ const RegisterPage: React.FC = () => {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ml-1">{t.form?.phone || 'Phone'}</label>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ms-1">{t.form?.phone || 'Phone'}</label>
                 <input
                   type="tel" value={form.phone} onChange={e => update('phone', e.target.value)}
                   placeholder="+20..."
@@ -144,7 +144,7 @@ const RegisterPage: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ml-1">{t.form?.country || 'Country'}</label>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ms-1">{t.form?.country || 'Country'}</label>
                 <select
                   value={form.country} onChange={e => update('country', e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:border-teal-500 focus:bg-white outline-none transition-all text-slate-900 font-bold text-sm appearance-none"
@@ -155,7 +155,7 @@ const RegisterPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ml-1">{t.auth?.password || 'Password'}</label>
+              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ms-1">{t.auth?.password || 'Password'}</label>
               <input
                 required type="password" value={form.password} onChange={e => update('password', e.target.value)}
                 placeholder={t.auth?.password_placeholder || 'Min 8 characters'}
@@ -195,7 +195,7 @@ const RegisterPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ml-1">{t.auth?.confirm_password || 'Confirm Password'}</label>
+              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ms-1">{t.auth?.confirm_password || 'Confirm Password'}</label>
               <input
                 required type="password" value={form.confirmPassword} onChange={e => update('confirmPassword', e.target.value)}
                 placeholder={t.auth?.confirm_placeholder || 'Re-enter password'}

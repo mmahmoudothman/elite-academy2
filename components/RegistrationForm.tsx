@@ -38,7 +38,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
+            className="absolute top-4 end-4 sm:top-6 sm:end-6 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -61,7 +61,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
             </div>
           ) : (
             <>
-              <div className="mb-5 sm:mb-8 pr-8">
+              <div className="mb-5 sm:mb-8 pe-8">
                 <h3 className="text-2xl sm:text-3xl font-black font-heading text-slate-900 mb-2">
                   {t.form.title}
                 </h3>
@@ -71,7 +71,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-                <div className="space-y-1 text-left rtl:text-right">
+                <div className="space-y-1 text-start">
                   <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ms-1">
                     {t.form.name}
                   </label>
@@ -83,7 +83,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-left rtl:text-right">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-start">
                   <div className="space-y-1">
                     <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ms-1">
                       {t.form.email}
@@ -108,7 +108,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ isOpen, onClose }) 
                   </div>
                 </div>
 
-                <div className="space-y-1 text-left rtl:text-right">
+                <div className="space-y-1 text-start">
                   <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-400 ms-1">
                     {t.form.country}
                   </label>

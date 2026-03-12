@@ -226,7 +226,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, course, onClo
       <div className="relative min-h-full flex items-start sm:items-center justify-center p-0 sm:p-4">
         <div className="relative bg-white w-full sm:max-w-lg sm:rounded-2xl shadow-2xl p-5 sm:p-8 sm:my-4" style={{ animation: 'modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }} onClick={e => e.stopPropagation()}>
           {/* Close */}
-          <button onClick={handleClose} className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all">
+          <button onClick={handleClose} className="absolute top-4 end-4 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
 

@@ -29,16 +29,16 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16 items-center">
-          <div className="space-y-6 sm:space-y-10 text-center lg:text-left rtl:lg:text-right">
-            <div className="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></span>
-              <span className="text-teal-700 font-bold text-[10px] sm:text-xs uppercase tracking-widest">{t.hero.badge}</span>
+          <div className="space-y-6 sm:space-y-10 text-center lg:text-start">
+            <div className="inline-flex items-center gap-2 bg-[#0da993]/10 border border-[#0da993]/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-[#0da993] animate-pulse"></span>
+              <span className="text-[#0da993] font-bold text-[10px] sm:text-xs uppercase tracking-widest">{t.hero.badge}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black font-heading leading-tight text-slate-900">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black font-heading leading-tight text-[#0d1b2a]">
               {language === 'ar' && config.heroTitle?.ar ? config.heroTitle.ar : (
                 <>{t.hero.title_part1} <br />
-                <span className="text-teal-600">{t.hero.title_part2}</span> <br />
+                <span className="text-[#0da993]">{t.hero.title_part2}</span> <br />
                 {t.hero.title_part3}</>
               )}
             </h1>
@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
               </button>
               <button
                 onClick={() => scrollToSection('courses')}
-                className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-white text-slate-900 border-2 border-slate-200 rounded-xl sm:rounded-2xl font-black hover:border-teal-600 hover:text-teal-600 transition-all text-base sm:text-lg active:scale-95"
+                className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-[#e8e4d8]/60 text-[#0d1b2a] border-2 border-[#e8e4d8] rounded-xl sm:rounded-2xl font-black hover:border-[#0da993] hover:text-[#0da993] transition-all text-base sm:text-lg active:scale-95"
               >
                 {t.hero.cta_primary}
               </button>
@@ -70,11 +70,11 @@ const Hero: React.FC<HeroProps> = ({ onApplyClick }) => {
                 alt="Executive Learning" 
                 className="w-full h-[600px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/40 to-transparent"></div>
             </div>
             {/* Decorative Elements */}
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-orange-500 rounded-3xl -z-10 rotate-12"></div>
-            <div className="absolute -top-10 -right-10 w-64 h-64 border-[20px] border-teal-500/10 rounded-full -z-10"></div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#3d66f1] rounded-3xl -z-10 rotate-12"></div>
+            <div className="absolute -top-10 -right-10 w-64 h-64 border-[20px] border-[#0da993]/10 rounded-full -z-10"></div>
           </div>
         </div>
 

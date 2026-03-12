@@ -35,7 +35,7 @@ const AnnouncementBanner: React.FC = () => {
   );
 
   return (
-    <div className="sticky top-0 z-[60] bg-gradient-to-r from-teal-600 to-blue-600 text-white py-2 px-4 sm:px-6">
+    <div className="sticky top-0 z-[60] innovative-gradient text-white py-2 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto flex items-center justify-center gap-3">
         <p className="text-xs sm:text-sm font-bold text-center flex-1">
           {content}

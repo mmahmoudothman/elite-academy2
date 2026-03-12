@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { AuditLogEntry } from '../../types';
+import { useLanguage } from '../LanguageContext';
 
 interface AuditLogTableProps {
   auditLog: AuditLogEntry[];
 }
 
 const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
+  const { t } = useLanguage();
+  const d = t.dashboard;
   const [actionFilter, setActionFilter] = useState('');
   const [entityFilter, setEntityFilter] = useState('');
   const [dateFrom, setDateFrom] = useState('');
@@ -42,7 +45,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
   return (
     <div>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
-        <h2 className="text-2xl font-black text-slate-900">Audit Log</h2>
+        <h2 className="text-2xl font-black text-slate-900">{d?.audit_log_title || 'Audit Log'}</h2>
       </div>
 
       {/* Filters */}
@@ -53,7 +56,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
             onChange={(e) => setActionFilter(e.target.value)}
             className="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-900 focus:border-teal-500 outline-none transition-all"
           >
-            <option value="">All Actions</option>
+            <option value="">{d?.all_actions || 'All Actions'}</option>
             {actions.map(a => <option key={a} value={a}>{a}</option>)}
           </select>
           <select
@@ -61,11 +64,11 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
             onChange={(e) => setEntityFilter(e.target.value)}
             className="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-bold text-slate-900 focus:border-teal-500 outline-none transition-all"
           >
-            <option value="">All Entities</option>
+            <option value="">{d?.all_entities || 'All Entities'}</option>
             {entityTypes.map(e => <option key={e} value={e}>{e}</option>)}
           </select>
           <div className="flex items-center gap-2">
-            <label className="text-xs font-bold text-slate-500">From:</label>
+            <label className="text-xs font-bold text-slate-500">{d?.from_label || 'From:'}</label>
             <input
               type="date"
               value={dateFrom}
@@ -74,7 +77,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
             />
           </div>
           <div className="flex items-center gap-2">
-            <label className="text-xs font-bold text-slate-500">To:</label>
+            <label className="text-xs font-bold text-slate-500">{d?.to_label || 'To:'}</label>
             <input
               type="date"
               value={dateTo}
@@ -87,7 +90,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
               onClick={() => { setActionFilter(''); setEntityFilter(''); setDateFrom(''); setDateTo(''); }}
               className="text-sm font-bold text-slate-500 hover:text-slate-700 transition-all"
             >
-              Clear Filters
+              {d?.clear_filters || 'Clear Filters'}
             </button>
           )}
         </div>
@@ -95,7 +98,7 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
 
       {filtered.length === 0 ? (
         <div className="bg-white rounded-2xl border border-slate-100 p-12 text-center">
-          <p className="text-slate-400 font-medium">No audit log entries found</p>
+          <p className="text-slate-400 font-medium">{d?.no_audit_entries || 'No audit log entries found'}</p>
         </div>
       ) : (
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
@@ -103,12 +106,12 @@ const AuditLogTable: React.FC<AuditLogTableProps> = ({ auditLog }) => {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-100 bg-slate-50">
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">Timestamp</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">User</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">Action</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">Entity Type</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">Entity ID</th>
-                  <th className="text-left rtl:text-right px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">Details</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{d?.col_timestamp || 'Timestamp'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{d?.col_user || 'User'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{d?.col_action || 'Action'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{d?.col_entity_type || 'Entity Type'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{d?.col_entity_id || 'Entity ID'}</th>
+                  <th className="text-start px-6 py-4 font-black text-xs uppercase tracking-widest text-slate-400">{d?.col_details || 'Details'}</th>
                 </tr>
               </thead>
               <tbody>

@@ -112,7 +112,7 @@ const Instructors: React.FC<InstructorsProps> = ({ instructors }) => {
                     <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
-                    <span className="text-[9px] sm:text-[10px] font-black text-slate-700 uppercase tracking-wider">Video</span>
+                    <span className="text-[9px] sm:text-[10px] font-black text-slate-700 uppercase tracking-wider">{t.dashboard?.col_video || 'Video'}</span>
                   </div>
                 )}
                 {/* Specialization on hover */}
@@ -143,7 +143,7 @@ const Instructors: React.FC<InstructorsProps> = ({ instructors }) => {
                     </ul>
                   </div>
 
-                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed italic border-l-2 border-indigo-100 pl-3 sm:pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pr-3 sm:rtl:pr-4 rtl:pl-0 line-clamp-2">
+                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed italic border-s-2 border-indigo-100 ps-3 sm:ps-4 line-clamp-2">
                     &ldquo;{instructor.bio}&rdquo;
                   </p>
                 </div>
@@ -346,7 +346,7 @@ const Instructors: React.FC<InstructorsProps> = ({ instructors }) => {
           >
             <button
               onClick={closeVideo}
-              className="absolute top-3 right-3 sm:top-6 sm:right-6 z-10 w-9 h-9 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all"
+              className="absolute top-3 end-3 sm:top-6 sm:end-6 z-10 w-9 h-9 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all"
             >
               <svg className="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

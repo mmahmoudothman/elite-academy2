@@ -173,7 +173,7 @@ const DashboardPage: React.FC = () => {
     updateEnrollment(id, { status });
     toast.success(t.dashboard?.status_updated || 'Status updated');
   };
-  const handleUpdatePaymentStatus = (id: string, paymentStatus: any) => { updateEnrollment(id, { paymentStatus }); toast.success(t.dashboard?.payment_status_updated || 'Payment status updated'); };
+  const handleUpdatePaymentStatus = (id: string, paymentStatus: any) => { updateEnrollment(id, { paymentStatus }); toast.success(t.dashboard?.payment_updated || 'Payment status updated'); };
 
   // ─── Contact handlers ───
   const handleMarkRead = (id: string) => updateContact(id, { status: 'read' });
@@ -184,21 +184,21 @@ const DashboardPage: React.FC = () => {
   const handleViewStudent = (s: Student) => { setEditingStudent(s); setStudentModalOpen(true); };
   const handleToggleStudentActive = (s: Student) => {
     updateStudent(s.id, { isActive: !s.isActive });
-    toast.success(s.isActive ? 'Student deactivated' : 'Student activated');
+    toast.success(s.isActive ? (t.dashboard?.student_deactivated || 'Student deactivated') : (t.dashboard?.student_activated || 'Student activated'));
   };
   const handleDeleteStudent = (s: Student) => {
     deleteStudent(s.id);
     addAuditLog?.({ userId: currentUser?.id || '', userName: currentUser?.displayName || '', action: 'delete', entityType: 'student', entityId: s.id, details: `Deleted student: ${s.name} (${s.email})` });
-    toast.success('Student deleted');
+    toast.success(t.dashboard?.deleted_successfully || 'Deleted successfully');
   };
   const handleSaveStudent = (data: Omit<Student, 'id'>) => {
     if (editingStudent) {
       updateStudent(editingStudent.id, data);
-      toast.success('Student updated');
+      toast.success(t.dashboard?.student_updated || 'Student updated');
     } else {
       addStudent(data);
       addAuditLog?.({ userId: currentUser?.id || '', userName: currentUser?.displayName || '', action: 'create', entityType: 'student', details: `Added student: ${data.name} (${data.email})` });
-      toast.success('Student added');
+      toast.success(t.dashboard?.student_updated || 'Student added');
     }
     setStudentModalOpen(false);
   };
@@ -209,20 +209,20 @@ const DashboardPage: React.FC = () => {
   const handleDeleteGroup = (g: StudentGroup) => {
     deleteGroup(g.id);
     addAuditLog?.({ userId: currentUser?.id || '', userName: currentUser?.displayName || '', action: 'delete', entityType: 'student', entityId: g.id, details: `Deleted group: ${g.name.en}` });
-    toast.success('Group deleted');
+    toast.success(t.dashboard?.group_deleted || 'Group deleted');
   };
   const handleToggleGroupActive = (g: StudentGroup) => {
     updateGroup(g.id, { isActive: !g.isActive });
-    toast.success(g.isActive ? 'Group deactivated' : 'Group activated');
+    toast.success(g.isActive ? (t.dashboard?.set_inactive || 'Group deactivated') : (t.dashboard?.set_active || 'Group activated'));
   };
   const handleSaveGroup = (data: Omit<StudentGroup, 'id'>) => {
     if (editingGroup) {
       updateGroup(editingGroup.id, data);
-      toast.success('Group updated');
+      toast.success(t.dashboard?.group_updated || 'Group updated');
     } else {
       addGroup(data);
       addAuditLog?.({ userId: currentUser?.id || '', userName: currentUser?.displayName || '', action: 'create', entityType: 'student', details: `Created group: ${data.name.en}` });
-      toast.success('Group created');
+      toast.success(t.dashboard?.group_created || 'Group created');
     }
     setGroupModalOpen(false);
   };
@@ -238,7 +238,7 @@ const DashboardPage: React.FC = () => {
       }
       addAuditLog?.({ userId: currentUser?.id || '', userName: currentUser?.displayName || '', action: 'create', entityType: 'user', details: `Created user: ${data.displayName} (${data.email}) with role ${data.role}` });
       toast.success(t.dashboard?.create_user || 'User created');
-    } catch (err: any) { toast.error(err.message || 'Failed to create user'); }
+    } catch (err: any) { toast.error(err.message || (t.common?.error || 'Failed to create user')); }
   };
   const handleToggleUserActive = async (u: User) => {
     const newActive = !u.isActive;
@@ -256,7 +256,7 @@ const DashboardPage: React.FC = () => {
     toast.success(t.dashboard?.role_changed || 'Role changed successfully');
   };
   const handleDeleteUser = (u: User) => {
-    if (u.id === currentUser?.id) { toast.error('Cannot delete your own account'); return; }
+    if (u.id === currentUser?.id) { toast.error(t.common?.error || 'Cannot delete your own account'); return; }
     deleteSystemUser?.(u.id);
     if (!isFirebaseConfigured) deleteUserAccount(u.id);
     addAuditLog?.({ userId: currentUser?.id || '', userName: currentUser?.displayName || '', action: 'delete', entityType: 'user', entityId: u.id, details: `Deleted user: ${u.displayName} (${u.email})` });
@@ -267,8 +267,8 @@ const DashboardPage: React.FC = () => {
       await resetUserPassword(userId, newPassword);
       const user = systemUsers.find((s: User) => s.id === userId);
       addAuditLog?.({ userId: currentUser?.id || '', userName: currentUser?.displayName || '', action: 'update', entityType: 'user', entityId: userId, details: `Reset password for: ${user?.displayName || userId}` });
-      toast.success('Password reset successfully');
-    } catch (err: any) { toast.error(err.message || 'Failed to reset password'); }
+      toast.success(t.common?.success || 'Password reset successfully');
+    } catch (err: any) { toast.error(err.message || (t.common?.error || 'Failed to reset password')); }
   };
 
   // ─── Testimonial handlers ───
@@ -278,7 +278,7 @@ const DashboardPage: React.FC = () => {
   const handleSaveTestimonial = (data: Omit<Testimonial, 'id'>) => {
     if (editingTestimonial) updateTestimonial?.(editingTestimonial.id, data); else addTestimonial?.(data);
     setTestimonialModalOpen(false);
-    toast.success(editingTestimonial ? 'Testimonial updated' : 'Testimonial added');
+    toast.success(editingTestimonial ? (t.dashboard?.testimonial_updated || 'Testimonial updated') : (t.dashboard?.testimonial_added || 'Testimonial added'));
   };
   const handleToggleTestimonialVisibility = (tm: Testimonial) => { updateTestimonial?.(tm.id, { visible: !tm.visible }); };
 
@@ -289,7 +289,7 @@ const DashboardPage: React.FC = () => {
   const handleSaveFaq = (data: Omit<FAQ, 'id'>) => {
     if (editingFaq) updateFaq?.(editingFaq.id, data); else addFaq?.(data);
     setFaqModalOpen(false);
-    toast.success(editingFaq ? 'FAQ updated' : 'FAQ added');
+    toast.success(editingFaq ? (t.dashboard?.faq_updated || 'FAQ updated') : (t.dashboard?.faq_added || 'FAQ added'));
   };
   const handleToggleFaqVisibility = (f: FAQ) => { updateFaq?.(f.id, { visible: !(f as any).visible }); };
   const handleReorderFaq = (id: string, direction: 'up' | 'down') => {
@@ -313,7 +313,7 @@ const DashboardPage: React.FC = () => {
   const handleSaveCategory = (data: Omit<Category, 'id'>) => {
     if (editingCategory) updateCategory?.(editingCategory.id, data); else addCategory?.(data);
     setCategoryModalOpen(false);
-    toast.success(editingCategory ? 'Category updated' : 'Category added');
+    toast.success(editingCategory ? (t.dashboard?.category_updated || 'Category updated') : (t.dashboard?.category_added || 'Category added'));
   };
   const handleToggleCategoryVisibility = (c: Category) => { updateCategory?.(c.id, { visible: !(c as any).visible }); };
 
@@ -324,7 +324,7 @@ const DashboardPage: React.FC = () => {
   const handleSaveAd = (data: Omit<Ad, 'id'>) => {
     if (editingAd) updateAd?.(editingAd.id, data); else addAd?.(data);
     setAdModalOpen(false);
-    toast.success(editingAd ? 'Ad updated' : 'Ad created');
+    toast.success(editingAd ? (t.dashboard?.ad_updated || 'Ad updated') : (t.dashboard?.ad_created || 'Ad created'));
   };
   const handleToggleAdStatus = (ad: Ad) => { updateAd?.(ad.id, { status: ad.status === 'active' ? 'paused' : 'active' }); };
 
@@ -333,7 +333,7 @@ const DashboardPage: React.FC = () => {
     const existing = financials.find((f: CourseFinancials) => f.courseId === courseId);
     if (existing) updateFinancial?.(existing.id, { ...data, updatedAt: Date.now() });
     else addFinancial?.({ courseId, instructorPayout: 0, currency: 'EGP', updatedAt: Date.now(), ...data });
-    toast.success('Financials saved');
+    toast.success(t.dashboard?.financials_saved || 'Financials saved');
   };
 
   // ─── Newsletter handlers ───
@@ -370,19 +370,19 @@ const DashboardPage: React.FC = () => {
     if (activeTab === 'students') {
       exportToCsv('students', ['Name', 'Email', 'Phone', 'Country', 'Level', 'Stage', 'Groups', 'Active', 'Joined'],
         students.map((s: Student) => [s.name, s.email, s.phone || '', s.country || '', s.level, s.lifecycleStage, s.groupIds.join(','), s.isActive ? 'Yes' : 'No', new Date(s.createdAt).toLocaleDateString()]));
-      toast.success('Students exported');
+      toast.success(t.dashboard?.students_exported || 'Students exported');
     } else if (activeTab === 'enrollments') {
       exportToCsv('enrollments', ['Student', 'Email', 'Course', 'Status', 'Payment', 'Amount', 'Currency', 'Date'],
         enrollments.map((e: any) => [e.studentName, e.studentEmail, e.courseTitle, e.status, e.paymentStatus, String(e.paymentAmount), e.paymentCurrency, new Date(e.enrolledAt).toLocaleDateString()]));
-      toast.success('Enrollments exported');
+      toast.success(t.dashboard?.enrollments_exported || 'Enrollments exported');
     } else if (activeTab === 'contacts') {
       exportToCsv('contacts', ['Name', 'Email', 'Phone', 'Subject', 'Status', 'Date'],
         contacts.map((c: any) => [c.name, c.email, c.phone || '', c.subject, c.status, new Date(c.submittedAt).toLocaleDateString()]));
-      toast.success('Contacts exported');
+      toast.success(t.dashboard?.contacts_exported || 'Contacts exported');
     } else if (activeTab === 'courses') {
       exportToCsv('courses', ['Title', 'Category', 'Instructor', 'Price', 'Currency', 'Enrolled', 'Capacity'],
         courses.map((c: any) => [c.title, c.category, c.instructor, String(c.price), c.currency, String(c.enrolled), String(c.capacity)]));
-      toast.success('Courses exported');
+      toast.success(t.dashboard?.courses_exported || 'Courses exported');
     }
   };
 
@@ -397,7 +397,7 @@ const DashboardPage: React.FC = () => {
             {can('analytics.export') && ['students', 'enrollments', 'contacts', 'courses'].includes(activeTab) && (
               <button onClick={handleExport} className="px-4 py-2 text-sm font-bold text-teal-600 border border-teal-200 rounded-xl hover:bg-teal-50 transition-all flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                Export CSV
+                {t.dashboard?.export || 'Export CSV'}
               </button>
             )}
             <button onClick={resetToDefaults} className="px-4 py-2 text-sm font-bold text-slate-500 border border-slate-200 rounded-xl hover:bg-slate-100 transition-all">{t.dashboard.reset_data}</button>
@@ -413,7 +413,7 @@ const DashboardPage: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 sm:p-6">
                 <h4 className="text-sm font-black text-slate-900 mb-4">{t.dashboard?.recent_enrollments || 'Recent Enrollments'}</h4>
-                {enrollments.length === 0 ? <p className="text-sm text-slate-400 font-bold">No data yet</p> : (
+                {enrollments.length === 0 ? <p className="text-sm text-slate-400 font-bold">{t.common?.no_data_yet || 'No data yet'}</p> : (
                   <div className="space-y-3">
                     {[...enrollments].sort((a: any, b: any) => b.enrolledAt - a.enrolledAt).slice(0, 5).map((e: any) => (
                       <div key={e.id} className="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl">
@@ -426,7 +426,7 @@ const DashboardPage: React.FC = () => {
               </div>
               <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 sm:p-6">
                 <h4 className="text-sm font-black text-slate-900 mb-4">{t.dashboard?.top_courses || 'Top Courses'}</h4>
-                {courses.length === 0 ? <p className="text-sm text-slate-400 font-bold">No data yet</p> : (
+                {courses.length === 0 ? <p className="text-sm text-slate-400 font-bold">{t.common?.no_data_yet || 'No data yet'}</p> : (
                   <div className="space-y-3">
                     {[...courses].sort((a: any, b: any) => b.enrolled - a.enrolled).slice(0, 5).map((c: any) => (
                       <div key={c.id} className="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl">
@@ -482,7 +482,7 @@ const DashboardPage: React.FC = () => {
             onUpdateStatus={can('enrollments.edit') ? handleUpdateEnrollmentStatus : undefined}
             onUpdatePayment={can('enrollments.edit') ? handleUpdatePaymentStatus : undefined}
             onDelete={can('enrollments.delete') ? (id: string) => { setDeleteTarget({ type: 'enrollment', id }); setDeleteModalOpen(true); } : undefined}
-            onUpdateEnrollment={can('enrollments.edit') ? (id: string, data: any) => { updateEnrollment(id, data); toast.success('Enrollment updated'); } : undefined}
+            onUpdateEnrollment={can('enrollments.edit') ? (id: string, data: any) => { updateEnrollment(id, data); toast.success(t.dashboard?.enrollment_updated || 'Enrollment updated'); } : undefined}
             onViewInvoice={(enrollment: Enrollment) => setInvoiceEnrollment(enrollment)}
           />
         )}
@@ -492,12 +492,12 @@ const DashboardPage: React.FC = () => {
             onMarkRead={can('contacts.edit') ? handleMarkRead : undefined}
             onMarkResponded={can('contacts.edit') ? handleMarkResponded : undefined}
             onDelete={can('contacts.delete') ? (id: string) => { setDeleteTarget({ type: 'contact', id }); setDeleteModalOpen(true); } : undefined}
-            onReply={can('contacts.edit') ? (id: string, reply: string) => { updateContact(id, { adminReply: reply, status: 'responded', respondedAt: Date.now() }); toast.success('Reply saved'); } : undefined}
+            onReply={can('contacts.edit') ? (id: string, reply: string) => { updateContact(id, { adminReply: reply, status: 'responded', respondedAt: Date.now() }); toast.success(t.dashboard?.reply_saved || 'Reply saved'); } : undefined}
           />
         )}
 
         {!loading && activeTab === 'analytics' && <AnalyticsOverview enrollments={enrollments} courses={courses} stats={stats} students={students} contacts={contacts} />}
-        {!loading && activeTab === 'settings' && (can('settings.edit') ? <SiteConfigEditor /> : <div className="bg-white rounded-2xl border border-slate-100 p-8 text-center"><p className="text-slate-400 font-bold">No permission to edit settings.</p></div>)}
+        {!loading && activeTab === 'settings' && (can('settings.edit') ? <SiteConfigEditor /> : <div className="bg-white rounded-2xl border border-slate-100 p-8 text-center"><p className="text-slate-400 font-bold">{t.common?.no_permission || 'No permission to access this section.'}</p></div>)}
         {!loading && activeTab === 'testimonials' && <TestimonialsTable testimonials={testimonials} onAdd={can('content.create') ? handleAddTestimonial : undefined} onEdit={can('content.edit') ? handleEditTestimonial : undefined} onDelete={can('content.delete') ? handleDeleteTestimonial : undefined} onToggleVisibility={can('content.edit') ? handleToggleTestimonialVisibility : undefined} />}
         {!loading && activeTab === 'faqs' && <FAQsTable faqs={faqs} onAdd={can('content.create') ? handleAddFaq : undefined} onEdit={can('content.edit') ? handleEditFaq : undefined} onDelete={can('content.delete') ? handleDeleteFaq : undefined} onToggleVisibility={can('content.edit') ? handleToggleFaqVisibility : undefined} onReorder={can('content.edit') ? handleReorderFaq : undefined} />}
         {!loading && activeTab === 'categories' && <CategoriesTable categories={categories} onAdd={can('content.create') ? handleAddCategory : undefined} onEdit={can('content.edit') ? handleEditCategory : undefined} onDelete={can('content.delete') ? handleDeleteCategory : undefined} onToggleVisibility={can('content.edit') ? handleToggleCategoryVisibility : undefined} />}
@@ -505,7 +505,7 @@ const DashboardPage: React.FC = () => {
         {!loading && activeTab === 'audit' && <AuditLogTable auditLog={auditLog} />}
         {!loading && activeTab === 'ads' && <AdsTable ads={ads} onAdd={can('ads.create') ? handleAddAd : undefined} onEdit={can('ads.edit') ? handleEditAd : undefined} onDelete={can('ads.delete') ? handleDeleteAd : undefined} onToggleStatus={can('ads.edit') ? handleToggleAdStatus : undefined} />}
         {!loading && activeTab === 'financials' && <FinancialsTable courses={courses} enrollments={enrollments} financials={financials} onSaveFinancial={can('financials.edit') ? handleSaveFinancial : undefined} />}
-        {!loading && activeTab === 'roles' && (can('roles.manage') ? <RoleManagement /> : <div className="bg-white rounded-2xl border border-slate-100 p-8 text-center"><p className="text-slate-400 font-bold">No permission to manage roles.</p></div>)}
+        {!loading && activeTab === 'roles' && (can('roles.manage') ? <RoleManagement /> : <div className="bg-white rounded-2xl border border-slate-100 p-8 text-center"><p className="text-slate-400 font-bold">{t.common?.no_permission || 'No permission to access this section.'}</p></div>)}
       </div>
 
       {/* Modals */}

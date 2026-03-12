@@ -36,7 +36,7 @@ const MarketAnalytics: React.FC = () => {
                 { val: t.analytics.stat3_val, label: t.analytics.stat3_label },
                 { val: t.analytics.stat4_val, label: t.analytics.stat4_label }
               ].map((stat, i) => (
-                <div key={i} className="border-l-4 border-indigo-600 pl-4 sm:pl-6 rtl:border-l-0 rtl:border-r-4 rtl:pr-4 sm:rtl:pr-6">
+                <div key={i} className="border-s-4 border-indigo-600 ps-4 sm:ps-6">
                   <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-1">{stat.val}</div>
                   <div className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
                 </div>
