@@ -52,7 +52,7 @@ import { exportToCsv } from '../utils/exportCsv';
 import { isFirebaseConfigured } from '../services/firebase';
 import { createUserAccount, updateUserAccount, deleteUserAccount, resetUserPassword } from '../services/localAuthService';
 import { subscribeLiveSessions, createLiveSession, editLiveSession, removeLiveSession, subscribeRecordings, createRecording, editRecording, removeRecording, subscribeQuizzes, createQuiz, editQuiz, removeQuiz, subscribeCapstones, createCapstone, editCapstone, removeCapstone, subscribeCapstoneSubmissions, editCapstoneSubmission, subscribeAllCourseProgress } from '../services/firestoreService';
-import { seedLearningData, clearLearningData, seedTestStudent, seedTestInstructor } from '../services/seedLearningData';
+
 
 const DashboardPage: React.FC = () => {
   const { t } = useLanguage();
@@ -189,64 +189,6 @@ const DashboardPage: React.FC = () => {
   }, []);
 
   const handleLogout = async () => { await logout(); };
-
-  // ─── Seed learning data ───
-  const [seeding, setSeeding] = useState(false);
-  const handleSeedLearningData = async () => {
-    if (seeding) return;
-    setSeeding(true);
-    try {
-      const result = await seedLearningData();
-      const summary = Object.entries(result.created).filter(([, v]) => v > 0).map(([k, v]) => `${k}: ${v}`).join(', ');
-      toast.success(`Learning data seeded! ${summary}`);
-    } catch (err: any) {
-      toast.error(err.message || 'Failed to seed learning data');
-    } finally {
-      setSeeding(false);
-    }
-  };
-
-  const handleClearLearningData = async () => {
-    if (seeding) return;
-    if (!window.confirm('Are you sure you want to delete ALL learning data (sessions, recordings, quizzes, capstones, progress)?')) return;
-    setSeeding(true);
-    try {
-      await clearLearningData();
-      toast.success('All learning data cleared');
-    } catch (err: any) {
-      toast.error(err.message || 'Failed to clear learning data');
-    } finally {
-      setSeeding(false);
-    }
-  };
-
-  const handleSeedTestStudent = async () => {
-    if (seeding) return;
-    setSeeding(true);
-    try {
-      const result = await seedTestStudent();
-      const summary = Object.entries(result.created).filter(([, v]) => v > 0).map(([k, v]) => `${k}: ${v}`).join(', ');
-      toast.success(`Test student created!\nEmail: ${result.email}\nPassword: ${result.password}\n${summary}`, { duration: 8000 });
-    } catch (err: any) {
-      toast.error(err.message || 'Failed to seed test student');
-    } finally {
-      setSeeding(false);
-    }
-  };
-
-  const handleSeedTestInstructor = async () => {
-    if (seeding) return;
-    setSeeding(true);
-    try {
-      const result = await seedTestInstructor();
-      const summary = Object.entries(result.created).filter(([, v]) => v > 0).map(([k, v]) => `${k}: ${v}`).join(', ');
-      toast.success(`Test instructor created!\nEmail: ${result.email}\nPassword: ${result.password}\n${summary}`, { duration: 8000 });
-    } catch (err: any) {
-      toast.error(err.message || 'Failed to seed test instructor');
-    } finally {
-      setSeeding(false);
-    }
-  };
 
   // ─── Course handlers ───
   const handleAddCourse = () => { setEditingCourse(null); setCourseModalOpen(true); };
@@ -579,59 +521,6 @@ const DashboardPage: React.FC = () => {
         {!loading && activeTab === 'overview' && (
           <div className="space-y-8">
             <StatsOverview stats={stats} />
-            {currentUser?.role === 'super_admin' && (
-              <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 sm:p-6">
-                <h4 className="text-sm font-black text-slate-900 mb-2">Seed Learning Data</h4>
-                <p className="text-xs text-slate-500 mb-4">Populate Firestore with sample live sessions, recordings, quizzes, capstones, attendance, submissions, and course progress data.</p>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={handleSeedLearningData}
-                    disabled={seeding}
-                    className="px-4 py-2 text-sm font-bold text-white bg-[#0da993] rounded-xl hover:bg-[#0b9882] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                  >
-                    {seeding ? (
-                      <><svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> Seeding...</>
-                    ) : (
-                      <><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg> Seed Learning Data</>
-                    )}
-                  </button>
-                  <button
-                    onClick={handleClearLearningData}
-                    disabled={seeding}
-                    className="px-4 py-2 text-sm font-bold text-red-600 border border-red-200 rounded-xl hover:bg-red-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                    Clear Learning Data
-                  </button>
-                  <button
-                    onClick={handleSeedTestStudent}
-                    disabled={seeding}
-                    className="px-4 py-2 text-sm font-bold text-white bg-[#3d66f1] rounded-xl hover:bg-[#2d56e1] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                  >
-                    {seeding ? (
-                      <><svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> Creating...</>
-                    ) : (
-                      <><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg> Add Test Student</>
-                    )}
-                  </button>
-                  <button
-                    onClick={handleSeedTestInstructor}
-                    disabled={seeding}
-                    className="px-4 py-2 text-sm font-bold text-white bg-[#8b5cf6] rounded-xl hover:bg-[#7c4dec] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                  >
-                    {seeding ? (
-                      <><svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> Creating...</>
-                    ) : (
-                      <><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg> Add Test Instructor</>
-                    )}
-                  </button>
-                </div>
-                <div className="mt-2 space-y-1">
-                  <p className="text-xs text-slate-400">Test student: <code className="bg-slate-100 px-1.5 py-0.5 rounded">student@elitelearning.com</code> / <code className="bg-slate-100 px-1.5 py-0.5 rounded">Student@2026</code></p>
-                  <p className="text-xs text-slate-400">Test instructor: <code className="bg-slate-100 px-1.5 py-0.5 rounded">instructor@elitelearning.com</code> / <code className="bg-slate-100 px-1.5 py-0.5 rounded">Instructor@2026</code></p>
-                </div>
-              </div>
-            )}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 sm:p-6">
                 <h4 className="text-sm font-black text-slate-900 mb-4">{t.dashboard?.recent_enrollments || 'Recent Enrollments'}</h4>
