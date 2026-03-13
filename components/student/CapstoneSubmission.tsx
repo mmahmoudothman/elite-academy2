@@ -117,6 +117,10 @@ const CapstoneSubmissionComponent: React.FC<CapstoneSubmissionProps> = ({
         });
       }
       onSubmitted();
+      // Telegram notification (fire and forget)
+      import('../../services/telegramService').then(({ notifyCapstoneSubmission }) => {
+        notifyCapstoneSubmission(user.displayName || 'Student', capstone.title, !!existingSubmission);
+      }).catch(() => {});
     } catch {
       setError(language === 'ar' ? 'فشل التقديم. يرجى المحاولة مرة أخرى.' : 'Failed to submit. Please try again.');
     } finally {

@@ -102,6 +102,10 @@ const QuizTaker: React.FC<QuizTakerProps> = ({ quiz, existingSubmissions, onBack
       setSubmissionResult(result);
       setPhase('results');
       onSubmitted();
+      // Telegram notification (fire and forget)
+      import('../../services/telegramService').then(({ notifyQuizSubmission }) => {
+        notifyQuizSubmission(user?.displayName || 'Student', quiz.title, scoredMarks, quiz.totalMarks, passed);
+      }).catch(() => {});
     } catch {
       setSubmitError(language === 'ar' ? 'فشل تقديم الاختبار. يرجى المحاولة مرة أخرى.' : 'Failed to submit quiz. Please try again.');
     } finally {

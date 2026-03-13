@@ -28,6 +28,10 @@ const SessionViewer: React.FC<SessionViewerProps> = ({ session, onBack }) => {
       status: 'joined',
     }).then(() => {
       setAttendanceRecorded(true);
+      // Telegram notification (fire and forget)
+      import('../../services/telegramService').then(({ notifySessionJoined }) => {
+        notifySessionJoined(user.displayName || 'Student', session.title);
+      }).catch(() => {});
     }).catch(() => {
       attendanceRef.current = false;
     });

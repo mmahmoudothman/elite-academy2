@@ -235,6 +235,10 @@ const SiteConfigEditor: React.FC = () => {
               { key: 'newEnrollment', label: t.dashboard?.notify_enrollment || 'New Enrollment' },
               { key: 'newPayment', label: t.dashboard?.notify_payment || 'New Payment' },
               { key: 'newContact', label: t.dashboard?.notify_contact || 'New Contact' },
+              { key: 'quizSubmission', label: t.dashboard?.notify_quiz || 'Quiz Submission' },
+              { key: 'capstoneSubmission', label: t.dashboard?.notify_capstone || 'Capstone Submission' },
+              { key: 'sessionStarted', label: t.dashboard?.notify_session_started || 'Session Started' },
+              { key: 'sessionJoined', label: t.dashboard?.notify_session_joined || 'Student Joined Session' },
             ].map(({ key, label }) => (
               <label key={key} className="flex items-center gap-2 cursor-pointer">
                 <input

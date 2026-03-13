@@ -12,6 +12,10 @@ interface TelegramConfig {
     newEnrollment: boolean;
     newPayment: boolean;
     newContact: boolean;
+    quizSubmission: boolean;
+    capstoneSubmission: boolean;
+    sessionStarted: boolean;
+    sessionJoined: boolean;
   };
 }
 
@@ -99,6 +103,59 @@ export async function notifyNewContact(name: string, subject: string, inquiryTyp
     `<b>From:</b> ${name}\n` +
     `<b>Subject:</b> ${subject}\n` +
     (inquiryType ? `<b>Type:</b> ${inquiryType}\n` : '') +
+    `<b>Time:</b> ${new Date().toLocaleString()}`
+  );
+}
+
+export async function notifyQuizSubmission(studentName: string, quizTitle: string, score: number, total: number, passed: boolean): Promise<boolean> {
+  const config = await getConfig();
+  if (!config?.notifications.quizSubmission) return false;
+
+  const emoji = passed ? '✅' : '❌';
+  const pct = Math.round((score / total) * 100);
+  return sendMessage(
+    `📝 <b>Quiz Submitted</b>\n\n` +
+    `<b>Student:</b> ${studentName}\n` +
+    `<b>Quiz:</b> ${quizTitle}\n` +
+    `<b>Score:</b> ${score}/${total} (${pct}%) ${emoji}\n` +
+    `<b>Status:</b> ${passed ? 'Passed' : 'Failed'}\n` +
+    `<b>Time:</b> ${new Date().toLocaleString()}`
+  );
+}
+
+export async function notifyCapstoneSubmission(studentName: string, capstoneTitle: string, isResubmission: boolean): Promise<boolean> {
+  const config = await getConfig();
+  if (!config?.notifications.capstoneSubmission) return false;
+
+  return sendMessage(
+    `🎯 <b>Capstone ${isResubmission ? 'Resubmitted' : 'Submitted'}</b>\n\n` +
+    `<b>Student:</b> ${studentName}\n` +
+    `<b>Capstone:</b> ${capstoneTitle}\n` +
+    `<b>Time:</b> ${new Date().toLocaleString()}`
+  );
+}
+
+export async function notifySessionStarted(instructorName: string, sessionTitle: string, courseName: string): Promise<boolean> {
+  const config = await getConfig();
+  if (!config?.notifications.sessionStarted) return false;
+
+  return sendMessage(
+    `🔴 <b>Live Session Started</b>\n\n` +
+    `<b>Session:</b> ${sessionTitle}\n` +
+    `<b>Course:</b> ${courseName}\n` +
+    `<b>Instructor:</b> ${instructorName}\n` +
+    `<b>Time:</b> ${new Date().toLocaleString()}`
+  );
+}
+
+export async function notifySessionJoined(studentName: string, sessionTitle: string): Promise<boolean> {
+  const config = await getConfig();
+  if (!config?.notifications.sessionJoined) return false;
+
+  return sendMessage(
+    `👋 <b>Student Joined Session</b>\n\n` +
+    `<b>Student:</b> ${studentName}\n` +
+    `<b>Session:</b> ${sessionTitle}\n` +
     `<b>Time:</b> ${new Date().toLocaleString()}`
   );
 }
